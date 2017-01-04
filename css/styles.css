@@ -561,6 +561,12 @@ select {
   margin-top: 0;
   margin-bottom: 15px;
 }
+.why .last-item .title {
+  font-size: 26px;
+  color: #4a6781;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
 .why .item .desc {
   margin-bottom: 60px;
 }
