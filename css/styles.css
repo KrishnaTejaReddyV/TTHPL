@@ -415,6 +415,13 @@ select {
   -o-background-size: cover;
   background-size: cover;
 }
+.bg-slider-wrapper .flexslider .slide.slidef-1 {
+  background: #253340 url('../fig2.jpg') no-repeat 50% top;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 .bg-slider-wrapper .flexslider .slide.slide-2 {
   background: #253340 url('../child2.jpg') no-repeat 50% top;
   -webkit-background-size: cover;
@@ -422,8 +429,22 @@ select {
   -o-background-size: cover;
   background-size: cover;
 }
+.bg-slider-wrapper .flexslider .slide.slidef-2 {
+  background: #253340 url('../fig3.jpg') no-repeat 50% top;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 .bg-slider-wrapper .flexslider .slide.slide-3 {
   background: #253340 url('../child3.jpg') no-repeat 50% top;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.bg-slider-wrapper .flexslider .slide.slidef-3 {
+  background: #253340 url('../fig4.jpg') no-repeat 50% top;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -2996,7 +3017,7 @@ select {
     margin-left: -30px;
   }
   .why .item .title {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     text-align: center;
   }
   .testimonials .item .profile {
