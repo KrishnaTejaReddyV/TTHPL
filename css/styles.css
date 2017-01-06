@@ -467,7 +467,7 @@ select {
   top: 0;
   left: 0;
   height: 500px;
-  background: #253340 url('../images/background/bg-header-small-1.jpg') no-repeat 50% top;
+  background: #253340 url('../aboutus.jpg') no-repeat 50% top;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -918,7 +918,7 @@ select {
   margin-right: 5px;
 }
 .features-tabbed .tab-content .desc blockquote {
-  font-style: italic;
+  
   color: #808080;
 }
 .features-tabbed .tab-content .desc .table {
