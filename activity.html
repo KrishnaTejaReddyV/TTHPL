@@ -41,12 +41,16 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="nav-item"><a href="index.html">Home</a></li>
-                        <li class="nav-item"><a href="foundation.html">Foundation</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="foundation.html">Foundation <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="foundation.html">About the Foundation</a></li>
+                                <li><a href="oat.html">OAT</a></li>
+                                <li><a href="insaf.html">INSAF</a></li>                   
+                            </ul> </li>
                         <li class="active nav-item dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="activity.html">Activities <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="activity.html">OAT</a></li>
-                                <li><a href="activity.html">INSAF</a></li>
                                 <li><a href="activity.html">Events</a></li>
                                 <li><a href="activity.html">CSR</a></li>
                                 <li><a href="activity.html">Rewards</a></li>                   
@@ -54,7 +58,7 @@
                         </li>
                         <li class="nav-item"><a href="#">Team</a></li>   
 						<li class="nav-item"><a href="index.html#n">News</a></li>	
-						<li class="nav-item"><a href="#f">FAQ</a></li>
+						<li class="nav-item"><a href="faq.html">FAQ</a></li>
 						<li class="nav-item dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="register.html">Register <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
@@ -86,22 +90,22 @@
     
     <!-- ******Features Section****** -->       
     <section class="features-tabbed section">
+	<h2 class="title">Activities</h2> 
         <div class="container">
-            <h2 class="title text-center">Product Features</h2>
             <div class="row">
                 <div class=" text-center col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1 col-xs-offset-0">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs text-center" role="tablist">
-                        <li class="active"><a href="#feature-1" role="tab" data-toggle="tab"><i class="fa fa-cloud-upload"></i><br /><span>OAT</span></a></li>
-                        <li><a href="#feature-2" role="tab" data-toggle="tab"><i class="fa fa-tachometer"></i><br /><span>INSAF</span></a></li>
-                        <li><a href="#feature-3" role="tab" data-toggle="tab"><i class="fa fa-photo"></i><br /><span>Events</span></a></li>
-                        <li><a href="#feature-4" role="tab" data-toggle="tab"><i class="fa fa-photo"></i><br /><span>CSR</span></a></li>
-                        <li class="last"><a href="#feature-5" role="tab" data-toggle="tab"><i class="fa fa-users"></i><br /><span>Rewards</span></a></li>
+                        <!--li class="active"><a href="#feature-1" role="tab" data-toggle="tab"><i class="fa fa-cloud-upload"></i><br /><span>OAT</span></a></li>
+                        <li><a href="#feature-2" role="tab" data-toggle="tab"><i class="fa fa-tachometer"></i><br /><span>INSAF</span></a></li-->
+                        <li class="active"><a href="#events" role="tab" data-toggle="tab"><i class="fa fa-photo"></i><br /><span>Events</span></a></li>
+                        <li><a href="#csr" role="tab" data-toggle="tab"><i class="fa fa-photo"></i><br /><span>CSR</span></a></li>
+                        <li class="last"><a href="#reward" role="tab" data-toggle="tab"><i class="fa fa-users"></i><br /><span>Rewards</span></a></li>
                     </ul><!--//nav-tabs-->
                     
                     <!-- Tab panes -->
                     <div class="tab-content" style="background-color:white; opacity:1; border-bottom:1px">
-                        <div class="tab-pane fade in active" id="feature-1">
+                        <!--div class="tab-pane fade in active" id="feature-1">
                             <h3 class="title sr-only">Olympiad Aptitude Tests (OAT)</h3>                                    
                             <figure class="figure text-center">
                                 <img class="img-responsive" src="oat.jpeg" alt="" />
@@ -127,7 +131,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div><!--//table-responsive-->
+                                </div>
 								
 								<p><b>OAT Test Duration and Pattern:</b></p>
                                 <ul class="list-unstyled">
@@ -162,8 +166,8 @@
 								<p><b>Test Answer Sheet:</b> OMR Based (bubbles to be darkened by HB pencil/ black ball pen)</p>
 								<p><b>Syllabus:</b> OAT question papers will be the combination of all boards.</p>
                                
-							 </div><!--//desc-->
-                        </div><!--//tab-pane-->
+							 </div>
+                        </div>
                         <div class="tab-pane" id="feature-2">
                             <h3 class="title sr-only">INSAF</h3>                                    
                             <figure class="figure text-center">
@@ -187,9 +191,9 @@
                                     <p><i><b><font size="20px">F</font>ructifying Talent:</b></i> The main objective of TTHPL with all the above process is to support the talent, expose him/her to competition and bench marking to the world and making of “Would be” in their respective field steering the national cause. The ethos of the organization is based upon ‘serving the nation’</p>
                                 </blockquote>
                                 
-                            </div><!--//desc-->
-                        </div><!--//tab-pane-->
-                        <div class="tab-pane" id="feature-3">
+                            </div>
+                        </div--><!--//tab-pane-->
+                        <div class="tab-pane fade-in active" id="events">
                             <h3 class="title sr-only">Events</h3>
                             <figure class="figure text-center">
                                 <img class="img-responsive" src="child2.jpg" alt="" />
@@ -199,7 +203,7 @@
                                 
                             </div><!--//desc-->                                    
                         </div><!--//tab-pane-->
-                        <div class="tab-pane" id="feature-4">
+                        <div class="tab-pane" id="csr">
                             <h3 class="title sr-only">CSR</h3>                                    
                             <figure class="figure text-center">
                                 <img class="img-responsive" src="child2.jpg" alt="" />
@@ -209,7 +213,7 @@
                                 
                             </div><!--//desc-->
                         </div>
-						<div class="tab-pane" id="feature-5">
+						<div class="tab-pane" id="reward">
                             <h3 class="title sr-only">Rewards and Recognition</h3>                                    
                             <figure class="figure text-center">
                                 <img class="img-responsive" src="child2.jpg" alt="" />
@@ -468,7 +472,7 @@
 
 	
 	<!-- ******FAQ Section****** --> 
-    <section class="faq section has-bg-color" id="f">
+    <!--section class="faq section has-bg-color" id="f">
         <div class="container">
             <h2 class="title text-center">Frequently Asked Questions</h2>
             <div class="row">
@@ -484,7 +488,7 @@
                                 OAT is a contest which TTHPL is organising to identify talent, it will prove very useful to students/ parents who wish to assess their strengths and weaknesses in Maths, Science, English and IQ subjects. Based on the development of a skill blueprint, Panel of Consultant of TTHPL will develop Detailed Analysis Report. The analysis of the performance is done at individual student level. Talent will be further nurtured by TTHPL by organizing multiple activities.
                             </div>
                         </div>
-                    </div><!--//panel-->
+                    </div>
             
                     <div class="panel">
                         <div class="panel-heading">
@@ -497,7 +501,7 @@
                                 Students from Pvt. /Govt schools of classes I to X, all boards, all mediums, are eligible to participate in this examination.
                             </div>
                         </div>
-                    </div><!--//panel-->
+                    </div>
             
                     <div class="panel">
                         <div class="panel-heading">
@@ -510,7 +514,7 @@
                                  You can contact your school principal / In-charge Teacher for competitions. Your school also can participate in this examination. Request your school.
                             </div>
                         </div>
-                    </div><!--//panel-->
+                    </div>
                     
                     <div class="panel">
                         <div class="panel-heading">
@@ -523,7 +527,7 @@
                                 OAT syllabus will be mixtures the all boards. Suitable for all boards.
                             </div>
                         </div>
-                    </div><!--//panel-->
+                    </div>
                     
                     <div class="panel">
                         <div class="panel-heading">
@@ -536,7 +540,7 @@
                                 There will be a different Question paper for each class. All the questions are objective-type with no negative marking for wrong answers.
                             </div>
                         </div>
-                    </div><!--//panel-->
+                    </div>
                     
                     <div class="panel">
                         <div class="panel-heading">
@@ -549,7 +553,7 @@
                                Apart from English medium OAT are also conducted in regional languages.
                             </div>
                         </div>
-                    </div><!--//panel-->    
+                    </div>    
                     
                     <div class="panel">
                         <div class="panel-heading">
@@ -562,7 +566,7 @@
                                Results of OAT will be declared normally after one month of the exam conducted.
                             </div>
                         </div>
-                    </div><!--//panel-->  
+                    </div> 
                     
                     <div class="panel">
                         <div class="panel-heading">
@@ -575,7 +579,7 @@
                                All the important information regarding Talent Exams, Seminars, workshops, educational tours, motivational speech etc., like date, time and venue is available on our website. So it is beneficial for you to surf our site on regular basis.
                             </div>
                         </div>
-                    </div><!--//panel-->  
+                    </div>  
                     
                     <div class="panel">
                         <div class="panel-heading">
@@ -588,7 +592,7 @@
                                Yes, you will receive admit card one weeks before the examination. Those who do not receive their Admit Card can request school/ ABPs for the same three days before the exam.
                             </div>
                         </div>
-                    </div><!--//panel-->  
+                    </div>
                     
                     <div class="panel">
                         <div class="panel-heading">
@@ -601,7 +605,7 @@
                                Any corrections (Spelling Mistakes) which are liable to be made can be done at the Examination center it self.
                             </div>
                         </div>
-                    </div><!--//panel-->  
+                    </div> 
                     
                     <div class="panel">
                         <div class="panel-heading">
@@ -614,7 +618,7 @@
                                We only declare All India and State Ranks. City Wise achievers are declared only for selected cities.<br><b>Note:</b> City Rank (for every Class) will be declared for the classes having a minimum participation of 500 students in a particular city.
                             </div>
                         </div>
-                    </div><!--//panel-->  
+                    </div>
                     
                     <div class="panel">
                         <div class="panel-heading">
@@ -627,7 +631,7 @@
                                We will send the Participation Certificate.
                             </div>
                         </div>
-                    </div><!--//panel-->    
+                    </div>   
                     
                     <div class="panel">
                         <div class="panel-heading">
@@ -640,7 +644,7 @@
                                 Let us know the complete address of your school. We will send detailed information and registration forms to your school so that your Principal / Science Teacher can register school for the exam and then you can participate. You can send complete address to sanjay.singh@tthpl.in
                             </div>
                         </div>
-                    </div><!--//panel--> 
+                    </div>
                     
                     <div class="panel">
                         <div class="panel-heading">
@@ -653,20 +657,20 @@
                                 You can apply individually and take the exam in declared test centres. Please send the filled application form to our office with required enclosures. Terms and conditions applied.
                             </div>
                         </div>
-                    </div><!--//panel-->
+                    </div>
 
 					
                 </div>
-            </div><!--//row-->
+            </div>
             <div class="contact-lead text-center">
                 <h4 class="title">Have more questions?</h4>
                 <a class="btn btn-cta btn-cta-secondary" href="contact.html">Get in touch</a>
             </div>
-        </div><!--//container-->        
-    </section><!--//faq-->
+        </div>       
+    </section--><!--//faq-->
 	
 	
-	 <div class="sections-wrapper">
+	 <div class="sections-wrapper" style="background-color:#eceff1">
     <!-- ******FOOTER****** --> 
     <section id="c">
 	<div class="container">
