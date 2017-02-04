@@ -27,10 +27,6 @@ def teardown_request(exception):
 
 @app.route("/")
 def index():
-	if bool(session.get('s_id')):
-		return redirect(url_for('school_loggedin'))
-	if bool(session.get('abp_id')):
-		return redirect(url_for('abp_loggedin'))
 	return render_template("index.html")
 	
 	
@@ -38,60 +34,36 @@ def index():
 
 @app.route("/foundation")
 def foundation():
-	if bool(session.get('s_id')):
-		return redirect(url_for('school_loggedin'))
-	if bool(session.get('abp_id')):
-		return redirect(url_for('abp_loggedin'))
 	return render_template("foundation.html")
 	
 		
 
 @app.route("/oat")
 def oat():
-	if bool(session.get('s_id')):
-		return redirect(url_for('school_loggedin'))
-	if bool(session.get('abp_id')):
-		return redirect(url_for('abp_loggedin'))
 	return render_template("oat.html")
 	
 		
 
 @app.route("/insaf")
 def insaf():
-	if bool(session.get('s_id')):
-		return redirect(url_for('school_loggedin'))
-	if bool(session.get('abp_id')):
-		return redirect(url_for('abp_loggedin'))
 	return render_template("insaf.html")
 	
 		
 
 @app.route("/activity")
 def activity():
-	if bool(session.get('s_id')):
-		return redirect(url_for('school_loggedin'))
-	if bool(session.get('abp_id')):
-		return redirect(url_for('abp_loggedin'))
 	return render_template("activity.html")
 	
 		
 	
 @app.route("/team")
 def team():
-	if bool(session.get('s_id')):
-		return redirect(url_for('school_loggedin'))
-	if bool(session.get('abp_id')):
-		return redirect(url_for('abp_loggedin'))
 	return render_template("team.html")
 	
 		
 
 @app.route("/faq")
 def faq():
-	if bool(session.get('s_id')):
-		return redirect(url_for('school_loggedin'))
-	if bool(session.get('abp_id')):
-		return redirect(url_for('abp_loggedin'))
 	return render_template("faq.html")
 	
 		
@@ -117,10 +89,6 @@ def school_reg():
 	
 @app.route("/school-login")
 def school_login():
-	if bool(session.get('s_id')):
-		return redirect(url_for('school_loggedin'))
-	if bool(session.get('abp_id')):
-		return redirect(url_for('abp_loggedin'))
 	return render_template("school-login.html")
 	
 	
@@ -233,20 +201,12 @@ def intern_reg():
 
 @app.route("/news")
 def news():
-	if bool(session.get('s_id')):
-		return redirect(url_for('school_loggedin'))
-	if bool(session.get('abp_id')):
-		return redirect(url_for('abp_loggedin'))
 	return render_template("news.html")	
 	
 		
 
 @app.route("/contact")
 def contact():
-	if bool(session.get('s_id')):
-		return redirect(url_for('school_loggedin'))
-	if bool(session.get('abp_id')):
-		return redirect(url_for('abp_loggedin'))
 	return render_template("contact.html")	
 
 	
@@ -254,10 +214,6 @@ def contact():
 
 @app.route("/ABP-login")
 def ABP_login():
-	if bool(session.get('s_id')):
-		return redirect(url_for('school_loggedin'))
-	if bool(session.get('abp_id')):
-		return redirect(url_for('abp_loggedin'))
 	return render_template("ABP-login.html")
 		
 
