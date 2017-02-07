@@ -263,8 +263,290 @@
 											</tbody>
 										  </table>
 										  <br><br>
-										  <a class="btn btn-cta btn-cta-primary" href="#" target="_blank"><i class="fa fa-edit"></i>Edit</a>
-										  <a class="btn btn-cta btn-cta-primary" href="#" target="_blank"><i class="fa fa-remove"></i>Remove</a>
+										  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1"><i class="fa fa-edit"></i>Edit</button>
+										  <button type="button" class="btn btn-info btn-lg"><i class="fa fa-remove"></i>Remove</button>
+										  
+										  
+										   <div class="modal fade" id="myModal1" role="dialog">
+												<div class="modal-dialog">
+												
+												  <!-- Modal content-->
+												  <div class="modal-content">
+													<div class="modal-header">
+													  <button type="button" class="close" data-dismiss="modal">&times;</button>
+													  <h4 class="modal-title">School Name - SC001</h4>
+													</div>
+													<div class="modal-body">
+													 
+													  
+																<form class="form-horizontal" action=" " method="post"  id="reg_form">
+																	<fieldset>
+																	  
+																   
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">School Name</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+																			<input  name="first_name" placeholder="School Name" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  <!-- Text input-->
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label" >Board</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
+																			<input name="last_name" placeholder="Board" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">Type</label>
+																		<div class="col-md-6 selectContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+																			<select name="state" class="form-control selectpicker" >
+																			  <option value=" " >Please select your school type</option>
+																			  <option value="Andaman and Nicobar Islands">Government</option>
+																			  <option value="Andhra Pradesh">Private</option>
+																			</select>
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  
+																	
+																	  <!-- Text input-->
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">Phone #</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+																			<input name="phone" placeholder="9876543210" class="form-control" type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  <!-- Text input-->
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">Address</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																			<input name="address" placeholder="Address" class="form-control" type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  <!-- Text input-->
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">City</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																			<input name="city" placeholder="City" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  <!-- Select Basic -->
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">State</label>
+																		<div class="col-md-6 selectContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+																			<select name="state" class="form-control selectpicker" >
+																			  <option value=" " >Please select your state</option>
+																			  <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+																<option value="Andhra Pradesh">Andhra Pradesh</option>
+																<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+																<option value="Assam">Assam</option>
+																<option value="Bihar">Bihar</option>
+																<option value="Chandigarh">Chandigarh</option>
+																<option value="Chhattisgarh">Chhattisgarh</option>
+																<option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+																<option value="Daman and Diu">Daman and Diu</option>
+																<option value="Delhi">Delhi</option>
+																<option value="Goa">Goa</option>
+																<option value="Gujarat">Gujarat</option>
+																<option value="Haryana">Haryana</option>
+																<option value="Himachal Pradesh">Himachal Pradesh</option>
+																<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+																<option value="Jharkhand">Jharkhand</option>
+																<option value="Karnataka">Karnataka</option>
+																<option value="Kerala">Kerala</option>
+																<option value="Lakshadweep">Lakshadweep</option>
+																<option value="Madhya Pradesh">Madhya Pradesh</option>
+																<option value="Maharashtra">Maharashtra</option>
+																<option value="Manipur">Manipur</option>
+																<option value="Meghalaya">Meghalaya</option>
+																<option value="Mizoram">Mizoram</option>
+																<option value="Nagaland">Nagaland</option>
+																<option value="Orissa">Orissa</option>
+																<option value="Pondicherry">Pondicherry</option>
+																<option value="Punjab">Punjab</option>
+																<option value="Rajasthan">Rajasthan</option>
+																<option value="Sikkim">Sikkim</option>
+																<option value="Tamil Nadu">Tamil Nadu</option>
+																<option value="Tripura">Tripura</option>
+																<option value="Uttaranchal">Uttaranchal</option>
+																<option value="Uttar Pradesh">Uttar Pradesh</option>
+																<option value="West Bengal">West Bengal</option>
+																			</select>
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  <!-- Text input-->
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">Zip Code</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																			<input name="zip" placeholder="Zip Code" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																   
+																	  
+																   
+																		<!-- Text input-->
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">E-Mail</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+																			<input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">Password</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-qrcode"></i></span>
+																			<input name="email" placeholder="************" class="form-control"  type="password">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">Website</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
+																			<input name="email" placeholder="Enter the Link" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	
+																	   
+																	 
+																  
+																	  <!-- Button -->
+																	  
+																	  
+																	  
+																	  <br><br>
+																	  <h2 class="title text-center">School Coordinator's Details</h2>
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">Name</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+																			<input name="email" placeholder="Name" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">Designation</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+																			<input name="email" placeholder="Designation" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">Phone #</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+																			<input name="phone" placeholder="9876543210" class="form-control" type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	   <div class="form-group">
+																		<label class="col-md-4 control-label">E-Mail</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+																			<input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  <br><br>
+																	  <h2 class="title text-center">School Coordinator's Details</h2>
+																	  
+																		  <div class="form-group">
+																		<label class="col-md-4 control-label">Name</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+																			<input name="email" placeholder="Name" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">Designation</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+																			<input name="email" placeholder="Designation" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">Phone #</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+																			<input name="phone" placeholder="9876543210" class="form-control" type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	   <div class="form-group">
+																		<label class="col-md-4 control-label">E-Mail</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+																			<input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div><br>
+
+																	  
+																			<div class="form-group">
+																		<label class="col-md-4 control-label"></label>
+																		<div class="col-md-4">
+																		  <button type="submit" class="btn btn-warning" >Agree and Submit <span class="glyphicon glyphicon-send"></span></button>
+																		</div>
+																	  </div>
+
+																	</fieldset>
+																  </form>
+													</div>
+													<div class="modal-footer">
+													  <button type="button" class="btn btn-default" data-dismiss="modal">Save Changes</button>
+													</div>
+												  </div>
+												  
+												</div>
+											  </div>
                             </div>
                         </div>
                     </div><!--//panel-->
@@ -398,8 +680,262 @@
 										  </table>
 										  
 										  <br><br>
-										  <a class="btn btn-cta btn-cta-primary" href="#" target="_blank"><i class="fa fa-edit"></i>Edit</a>
-										  <a class="btn btn-cta btn-cta-primary" href="#" target="_blank"><i class="fa fa-remove"></i>Remove</a>
+										  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2"><i class="fa fa-edit"></i>Edit</button>
+										 <button type="button" class="btn btn-info btn-lg"><i class="fa fa-remove"></i>Remove</button>
+												<div class="modal fade" id="myModal2" role="dialog">
+														<div class="modal-dialog">
+														
+														  <!-- Modal content-->
+														  <div class="modal-content">
+															<div class="modal-header">
+															  <button type="button" class="close" data-dismiss="modal">&times;</button>
+															  <h4 class="modal-title"> Student Name - ST001</h4>
+															</div>
+															<div class="modal-body">
+																		
+																		<form class="form-horizontal" action=" " method="post"  id="reg_form">
+																			<fieldset>
+																			  
+																		   
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label">First Name</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+																					<input  name="first_name" placeholder="First Name" class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <!-- Text input-->
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label" >Last Name</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+																					<input name="last_name" placeholder="Last Name" class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label" >Date of Birth</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+																					<input name="last_name" placeholder="dd/mm/yyyy" class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			 
+																			  
+																			   <div class="form-group">
+																				<label class="col-md-4 control-label">Gender</label>
+																				<div class="col-md-6 selectContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+																					<select name="state" class="form-control selectpicker" >
+																					  <option value=" " >Please select your gender</option>
+																					  <option value="Andaman and Nicobar Islands">Male</option>
+																					  <option value="Andhra Pradesh">Female</option>
+																					</select>
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label" >Class</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+																					<input name="last_name" placeholder="Class" class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label" >Section</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+																					<input name="last_name" placeholder="Section" class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label" >Roll No.</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+																					<input name="last_name" placeholder="Roll No." class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label" >School Name</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																					<input name="last_name" placeholder="School Name" class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label" >Parent's/Gaurdian's Name</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+																					<input name="last_name" placeholder="Enter Here" class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  <!-- Text input-->
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label">Phone #</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+																					<input name="phone" placeholder="9876543210" class="form-control" type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <!-- Text input-->
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label">Address</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																					<input name="address" placeholder="Address" class="form-control" type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <!-- Text input-->
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label">City</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																					<input name="city" placeholder="city" class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <!-- Select Basic -->
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label">State</label>
+																				<div class="col-md-6 selectContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+																					<select name="state" class="form-control selectpicker" >
+																					  <option value=" " >Please select your state</option>
+																					  <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+																		<option value="Andhra Pradesh">Andhra Pradesh</option>
+																		<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+																		<option value="Assam">Assam</option>
+																		<option value="Bihar">Bihar</option>
+																		<option value="Chandigarh">Chandigarh</option>
+																		<option value="Chhattisgarh">Chhattisgarh</option>
+																		<option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+																		<option value="Daman and Diu">Daman and Diu</option>
+																		<option value="Delhi">Delhi</option>
+																		<option value="Goa">Goa</option>
+																		<option value="Gujarat">Gujarat</option>
+																		<option value="Haryana">Haryana</option>
+																		<option value="Himachal Pradesh">Himachal Pradesh</option>
+																		<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+																		<option value="Jharkhand">Jharkhand</option>
+																		<option value="Karnataka">Karnataka</option>
+																		<option value="Kerala">Kerala</option>
+																		<option value="Lakshadweep">Lakshadweep</option>
+																		<option value="Madhya Pradesh">Madhya Pradesh</option>
+																		<option value="Maharashtra">Maharashtra</option>
+																		<option value="Manipur">Manipur</option>
+																		<option value="Meghalaya">Meghalaya</option>
+																		<option value="Mizoram">Mizoram</option>
+																		<option value="Nagaland">Nagaland</option>
+																		<option value="Orissa">Orissa</option>
+																		<option value="Pondicherry">Pondicherry</option>
+																		<option value="Punjab">Punjab</option>
+																		<option value="Rajasthan">Rajasthan</option>
+																		<option value="Sikkim">Sikkim</option>
+																		<option value="Tamil Nadu">Tamil Nadu</option>
+																		<option value="Tripura">Tripura</option>
+																		<option value="Uttaranchal">Uttaranchal</option>
+																		<option value="Uttar Pradesh">Uttar Pradesh</option>
+																		<option value="West Bengal">West Bengal</option>
+																					</select>
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <!-- Text input-->
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label">Zip Code</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																					<input name="zip" placeholder="Zip Code" class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																		   
+																			  
+																		   
+																				<!-- Text input-->
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label">E-Mail</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+																					<input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label" >Percentage in Last Class</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+																					<input name="last_name" placeholder="Enter" class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label" >Photo of Student</label>
+																				<div class="col-md-6  inputGroupContainer">
+																						<div class="fileinput fileinput-new" data-provides="fileinput">
+																						<span class="btn btn-default btn-file"><span>Choose file</span></span>
+																						<span class="fileinput-filename"></span><span class="fileinput-new">No file chosen</span>
+																						</div>
+																				</div>
+																			  </div>
+																			 
+																			  
+																			  <p>My Child would like to participate in Olympiad Aptitude Test- 2016-17
+																		Fee of INR 225 per student (includes Maths, Science, English and Logical reasoning)
+																		I hereby declare that all details mentioned above are true to the best of my knowledge. I have read and understood the terms of participation governing 2016-17 the Olympiad Aptitude Test and agree that I and my child abide by them.</p>
+																		 
+
+																			 
+																		  
+																			  <!-- Button -->
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label"></label>
+																				<div class="col-md-4">
+																				  <button type="submit" class="btn btn-warning" >Agree and Submit <span class="glyphicon glyphicon-send"></span></button>
+																				</div>
+																			  </div>
+																			</fieldset>
+																		  </form>
+																		
+															</div>
+															<div class="modal-footer">
+															  <button type="button" class="btn btn-default" data-dismiss="modal">Save Changes</button>
+															</div>
+														  </div>
+														  
+														</div>
+													  </div>
                             </div>
                         </div>
                     </div><!--//panel-->
@@ -524,8 +1060,258 @@
 										  </table>
 										  
 										  <br><br>
-										  <a class="btn btn-cta btn-cta-primary" href="#" target="_blank"><i class="fa fa-edit"></i>Edit</a>
-										  <a class="btn btn-cta btn-cta-primary" href="#" target="_blank"><i class="fa fa-remove"></i>Remove</a>
+										  
+										  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3"><i class="fa fa-edit"></i>Edit</button>
+										  <button type="button" class="btn btn-info btn-lg"><i class="fa fa-remove"></i>Delete</button>
+										  
+										   <div class="modal fade" id="myModal3" role="dialog">
+												<div class="modal-dialog">
+												
+												  <!-- Modal content-->
+												  <div class="modal-content">
+													<div class="modal-header">
+													  <button type="button" class="close" data-dismiss="modal">&times;</button>
+													  <h4 class="modal-title">Volunteer Name - V0001</h4>
+													</div>
+													<div class="modal-body">
+													    <form class="form-horizontal" action=" " method="post"  id="reg_form">
+															<fieldset>
+															  
+															 
+															  
+															  <div class="form-group">
+																<label class="col-md-4 control-label">First Name</label>
+																<div class="col-md-6  inputGroupContainer">
+																  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+																	<input  name="first_name" placeholder="First Name" class="form-control"  type="text">
+																  </div>
+																</div>
+															  </div>
+															  
+															  <!-- Text input-->
+															  
+															  <div class="form-group">
+																<label class="col-md-4 control-label" >Last Name</label>
+																<div class="col-md-6  inputGroupContainer">
+																  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+																	<input name="last_name" placeholder="Last Name" class="form-control"  type="text">
+																  </div>
+																</div>
+															  </div>
+															  
+															  <div class="form-group">
+																<label class="col-md-4 control-label" >Date Of Birth</label>
+																<div class="col-md-6  inputGroupContainer">
+																  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+																	<input name="last_name" placeholder="dd/mm/yyyy" class="form-control"  type="text">
+																  </div>
+																</div>
+															  </div>
+															  
+															
+															  <!-- Text input-->
+															  
+															  <div class="form-group">
+																<label class="col-md-4 control-label">Phone #</label>
+																<div class="col-md-6  inputGroupContainer">
+																  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+																	<input name="phone" placeholder="9876543210" class="form-control" type="text">
+																  </div>
+																</div>
+															  </div>
+															  
+															  <!-- Text input-->
+															  
+															  <div class="form-group">
+																<label class="col-md-4 control-label">Address</label>
+																<div class="col-md-6  inputGroupContainer">
+																  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																	<input name="address" placeholder="Address" class="form-control" type="text">
+																  </div>
+																</div>
+															  </div>
+															  
+															  <!-- Text input-->
+															  
+															  <div class="form-group">
+																<label class="col-md-4 control-label">City</label>
+																<div class="col-md-6  inputGroupContainer">
+																  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																	<input name="city" placeholder="city" class="form-control"  type="text">
+																  </div>
+																</div>
+															  </div>
+															  
+															  <!-- Select Basic -->
+															  
+															  <div class="form-group">
+																<label class="col-md-4 control-label">State</label>
+																<div class="col-md-6 selectContainer">
+																  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+																	<select name="state" class="form-control selectpicker" >
+																	  <option value=" " >Please select your state</option>
+																	  <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+														<option value="Andhra Pradesh">Andhra Pradesh</option>
+														<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+														<option value="Assam">Assam</option>
+														<option value="Bihar">Bihar</option>
+														<option value="Chandigarh">Chandigarh</option>
+														<option value="Chhattisgarh">Chhattisgarh</option>
+														<option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+														<option value="Daman and Diu">Daman and Diu</option>
+														<option value="Delhi">Delhi</option>
+														<option value="Goa">Goa</option>
+														<option value="Gujarat">Gujarat</option>
+														<option value="Haryana">Haryana</option>
+														<option value="Himachal Pradesh">Himachal Pradesh</option>
+														<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+														<option value="Jharkhand">Jharkhand</option>
+														<option value="Karnataka">Karnataka</option>
+														<option value="Kerala">Kerala</option>
+														<option value="Lakshadweep">Lakshadweep</option>
+														<option value="Madhya Pradesh">Madhya Pradesh</option>
+														<option value="Maharashtra">Maharashtra</option>
+														<option value="Manipur">Manipur</option>
+														<option value="Meghalaya">Meghalaya</option>
+														<option value="Mizoram">Mizoram</option>
+														<option value="Nagaland">Nagaland</option>
+														<option value="Orissa">Orissa</option>
+														<option value="Pondicherry">Pondicherry</option>
+														<option value="Punjab">Punjab</option>
+														<option value="Rajasthan">Rajasthan</option>
+														<option value="Sikkim">Sikkim</option>
+														<option value="Tamil Nadu">Tamil Nadu</option>
+														<option value="Tripura">Tripura</option>
+														<option value="Uttaranchal">Uttaranchal</option>
+														<option value="Uttar Pradesh">Uttar Pradesh</option>
+														<option value="West Bengal">West Bengal</option>
+																	</select>
+																  </div>
+																</div>
+															  </div>
+															  
+															  <!-- Text input-->
+															  
+															  <div class="form-group">
+																<label class="col-md-4 control-label">Zip Code</label>
+																<div class="col-md-6  inputGroupContainer">
+																  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																	<input name="zip" placeholder="Zip Code" class="form-control"  type="text">
+																  </div>
+																</div>
+															  </div>
+															  
+														   
+															  
+														   
+																<!-- Text input-->
+															  <div class="form-group">
+																<label class="col-md-4 control-label">E-Mail</label>
+																<div class="col-md-6  inputGroupContainer">
+																  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+																	<input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+																  </div>
+																</div>
+															  </div>
+															  
+															   <div class="form-group">
+																<label class="col-md-4 control-label" >Skills</label>
+																<div class="col-md-6  inputGroupContainer">
+																  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+																	<input name="last_name" placeholder="Tell us what you are good at......." class="form-control"  type="comment">
+																  </div>
+																</div>
+															  </div>
+															  
+																  <div class="form-group">
+																<label class="col-md-4 control-label">Marital Status</label>
+																<div class="col-md-6 selectContainer">
+																  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+																	<select name="state" class="form-control selectpicker" >
+																	  <option value=" " >Chose from here</option>
+																	  <option value="Andaman and Nicobar Islands">Single</option>
+																	  <option value="Andhra Pradesh">Married</option>
+																	  <option value="Andhra Pradesh">Do not want to disclose</option>
+																	</select>
+																  </div>
+																</div>
+															  </div>
+															  
+																   <div class="form-group">
+																<label class="col-md-4 control-label" >Areas of Interest</label>
+																<div class="col-md-6  inputGroupContainer">
+																  <div class="input-group">
+																   <div class="checkbox">
+																		<label><input type="checkbox" value="">Mentoring Children</label>
+																	</div>
+																	<div class="checkbox">
+																		<label><input type="checkbox" value="">Tutoring</label>
+																	</div>
+																	<div class="checkbox">
+																		<label><input type="checkbox" value="">Teaching a Hobby</label>
+																	</div>
+																	<div class="checkbox">
+																		<label><input type="checkbox" value="">Career Counselling</label>
+																	</div>
+																	<div class="checkbox">
+																		<label><input type="checkbox" value="">Organising Competitions/Activities</label>
+																	</div>
+																	<div class="checkbox">
+																		<label><input type="checkbox" value="">Fund Raising Activities</label>
+																	</div>
+																	<div class="checkbox">
+																		<label><input type="checkbox" value="">Executing Projects/Events</label>
+																	</div>
+																	<div class="checkbox">
+																		<label><input type="checkbox" value="">Coaching Sporting Activities</label>
+																	</div>
+																  </div>
+																</div>
+															  </div>
+															  
+																   <div class="form-group">
+																<label class="col-md-4 control-label" >Preferred Days</label>
+																<div class="col-md-6  inputGroupContainer">
+																<div class="input-group">
+																   
+																 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+																	<input name="last_name" placeholder="Enter Days Here" class="form-control"  type="text">
+																 
+																</div>
+																</div>
+															  </div>
+
+																   <div class="form-group">
+																<label class="col-md-4 control-label" >Preferred Timing</label>
+																<div class="col-md-6  inputGroupContainer">
+																  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+																	<input name="last_name" placeholder="Enter Time Here" class="form-control"  type="text">
+																  </div>
+																</div>
+															  </div><br>
+
+
+															   
+															 
+														  
+															  <!-- Button -->
+															  <div class="form-group">
+																<label class="col-md-4 control-label"></label>
+																<div class="col-md-4">
+																  <button type="submit" class="btn btn-warning" >Agree and Submit <span class="glyphicon glyphicon-send"></span></button>
+																</div>
+															  </div>
+															</fieldset>
+														  </form>
+													  
+													</div>
+													<div class="modal-footer">
+													  <button type="button" class="btn btn-default" data-dismiss="modal">Save Changes</button>
+													</div>
+												  </div>
+												  
+												</div>
+											  </div>
                             </div>
                         </div>
                     </div><!--//panel-->
@@ -683,8 +1469,294 @@
 										  </table>
 										  
 										  <br><br>
-										  <a class="btn btn-cta btn-cta-primary" href="#" target="_blank"><i class="fa fa-edit"></i>Edit</a>
-										  <a class="btn btn-cta btn-cta-primary" href="#" target="_blank"><i class="fa fa-remove"></i>Remove</a>
+										 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal4"><i class="fa fa-edit"></i>Edit</button>
+										  <button type="button" class="btn btn-info btn-lg"><i class="fa fa-remove"></i>Delete</button>
+										  
+										   <div class="modal fade" id="myModal4" role="dialog">
+															<div class="modal-dialog">
+															
+															  <!-- Modal content-->
+															  <div class="modal-content">
+																<div class="modal-header">
+																  <button type="button" class="close" data-dismiss="modal">&times;</button>
+																  <h4 class="modal-title">Intern Name - IN001</h4>
+																</div>
+																<div class="modal-body">
+																		<form class="form-horizontal" action=" " method="post"  id="reg_form"><br><br><br>
+																										
+																				<fieldset>
+																				  
+																				 
+																				  
+																				  <div class="form-group">
+																					<label class="col-md-4 control-label">First Name</label>
+																					<div class="col-md-6  inputGroupContainer">
+																					  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+																						<input  name="first_name" placeholder="First Name" class="form-control"  type="text">
+																					  </div>
+																					</div>
+																				  </div>
+																				  
+																				  <!-- Text input-->
+																				  
+																				  <div class="form-group">
+																					<label class="col-md-4 control-label" >Last Name</label>
+																					<div class="col-md-6  inputGroupContainer">
+																					  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+																						<input name="last_name" placeholder="Last Name" class="form-control"  type="text">
+																					  </div>
+																					</div>
+																				  </div>
+																				  
+																				  <div class="form-group">
+																					<label class="col-md-4 control-label" >Date Of Birth</label>
+																					<div class="col-md-6  inputGroupContainer">
+																					  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+																						<input name="last_name" placeholder="dd/mm/yyyy" class="form-control"  type="text">
+																					  </div>
+																					</div>
+																				  </div>
+																				  
+																					<div class="form-group">
+																					<label class="col-md-4 control-label" >Picture</label>
+																					<div class="col-md-6  inputGroupContainer">
+																					  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+																						<input name="last_name" placeholder="Last Name" class="form-control"  type="text">
+																					  </div>
+																					</div>
+																				  </div>
+																				  
+																				  <div class="form-group">
+																					<label class="col-md-4 control-label">Gender</label>
+																					<div class="col-md-6 selectContainer">
+																					  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+																						<select name="state" class="form-control selectpicker" >
+																						  <option value=" " >Please select your gender</option>
+																						  <option value="Andaman and Nicobar Islands">Male</option>
+																						  <option value="Andhra Pradesh">Female</option>
+																						</select>
+																					  </div>
+																					</div>
+																				  </div>
+																				  
+																				
+																				  <!-- Text input-->
+																				  
+																				  <div class="form-group">
+																					<label class="col-md-4 control-label">Phone #</label>
+																					<div class="col-md-6  inputGroupContainer">
+																					  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+																						<input name="phone" placeholder="9876543210" class="form-control" type="text">
+																					  </div>
+																					</div>
+																				  </div>
+																				  
+																				  <!-- Text input-->
+																				  
+																				  <div class="form-group">
+																					<label class="col-md-4 control-label">Address</label>
+																					<div class="col-md-6  inputGroupContainer">
+																					  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																						<input name="address" placeholder="Address" class="form-control" type="text">
+																					  </div>
+																					</div>
+																				  </div>
+																				  
+																				  <!-- Text input-->
+																				  
+																				  <div class="form-group">
+																					<label class="col-md-4 control-label">City</label>
+																					<div class="col-md-6  inputGroupContainer">
+																					  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																						<input name="city" placeholder="City" class="form-control"  type="text">
+																					  </div>
+																					</div>
+																				  </div>
+																				  
+																				  <!-- Select Basic -->
+																				  
+																				  <div class="form-group">
+																					<label class="col-md-4 control-label">State</label>
+																					<div class="col-md-6 selectContainer">
+																					  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+																						<select name="state" class="form-control selectpicker" >
+																						  <option value=" " >Please select your state</option>
+																						  <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+																			<option value="Andhra Pradesh">Andhra Pradesh</option>
+																			<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+																			<option value="Assam">Assam</option>
+																			<option value="Bihar">Bihar</option>
+																			<option value="Chandigarh">Chandigarh</option>
+																			<option value="Chhattisgarh">Chhattisgarh</option>
+																			<option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+																			<option value="Daman and Diu">Daman and Diu</option>
+																			<option value="Delhi">Delhi</option>
+																			<option value="Goa">Goa</option>
+																			<option value="Gujarat">Gujarat</option>
+																			<option value="Haryana">Haryana</option>
+																			<option value="Himachal Pradesh">Himachal Pradesh</option>
+																			<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+																			<option value="Jharkhand">Jharkhand</option>
+																			<option value="Karnataka">Karnataka</option>
+																			<option value="Kerala">Kerala</option>
+																			<option value="Lakshadweep">Lakshadweep</option>
+																			<option value="Madhya Pradesh">Madhya Pradesh</option>
+																			<option value="Maharashtra">Maharashtra</option>
+																			<option value="Manipur">Manipur</option>
+																			<option value="Meghalaya">Meghalaya</option>
+																			<option value="Mizoram">Mizoram</option>
+																			<option value="Nagaland">Nagaland</option>
+																			<option value="Orissa">Orissa</option>
+																			<option value="Pondicherry">Pondicherry</option>
+																			<option value="Punjab">Punjab</option>
+																			<option value="Rajasthan">Rajasthan</option>
+																			<option value="Sikkim">Sikkim</option>
+																			<option value="Tamil Nadu">Tamil Nadu</option>
+																			<option value="Tripura">Tripura</option>
+																			<option value="Uttaranchal">Uttaranchal</option>
+																			<option value="Uttar Pradesh">Uttar Pradesh</option>
+																			<option value="West Bengal">West Bengal</option>
+																						</select>
+																					  </div>
+																					</div>
+																				  </div>
+																				  
+																				  <!-- Text input-->
+																				  
+																				  <div class="form-group">
+																					<label class="col-md-4 control-label">Zip Code</label>
+																					<div class="col-md-6  inputGroupContainer">
+																					  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																						<input name="zip" placeholder="Zip Code" class="form-control"  type="text">
+																					  </div>
+																					</div>
+																				  </div>
+																				  
+																			   
+																				  
+																			   
+																					<!-- Text input-->
+																				  <div class="form-group">
+																					<label class="col-md-4 control-label">E-Mail</label>
+																					<div class="col-md-6  inputGroupContainer">
+																					  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+																						<input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+																					  </div>
+																					</div>
+																				  </div>
+																				  
+																				   <div class="form-group">
+																					<label class="col-md-4 control-label" >Languages Known</label>
+																					<div class="col-md-6  inputGroupContainer">
+																					  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+																						<input name="last_name" placeholder="Enter Here" class="form-control"  type="text">
+																					  </div>
+																					</div>
+																				  </div>
+																				  
+																				
+																				  
+																					   <div class="form-group">
+																					<label class="col-md-4 control-label" >University Name</label>
+																					<div class="col-md-6  inputGroupContainer">
+																					  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																						<input name="last_name" placeholder="Enter Here" class="form-control"  type="text">
+																					  </div>
+																					</div>
+																				  </div><br>
+																				  
+																				  <p><b>Besides, the above did you take any training, did any additional courses? If yes, please mention.</b></p>
+																					<div class="form-group">
+																					<div class="col-md-12  inputGroupContainer">
+																					  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-signal"></i></span>
+																						<input name="last_name" placeholder="Enter Here" class="form-control"  type="text">
+																					  </div>
+																					</div>
+																				  </div><br>
+																				  
+																				  <p><b>Please mention if you have any specific skills and know-how which would be useful to consider your application? These may include skills such as public relations, web designing, graphics and art design, model-making, communication etc.</b></p>
+																					<div class="form-group">
+																					<div class="col-md-12  inputGroupContainer">
+																					  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-signal"></i></span>
+																						<input name="last_name" placeholder="Enter Here" class="form-control"  type="text">
+																					  </div>
+																					</div>
+																				  </div><br><br>
+																				  
+																					   <div class="form-group">
+																					<label class="col-md-4 control-label" >Number of Months</label>
+																					<div class="col-md-6  inputGroupContainer">
+																					  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+																						<input name="last_name" placeholder="Enter Here" class="form-control"  type="text">
+																					  </div>
+																					</div>
+																				  </div>
+
+																					   <div class="form-group">
+																					<label class="col-md-4 control-label" >From Date</label>
+																					<div class="col-md-6  inputGroupContainer">
+																					  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+																						<input name="last_name" placeholder="Enter Time Here" class="form-control"  type="text">
+																					  </div>
+																					</div>
+																				  </div>
+																				  
+																				  <div class="form-group">
+																					<label class="col-md-4 control-label" >To Date</label>
+																					<div class="col-md-6  inputGroupContainer">
+																					  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+																						<input name="last_name" placeholder="Enter Time Here" class="form-control"  type="text">
+																					  </div>
+																					</div>
+																				  </div>
+																				  
+																				  <div class="form-group">
+																					<label class="col-md-4 control-label" >Field Of Interest</label>
+																					<div class="col-md-6  inputGroupContainer">
+																					  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-gift"></i></span>
+																						<input name="last_name" placeholder="Enter Time Here" class="form-control"  type="text">
+																					  </div>
+																					</div>
+																				  </div>
+																				  
+																				  <div class="form-group">
+																					<label class="col-md-4 control-label" >Preferred Location</label>
+																					<div class="col-md-6  inputGroupContainer">
+																					  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+																						<input name="last_name" placeholder="Enter Location" class="form-control"  type="text">
+																					  </div>
+																					</div>
+																				  </div><br><br>
+
+																				 <p><b>What motivated you to apply for an internship with TTHPL? Please mention in not more than 200 words.</b></p>
+																					<div class="form-group">
+																					<div class="col-md-12  inputGroupContainer">
+																					  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+																						<input name="last_name" placeholder="Type Here." class="form-control"  type="text">
+																					  </div>
+																					</div>
+																				  </div>
+
+																				   
+																				 
+																			  
+																				  <!-- Button -->
+																				  <div class="form-group">
+																					<label class="col-md-4 control-label"></label>
+																					<div class="col-md-4">
+																					  <button type="submit" class="btn btn-warning" >Agree and Submit <span class="glyphicon glyphicon-send"></span></button>
+																					</div>
+																				  </div>
+																				</fieldset>
+																			  </form>
+																</div>
+																<div class="modal-footer">
+																  <button type="button" class="btn btn-default" data-dismiss="modal">Save Changes</button>
+																</div>
+															  </div>
+															  
+															</div>
+														  </div>
                             </div>
                         </div>
                     </div><!--//panel-->
@@ -815,8 +1887,256 @@
 										  </table>
 										  
 										  <br><br>
-										  <a class="btn btn-cta btn-cta-primary" href="#" target="_blank"><i class="fa fa-edit"></i>Edit</a>
-										  <a class="btn btn-cta btn-cta-primary" href="#" target="_blank"><i class="fa fa-remove"></i>Remove</a>
+										   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal5"><i class="fa fa-edit"></i>Edit</button>
+										  <button type="button" class="btn btn-info btn-lg"><i class="fa fa-remove"></i>Delete</button>
+										  
+										   <div class="modal fade" id="myModal5" role="dialog">
+												<div class="modal-dialog">
+												
+												  <!-- Modal content-->
+												  <div class="modal-content">
+													<div class="modal-header">
+													  <button type="button" class="close" data-dismiss="modal">&times;</button>
+													  <h4 class="modal-title"> Business Partner Name - BP001</h4>
+													</div>
+													<div class="modal-body">
+													  
+														 <form class="form-horizontal" action=" " method="post"  id="reg_form">
+																<fieldset>
+																  
+																 
+																  
+																  <div class="form-group">
+																	<label class="col-md-4 control-label">First Name</label>
+																	<div class="col-md-6  inputGroupContainer">
+																	  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+																		<input  name="first_name" placeholder="First Name" class="form-control"  type="text">
+																	  </div>
+																	</div>
+																  </div>
+																  
+																  <!-- Text input-->
+																  
+																  <div class="form-group">
+																	<label class="col-md-4 control-label" >Last Name</label>
+																	<div class="col-md-6  inputGroupContainer">
+																	  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+																		<input name="last_name" placeholder="Last Name" class="form-control"  type="text">
+																	  </div>
+																	</div>
+																  </div>
+																  
+																  <div class="form-group">
+																	<label class="col-md-4 control-label" >Date Of Birth</label>
+																	<div class="col-md-6  inputGroupContainer">
+																	  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+																		<input name="last_name" placeholder="dd/mm/yyyy" class="form-control"  type="text">
+																	  </div>
+																	</div>
+																  </div>
+																  
+																  <div class="form-group">
+																	<label class="col-md-4 control-label" >Occupation</label>
+																	<div class="col-md-6  inputGroupContainer">
+																	  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+																		<input name="last_name" placeholder="What do you do?" class="form-control"  type="text">
+																	  </div>
+																	</div>
+																  </div>
+																  
+																	<div class="form-group">
+																	<label class="col-md-4 control-label" >Picture</label>
+																	<div class="col-md-6  inputGroupContainer">
+																	  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
+																		<input name="last_name" placeholder="Upload Here." class="form-control"  type="text">
+																	  </div>
+																	</div>
+																  </div>
+																  
+																  <div class="form-group">
+																	<label class="col-md-4 control-label">Gender</label>
+																	<div class="col-md-6 selectContainer">
+																	  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+																		<select name="state" class="form-control selectpicker" >
+																		  <option value=" " >Please select your gender</option>
+																		  <option value="Andaman and Nicobar Islands">Male</option>
+																		  <option value="Andhra Pradesh">Female</option>
+																		</select>
+																	  </div>
+																	</div>
+																  </div>
+																  
+																
+																  <!-- Text input-->
+																  
+																  <div class="form-group">
+																	<label class="col-md-4 control-label">Phone #</label>
+																	<div class="col-md-6  inputGroupContainer">
+																	  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+																		<input name="phone" placeholder="9876543210" class="form-control" type="text">
+																	  </div>
+																	</div>
+																  </div>
+																  
+																  <!-- Text input-->
+																  
+																  <div class="form-group">
+																	<label class="col-md-4 control-label">Address</label>
+																	<div class="col-md-6  inputGroupContainer">
+																	  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																		<input name="address" placeholder="Address" class="form-control" type="text">
+																	  </div>
+																	</div>
+																  </div>
+																  
+																  <!-- Text input-->
+																  
+																  <div class="form-group">
+																	<label class="col-md-4 control-label">City</label>
+																	<div class="col-md-6  inputGroupContainer">
+																	  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																		<input name="city" placeholder="city" class="form-control"  type="text">
+																	  </div>
+																	</div>
+																  </div>
+																  
+																  <!-- Select Basic -->
+																  
+																  <div class="form-group">
+																	<label class="col-md-4 control-label">State</label>
+																	<div class="col-md-6 selectContainer">
+																	  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+																		<select name="state" class="form-control selectpicker" >
+																		  <option value=" " >Please select your state</option>
+																		  <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+															<option value="Andhra Pradesh">Andhra Pradesh</option>
+															<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+															<option value="Assam">Assam</option>
+															<option value="Bihar">Bihar</option>
+															<option value="Chandigarh">Chandigarh</option>
+															<option value="Chhattisgarh">Chhattisgarh</option>
+															<option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+															<option value="Daman and Diu">Daman and Diu</option>
+															<option value="Delhi">Delhi</option>
+															<option value="Goa">Goa</option>
+															<option value="Gujarat">Gujarat</option>
+															<option value="Haryana">Haryana</option>
+															<option value="Himachal Pradesh">Himachal Pradesh</option>
+															<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+															<option value="Jharkhand">Jharkhand</option>
+															<option value="Karnataka">Karnataka</option>
+															<option value="Kerala">Kerala</option>
+															<option value="Lakshadweep">Lakshadweep</option>
+															<option value="Madhya Pradesh">Madhya Pradesh</option>
+															<option value="Maharashtra">Maharashtra</option>
+															<option value="Manipur">Manipur</option>
+															<option value="Meghalaya">Meghalaya</option>
+															<option value="Mizoram">Mizoram</option>
+															<option value="Nagaland">Nagaland</option>
+															<option value="Orissa">Orissa</option>
+															<option value="Pondicherry">Pondicherry</option>
+															<option value="Punjab">Punjab</option>
+															<option value="Rajasthan">Rajasthan</option>
+															<option value="Sikkim">Sikkim</option>
+															<option value="Tamil Nadu">Tamil Nadu</option>
+															<option value="Tripura">Tripura</option>
+															<option value="Uttaranchal">Uttaranchal</option>
+															<option value="Uttar Pradesh">Uttar Pradesh</option>
+															<option value="West Bengal">West Bengal</option>
+																		</select>
+																	  </div>
+																	</div>
+																  </div>
+																  
+																  <!-- Text input-->
+																  
+																  <div class="form-group">
+																	<label class="col-md-4 control-label">Zip Code</label>
+																	<div class="col-md-6  inputGroupContainer">
+																	  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																		<input name="zip" placeholder="Zip Code" class="form-control"  type="text">
+																	  </div>
+																	</div>
+																  </div>
+																  
+															   
+																  
+															   
+																	<!-- Text input-->
+																  <div class="form-group">
+																	<label class="col-md-4 control-label">E-Mail</label>
+																	<div class="col-md-6  inputGroupContainer">
+																	  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+																		<input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+																	  </div>
+																	</div>
+																  </div>
+																  
+																   <div class="form-group">
+																	<label class="col-md-4 control-label" >PAN Number</label>
+																	<div class="col-md-6  inputGroupContainer">
+																	  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
+																		<input name="last_name" placeholder="Enter Here." class="form-control"  type="text">
+																	  </div>
+																	</div>
+																  </div>
+																  
+																
+																  
+																	   <div class="form-group">
+																	<label class="col-md-4 control-label" >Resume</label>
+																	<div class="col-md-6  inputGroupContainer">
+																	  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+																		<input name="last_name" placeholder="Upload Here" class="form-control"  type="text">
+																	  </div>
+																	</div>
+																  </div><br><br>
+																  
+																  <p><b>I would like to act as an Associate Business Partner at (Name of the City/Town):</b></p>
+																	<div class="form-group">
+																	<div class="col-md-12  inputGroupContainer">
+																	  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+																		<input name="last_name" placeholder="Enter Here." class="form-control"  type="text">
+																	  </div>
+																	</div>
+																  </div><br><br>
+																  
+																  <p>I am accepting your terms and conditions given of this Acceptance Letter. I would like to act as a Associate Business Partner for the TTHPL.
+
+															Declaration:
+															I/We undersigned, hereby assure that the information given above is true & correct to the best of my knowledge. 
+															I have understood and agreed that any misrepresentation or concealment of facts will justify the denial/ cancellation 
+															of my association & at any stage of TTHPL and further. I have understood all the details and particulars & would abide 
+															by all terms & conditions of TTHPL. In any matter concerning TTHPL, the decision of Managing Director of Talent Treasure Hunt Pvt. Ltr. 
+															shall be final & binding to me/us.
+															</p>
+																	  
+															<div class="checkbox">
+															  <label><input type="checkbox" value=""><b>I Agree to the Terms and Condition.</b></label><br><br><br>
+															</div>
+
+
+																   
+																 
+															  
+																  <!-- Button -->
+																  <div class="form-group">
+																	<label class="col-md-4 control-label"></label>
+																	<div class="col-md-4">
+																	  <button type="submit" class="btn btn-warning" >Agree and Submit <span class="glyphicon glyphicon-send"></span></button>
+																	</div>
+																  </div>
+																</fieldset>
+															  </form>
+													  
+													</div>
+													<div class="modal-footer">
+													  <button type="button" class="btn btn-default" data-dismiss="modal">Save Changes</button>
+													</div>
+												  </div>
+												  
+												</div>
+											  </div>
                             </div>
                         </div>
                     </div><!--//panel-->
