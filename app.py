@@ -35,9 +35,8 @@ def index():
 @app.route("/foundation")
 def foundation():
 	return render_template("foundation.html")
-	
-		
 
+	
 @app.route("/oat")
 def oat():
 	return render_template("oat.html")
@@ -82,7 +81,7 @@ def school_reg():
 		if len(exists.fetchall()):
 			error = 'School already exists'
 		else:
-			g.db.execute('insert into school values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[request.form['sname'],request.form['board'],request.form['type'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['pwd'],request.form['website'],request.form['c1name'],request.form['c1designation'],request.form['c1phone'],request.form['c1email'],request.form['c2name'],request.form['c2designation'],request.form['c2phone'],request.form['c2email'],None])
+			g.db.execute('insert into school values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[request.form['sname'],request.form['board'],request.form['type'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['pwd'],request.form['website'],request.form['c1name'],request.form['c1designation'],request.form['c1phone'],request.form['c1email'],request.form['c2name'],request.form['c2designation'],request.form['c2phone'],request.form['c2email'],None,request.form['sid']])
 			g.db.commit()
 			return redirect(url_for('index'))
 	return error
@@ -90,7 +89,14 @@ def school_reg():
 @app.route("/school-login")
 def school_login():
 	return render_template("school-login.html")
-	
+		
+		
+
+@app.route("/ABP-login")
+def ABP_login():
+	return render_template("student-login.html")
+		
+
 	
 @app.route("/s_login", methods = ['GET','POST'])
 def s_login():
@@ -103,12 +109,30 @@ def s_login():
 			exists = g.db.execute('select * from school where Email = ? and Password = ? ',[request.form['email'],request.form['pwd']])
 			l=exists.fetchall()
 			if len(l):
-				session['s_id']=l[0][0]
+				session['school_id']=l[0][19]
 				return redirect(url_for('school_loggedin'))
 			else:
 				error = 'Invalid'
 	return error
-
+	
+	
+@app.route("/stud_login", methods = ['GET','POST'])
+def stud_login():
+	error = None
+	if request.method == 'POST':
+		if request.form['email']== 'admin@tthpl.com' and request.form['pwd']== 'tthpladminpwd':
+			session['id']='admin'
+			return redirect(url_for('loggedin'))
+		else:
+			exists = g.db.execute('select * from student where Email = ? and Password = ? ',[request.form['email'],request.form['pwd']])
+			l=exists.fetchall()
+			if len(l):
+				session['stud_id']=l[0][17]
+				return redirect(url_for('stud_loggedin'))
+			else:
+				error = 'Invalid'
+	return error
+	
 	
 @app.route("/loggedin")
 def loggedin():
@@ -118,6 +142,39 @@ def loggedin():
 	internship_posts = g.db.execute('select * from internship ').fetchall()
 	business_posts = g.db.execute('select * from business ').fetchall()
 	return render_template("loggedin.html",school_posts=school_posts,student_posts=student_posts,volunteer_posts=volunteer_posts,internship_posts=internship_posts,business_posts=business_posts)
+	
+	
+		
+
+@app.route("/stud_loggedin")
+def stud_loggedin():
+	stud = g.db.execute('select * from student where Id=?',[session.get('stud_id')]).fetchall()
+	fname = stud[0][0]
+	lname = stud[0][1]
+	dob = stud[0][2]
+	gender = stud[0][3]
+	cls = stud[0][4]
+	section = stud[0][5]
+	roll = stud[0][6]
+	school = stud[0][7]
+	phone = stud[0][9]
+	address = stud[0][10]
+	city = stud[0][11]
+	state = stud[0][12]
+	zip = stud[0][13]
+	email = stud[0][14]
+	return render_template("stud_loggedin.html",fname=fname,lname=lname,dob=dob,gender=gender,cls=cls,section=section,roll=roll,school=school,phone=phone,address=address,city=city,state=state,zip=zip,email=email)
+	
+		
+
+@app.route("/school_loggedin")
+def school_loggedin():
+	school = g.db.execute('select * from school where Id=?',[session.get('school_id')]).fetchall()
+	session['school_code']=school[0][20]
+	stud = g.db.execute('select * from student where SchoolName=? order by Class',[session.get('school_code')]).fetchall()
+	return render_template("school_loggedin.html",school=school[0],stud_posts=stud)
+	
+	
 	
 	
 @app.route("/logout")
@@ -136,7 +193,7 @@ def student_reg():
 		if len(exists.fetchall()):
 			error = 'Student already exists'
 		else:
-			g.db.execute('insert into student values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['gender'],request.form['class'],request.form['section'],request.form['rollno'],request.form['sname'],request.form['pname'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['percent'],request.form['pic'],None])
+			g.db.execute('insert into student values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['gender'],request.form['class'],request.form['section'],request.form['rollno'],request.form['sname'],request.form['pname'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['percent'],request.form['pic'],None,request.form['pwd']])
 			g.db.commit()
 			return redirect(url_for('index'))
 	return error
@@ -201,7 +258,7 @@ def intern_reg():
 @app.route("/school_update", methods = ['GET', 'POST'])
 def school_update():
 	if request.method == 'POST':
-		g.db.execute('update school set SchoolName=?, Board=?, Type=?, PhoneNumber=?, Address=?, City=?, State=?, Zip=?, Email=?, Password=?, Website=?, c1Name=?, c1Designation=?, c1Phone=?, c1Email=?, c2Name=?, c2Designation=?, c2Phone=?, c2Email=? where Id=?',[request.form['sname'],request.form['board'],request.form['type'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['pwd'],request.form['website'],request.form['c1name'],request.form['c1designation'],request.form['c1phone'],request.form['c1email'],request.form['c2name'],request.form['c2designation'],request.form['c2phone'],request.form['c2email'],request.form['id']])
+		g.db.execute('update school set SchoolName=?, Board=?, Type=?, PhoneNumber=?, Address=?, City=?, State=?, Zip=?, Email=?, Password=?, Website=?, c1Name=?, c1Designation=?, c1Phone=?, c1Email=?, c2Name=?, c2Designation=?, c2Phone=?, c2Email=?, SId=? where Id=?',[request.form['sname'],request.form['board'],request.form['type'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['pwd'],request.form['website'],request.form['c1name'],request.form['c1designation'],request.form['c1phone'],request.form['c1email'],request.form['c2name'],request.form['c2designation'],request.form['c2phone'],request.form['c2email'],request.form['id'],request.form['sid']])
 		g.db.commit()
 		return redirect(url_for('loggedin'))
 	
@@ -293,13 +350,6 @@ def news():
 def contact():
 	return render_template("contact.html")	
 
-	
-		
-
-@app.route("/ABP-login")
-def ABP_login():
-	return render_template("ABP-login.html")
-		
 
 	
 @app.route('/clean')
