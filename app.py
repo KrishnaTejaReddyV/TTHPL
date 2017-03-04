@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, g, request, url_for, redirect, session
 import sqlite3
 
