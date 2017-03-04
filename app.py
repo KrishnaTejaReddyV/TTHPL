@@ -93,8 +93,8 @@ def school_login():
 		
 		
 
-@app.route("/ABP-login")
-def ABP_login():
+@app.route("/student-login")
+def student_login():
 	return render_template("student-login.html")
 		
 
