@@ -1,13 +1,19 @@
 import os
+from werkzeug.utils import secure_filename
 from flask import Flask, render_template, g, request, url_for, redirect, session
 import sqlite3
+import random
+
 
 DATABASE = 'tthpl.db'
 DEBUG = True
 SECRET_KEY = 'jksdfsfghjkdfjiosdf'
+upload_folder='static/images/'
+allowed_ext= set(['txt','pdf','png','jpg','jpeg','gif'])
 
 
 app = Flask(__name__)
+app.config['upload_folder']=upload_folder
 app.config.from_object(__name__)
 app.config.from_envvar('TTHPL_SETTINGS', silent=True)
 
@@ -104,12 +110,14 @@ def s_login():
 	error = None
 	if request.method == 'POST':
 		if request.form['email']== 'admin@tthpl.com' and request.form['pwd']== 'tthpladminpwd':
+			session.pop('id', None)
 			session['id']='admin'
 			return redirect(url_for('loggedin'))
 		else:
 			exists = g.db.execute('select * from school where Email = ? and Password = ? ',[request.form['email'],request.form['pwd']])
 			l=exists.fetchall()
 			if len(l):
+				session.pop('school_id', None)
 				session['school_id']=l[0][19]
 				return redirect(url_for('school_loggedin'))
 			else:
@@ -122,12 +130,14 @@ def stud_login():
 	error = None
 	if request.method == 'POST':
 		if request.form['email']== 'admin@tthpl.com' and request.form['pwd']== 'tthpladminpwd':
+			session.pop('id', None)
 			session['id']='admin'
 			return redirect(url_for('loggedin'))
 		else:
 			exists = g.db.execute('select * from student where Email = ? and Password = ? ',[request.form['email'],request.form['pwd']])
 			l=exists.fetchall()
 			if len(l):
+				session.pop('stud_id', None)
 				session['stud_id']=l[0][17]
 				return redirect(url_for('stud_loggedin'))
 			else:
@@ -150,27 +160,14 @@ def loggedin():
 @app.route("/stud_loggedin")
 def stud_loggedin():
 	stud = g.db.execute('select * from student where Id=?',[session.get('stud_id')]).fetchall()
-	fname = stud[0][0]
-	lname = stud[0][1]
-	dob = stud[0][2]
-	gender = stud[0][3]
-	cls = stud[0][4]
-	section = stud[0][5]
-	roll = stud[0][6]
-	school = stud[0][7]
-	phone = stud[0][9]
-	address = stud[0][10]
-	city = stud[0][11]
-	state = stud[0][12]
-	zip = stud[0][13]
-	email = stud[0][14]
-	return render_template("stud_loggedin.html",fname=fname,lname=lname,dob=dob,gender=gender,cls=cls,section=section,roll=roll,school=school,phone=phone,address=address,city=city,state=state,zip=zip,email=email)
+	return render_template("stud_loggedin.html",posts=stud[0])
 	
 		
 
 @app.route("/school_loggedin")
 def school_loggedin():
 	school = g.db.execute('select * from school where Id=?',[session.get('school_id')]).fetchall()
+	session.pop('school_code', None)
 	session['school_code']=school[0][20]
 	stud = g.db.execute('select * from student where SchoolName=? order by Class',[session.get('school_code')]).fetchall()
 	return render_template("school_loggedin.html",school=school[0],stud_posts=stud)
@@ -180,8 +177,12 @@ def school_loggedin():
 	
 @app.route("/logout")
 def logout():
-    session.pop('s_id', None)
-    return redirect(url_for('index'))
+	session.pop('s_id', None)
+	session.pop('stud_id', None)
+	session.pop('id', None)
+	session.pop('school_id', None)
+	session.pop('school_code', None)
+	return redirect(url_for('index'))
 		
 	
 		
@@ -190,11 +191,15 @@ def logout():
 def student_reg():
 	error = None
 	if request.method == 'POST':
-		exists = g.db.execute('select * from student where FirstName = ?',[request.form['fname']])
+		file=request.files['pic']
+		filename=str(random.randrange(0,1000))+str(random.randrange(0,1000))+secure_filename(file.filename)
+		abs_filename=os.path.join(app.config['upload_folder'],filename)
+		file.save(abs_filename)
+		exists = g.db.execute('select * from student where Email = ?',[request.form['email']])
 		if len(exists.fetchall()):
 			error = 'Student already exists'
 		else:
-			g.db.execute('insert into student values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['gender'],request.form['class'],request.form['section'],request.form['rollno'],request.form['sname'],request.form['pname'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['percent'],request.form['pic'],None,request.form['pwd']])
+			g.db.execute('insert into student values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['gender'],request.form['class'],request.form['section'],request.form['rollno'],request.form['sname'],request.form['pname'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['percent'],abs_filename,None,request.form['pwd']])
 			g.db.commit()
 			return redirect(url_for('index'))
 	return error
@@ -267,10 +272,30 @@ def school_update():
 @app.route("/student_update", methods = ['GET', 'POST'])
 def student_update():
 	if request.method == 'POST':
-		g.db.execute('update student set FirstName=?, LastName=?, Dob=?, Gender=?, Class=?, Section=?, RollNo=?, SchoolName=?, PName=?, PhoneNumber=?, Address=?, City=?, State=?, Zip=?, Email=?, Percentage=?, Photo=? where Id=?',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['gender'],request.form['class'],request.form['section'],request.form['rollno'],request.form['sname'],request.form['pname'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['percent'],request.form['pic'],request.form['id']])
+		path = g.db.execute('select Photo from student where Id=?',[request.form['id']]).fetchall()
+		os.remove(path[0][0])
+		file=request.files['pic']
+		filename=str(random.randrange(0,1000))+str(random.randrange(0,1000))+secure_filename(file.filename)
+		abs_filename=os.path.join(app.config['upload_folder'],filename)
+		file.save(abs_filename)
+		g.db.execute('update student set FirstName=?, LastName=?, Dob=?, Gender=?, Class=?, Section=?, RollNo=?, SchoolName=?, PName=?, PhoneNumber=?, Address=?, City=?, State=?, Zip=?, Email=?, Percentage=?, Photo=? where Id=?',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['gender'],request.form['class'],request.form['section'],request.form['rollno'],request.form['sname'],request.form['pname'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['percent'],abs_filename,request.form['id']])
 		g.db.commit()
 		return redirect(url_for('loggedin'))
-	
+
+
+@app.route("/student_pers_update", methods = ['GET', 'POST'])
+def student_pers_update():
+	if request.method == 'POST':
+		path = g.db.execute('select Photo from student where Id=?',[request.form['id']]).fetchall()
+		os.remove(path[0][0])
+		file=request.files['pic']
+		filename=str(random.randrange(0,1000))+str(random.randrange(0,1000))+secure_filename(file.filename)
+		abs_filename=os.path.join(app.config['upload_folder'],filename)
+		file.save(abs_filename)
+		g.db.execute('update student set FirstName=?, LastName=?, Dob=?, Gender=?, Class=?, Section=?, RollNo=?, SchoolName=?, PName=?, PhoneNumber=?, Address=?, City=?, State=?, Zip=?, Email=?, Password=?, Percentage=?, Photo=? where Id=?',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['gender'],request.form['class'],request.form['section'],request.form['rollno'],request.form['sname'],request.form['pname'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['pwd'],request.form['percent'],abs_filename,request.form['id']])
+		g.db.commit()
+		return redirect(url_for('stud_loggedin'))
+		
 
 @app.route("/volunteer_update", methods = ['GET', 'POST'])
 def volunteer_update():

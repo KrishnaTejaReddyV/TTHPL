@@ -98,16 +98,20 @@
 						<div class="member col-md-4 col-sm-6 col-xs-12">
 							<div class="member-inner">
 								<figure class="profile">
-									<img class="img-responsive" src="/static/1.jpg" alt=""/>
+									<img class="img-responsive" src="{{posts[16]}}" alt=""/>
 								</figure><!--//profile-->
 							</div><!--//member-inner-->
 						</div><!--//member-->
-						<h2 class="title text-left col-md-8 col-sm-10 col-xs-12">{{fname}} {{lname}} <a class="text-right" href=""><i class="fa fa-edit"></i></a></h2>   
-						<hr>
-						<p class="text-left col-md-5 col-sm-10 col-xs-12"><b>Class:</b> {{cls}}</p> 
-						<p class="text-left col-md-3 col-sm-10 col-xs-12"><b>Section:</b> {{section}}</p> 
-						<p class="text-left col-md-5 col-sm-10 col-xs-12"><b>School:</b> {{school}}</p> 
-						<p class="text-left col-md-3 col-sm-10 col-xs-12"><b>Roll Number:</b> {{roll}}</p> 
+						<div class="member col-md-8 col-sm-6 col-xs-12">
+							<div class="member-inner">
+								<h2 class="title text-left col-xs-12">{{posts[0]}} {{posts[1]}} <a class="text-right" href="" data-toggle="modal" data-target="#modal{{posts[17]}}"><i class="fa fa-edit"></i></a></h2>   
+								<hr>
+								<p class="text-left col-md-7 col-sm-10 col-xs-12"><b>Class:</b> {{posts[4]}}</p> 
+								<p class="text-left col-md-5 col-sm-10 col-xs-12"><b>Section:</b> {{posts[5]}}</p> 
+								<p class="text-left col-md-7 col-sm-10 col-xs-12"><b>School:</b> {{posts[7]}}</p> 
+								<p class="text-left col-md-5 col-sm-10 col-xs-12"><b>Roll Number:</b> {{posts[6]}}</p> 
+							</div><!--//member-inner-->
+						</div><!--//member-->
 					</div>  
 					<hr>		
 					
@@ -118,14 +122,14 @@
 						<div class="tab-content" style="background-color:white; opacity:1; border-bottom:1px;padding-bottom:-100">
 							<div class="tab-pane fade-in active" id="pi">
 								<p class="text-left col-md-7 col-sm-10 col-xs-12"></p>
-								<p class="text-left col-md-7 col-sm-10 col-xs-12"><b>Date of Birth:</b> {{dob}}</p> 
-								<p class="text-left col-md-5 col-sm-10 col-xs-12"><b>Gender:</b> {{gender}}</p> 
-								<p class="text-left col-md-7 col-sm-10 col-xs-12"><b>Address:</b> {{address}}</p> 
-								<p class="text-left col-md-5 col-sm-10 col-xs-12"><b>City:</b> {{city}}</p>
-								<p class="text-left col-md-7 col-sm-10 col-xs-12"><b>State:</b> {{state}}</p> 
-								<p class="text-left col-md-5 col-sm-10 col-xs-12"><b>Zip:</b> {{zip}}</p>
-								<p class="text-left col-md-7 col-sm-10 col-xs-12"><b>Phone Number:</b> {{phone}}</p> 
-								<p class="text-left col-md-5 col-sm-10 col-xs-12"><b>Email:</b> {{email}}</p> 
+								<p class="text-left col-md-7 col-sm-10 col-xs-12"><b>Date of Birth:</b> {{posts[2]}}</p> 
+								<p class="text-left col-md-5 col-sm-10 col-xs-12"><b>Gender:</b> {{posts[3]}}</p> 
+								<p class="text-left col-md-7 col-sm-10 col-xs-12"><b>Address:</b> {{posts[10]}}</p> 
+								<p class="text-left col-md-5 col-sm-10 col-xs-12"><b>City:</b> {{posts[11]}}</p>
+								<p class="text-left col-md-7 col-sm-10 col-xs-12"><b>State:</b> {{posts[12]}}</p> 
+								<p class="text-left col-md-5 col-sm-10 col-xs-12"><b>Zip:</b> {{posts[13]}}</p>
+								<p class="text-left col-md-7 col-sm-10 col-xs-12"><b>Phone Number:</b> {{posts[9]}}</p> 
+								<p class="text-left col-md-5 col-sm-10 col-xs-12"><b>Email:</b> {{posts[14]}}</p> 
 							</div>
 						</div>
 					</div>
@@ -154,6 +158,260 @@
             </div><!--//row-->
         </div><!--//container-->
     </section><!--//features-tabbed-->
+	
+	
+													<div class="modal fade" id="modal{{posts[17]}}" role="dialog">
+														<div class="modal-dialog">
+														
+														  <!-- Modal content-->
+														  <div class="modal-content">
+															<div class="modal-header">
+															  <button type="button" class="close" data-dismiss="modal">&times;</button>
+															  <h4 class="modal-title"> Student Details</h4>
+															</div>
+															<div class="modal-body">
+																		
+																		<form class="form-horizontal" action="student_pers_update" method="post"  id="reg_form"  enctype="multipart/form-data">
+																			<fieldset>
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label">First Name</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+																					<input  name="fname" placeholder="{{posts[0]}}" class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <!-- Text input-->
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label" >Last Name</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+																					<input name="lname" placeholder="{{posts[1]}}" class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label" >Date of Birth</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+																					<input name="dob" placeholder="{{posts[2]}}" class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			 
+																			  
+																			   <div class="form-group">
+																				<label class="col-md-4 control-label">Gender</label>
+																				<div class="col-md-6 selectContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+																					<select name="gender" class="form-control selectpicker" >
+																					  <option value=" " >Please select your gender</option>
+																					  <option value="male">Male</option>
+																					  <option value="female">Female</option>
+																					</select>
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label" >Class</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+																					<input name="class" placeholder="{{posts[4]}}" class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label" >Section</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+																					<input name="section" placeholder="{{posts[5]}}" class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label" >Roll No.</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+																					<input name="rollno" placeholder="{{posts[6]}}" class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label" >School ID</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																					<input name="sname" placeholder="{{posts[7]}}" class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label" >Parent's/Gaurdian's Name</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+																					<input name="pname" placeholder="{{posts[8]}}" class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  <!-- Text input-->
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label">Phone #</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+																					<input name="phone" placeholder="{{posts[9]}}" class="form-control" type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <!-- Text input-->
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label">Address</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																					<input name="address" placeholder="{{posts[10]}}" class="form-control" type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <!-- Text input-->
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label">City</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																					<input name="city" placeholder="{{posts[11]}}" class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <!-- Select Basic -->
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label">State</label>
+																				<div class="col-md-6 selectContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+																					<select name="state" class="form-control selectpicker" >
+																					  <option value=" " >Please select your state</option>
+																					  <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+																		<option value="Andhra Pradesh">Andhra Pradesh</option>
+																		<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+																		<option value="Assam">Assam</option>
+																		<option value="Bihar">Bihar</option>
+																		<option value="Chandigarh">Chandigarh</option>
+																		<option value="Chhattisgarh">Chhattisgarh</option>
+																		<option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+																		<option value="Daman and Diu">Daman and Diu</option>
+																		<option value="Delhi">Delhi</option>
+																		<option value="Goa">Goa</option>
+																		<option value="Gujarat">Gujarat</option>
+																		<option value="Haryana">Haryana</option>
+																		<option value="Himachal Pradesh">Himachal Pradesh</option>
+																		<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+																		<option value="Jharkhand">Jharkhand</option>
+																		<option value="Karnataka">Karnataka</option>
+																		<option value="Kerala">Kerala</option>
+																		<option value="Lakshadweep">Lakshadweep</option>
+																		<option value="Madhya Pradesh">Madhya Pradesh</option>
+																		<option value="Maharashtra">Maharashtra</option>
+																		<option value="Manipur">Manipur</option>
+																		<option value="Meghalaya">Meghalaya</option>
+																		<option value="Mizoram">Mizoram</option>
+																		<option value="Nagaland">Nagaland</option>
+																		<option value="Orissa">Orissa</option>
+																		<option value="Pondicherry">Pondicherry</option>
+																		<option value="Punjab">Punjab</option>
+																		<option value="Rajasthan">Rajasthan</option>
+																		<option value="Sikkim">Sikkim</option>
+																		<option value="Tamil Nadu">Tamil Nadu</option>
+																		<option value="Tripura">Tripura</option>
+																		<option value="Uttaranchal">Uttaranchal</option>
+																		<option value="Uttar Pradesh">Uttar Pradesh</option>
+																		<option value="West Bengal">West Bengal</option>
+																					</select>
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <!-- Text input-->
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label">Zip Code</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																					<input name="zip" placeholder="{{posts[13]}}" class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																		   
+																			  
+																		   
+																				<!-- Text input-->
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label">E-Mail</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+																					<input name="email" placeholder="{{posts[14]}}" class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+	  
+																			   <div class="form-group">
+																				<label class="col-md-4 control-label">Password</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+																					<input name="pwd" placeholder="" class="form-control"  type="password">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label" >Percentage in Last Class</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+																					<input name="percent" placeholder="{{posts[15]}}" class="form-control"  type="text">
+																				  </div>
+																				</div>
+																			  </div>
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label" >Photo of Student</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				<input name="pic" id="input-1" type="file" class="file">
+																				</div>
+																			  </div>
+																			 
+																			  
+																			  <p>My Child would like to participate in Olympiad Aptitude Test- 2016-17
+																		Fee of INR 225 per student (includes Maths, Science, English and Logical reasoning)
+																		I hereby declare that all details mentioned above are true to the best of my knowledge. I have read and understood the terms of participation governing 2016-17 the Olympiad Aptitude Test and agree that I and my child abide by them.</p>
+																		 
+
+																			  <!-- Button -->
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label"></label>
+																				<div class="col-md-4">
+																				  <button type="submit" class="btn btn-warning"  name="id" value="{{posts[17]}}">Save Changes <span class="glyphicon glyphicon-send"></span></button>
+																				</div>
+																			  </div>
+																			</fieldset>
+																		  </form>
+																		
+															</div>
+														  </div>
+														  
+														</div>
+													  </div>
     
  	 <div class="sections-wrapper"  style="background-color:#eceff1">
     <!-- ******FOOTER****** --> 
