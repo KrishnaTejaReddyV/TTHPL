@@ -3,6 +3,7 @@ from werkzeug.utils import secure_filename
 from flask import Flask, render_template, g, request, url_for, redirect, session
 import sqlite3
 import random
+import pandas as pd
 
 
 DATABASE = 'tthpl.db'
@@ -147,11 +148,19 @@ def stud_login():
 	
 @app.route("/loggedin")
 def loggedin():
-	school_posts = g.db.execute('select * from school ').fetchall()
+	school = g.db.execute('select * from school ')
 	student_posts = g.db.execute('select * from student ').fetchall()
 	volunteer_posts = g.db.execute('select * from volunteer ').fetchall()
 	internship_posts = g.db.execute('select * from internship ').fetchall()
 	business_posts = g.db.execute('select * from business ').fetchall()
+	
+	columns = [desc[0] for desc in school]
+	school_posts = school.fetchall()
+	df = pd.DataFrame(list(student_posts))
+
+	writer = pd.ExcelWriter('static/files/student.xlsx')
+	df.to_excel(writer, sheet_name='bar')
+	writer.save()
 	return render_template("loggedin.html",school_posts=school_posts,student_posts=student_posts,volunteer_posts=volunteer_posts,internship_posts=internship_posts,business_posts=business_posts)
 	
 	
