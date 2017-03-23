@@ -148,19 +148,66 @@ def stud_login():
 	
 @app.route("/loggedin")
 def loggedin():
-	school = g.db.execute('select * from school ')
+	school_posts = g.db.execute('select * from school ').fetchall()
 	student_posts = g.db.execute('select * from student ').fetchall()
 	volunteer_posts = g.db.execute('select * from volunteer ').fetchall()
 	internship_posts = g.db.execute('select * from internship ').fetchall()
 	business_posts = g.db.execute('select * from business ').fetchall()
 	
-	columns = [desc[0] for desc in school]
-	school_posts = school.fetchall()
-	df = pd.DataFrame(list(student_posts))
-
-	writer = pd.ExcelWriter('static/files/student.xlsx')
-	df.to_excel(writer, sheet_name='bar')
-	writer.save()
+	
+	try:
+		os.remove('static/files/school.xlsx')
+		os.remove('static/files/student.xlsx')
+		os.remove('static/files/volunteer.xlsx')
+		os.remove('static/files/intern.xlsx')
+		os.remove('static/files/business.xlsx')
+	except OSError:
+		pass
+		
+	school = g.db.execute('select Id, SId, SchoolName, Board, Type, PhoneNumber, Address, City, State, Zip, Email, Password, Website, c1Name, c1Designation, c1Phone, c1Email, c2Name, c2Designation, c2Phone, c2Email from school').fetchall()	
+	sc_columns = ['Id', 'SId', 'SchoolName', 'Board', 'Type', 'PhoneNumber', 'Address', 'City', 'State', 'Zip', 'Email', 'Password', 'Website', 'c1Name', 'c1Designation', 'c1Phone', 'c1Email', 'c2Name', 'c2Designation', 'c2Phone', 'c2Email']
+	
+	sc_df = pd.DataFrame(data=list(school),columns=sc_columns)
+	sc_writer = pd.ExcelWriter('static/files/school.xlsx')
+	sc_df.to_excel(sc_writer, sheet_name='main')
+	sc_writer.save()
+	
+	
+	student = g.db.execute('select Id, FirstName, LastName, Dob, Gender, Class, Section, RollNo, SchoolName, PName, PhoneNumber, Address, City, State, Zip, Email, Password, Percentage from student').fetchall()	
+	st_columns = ['Id', 'FirstName', 'LastName', 'Dob', 'Gender', 'Class', 'Section', 'RollNo', 'SchoolName', 'PName', 'PhoneNumber', 'Address', 'City', 'State', 'Zip', 'Email', 'Password', 'Percentage']
+	
+	st_df = pd.DataFrame(data=list(student),columns=st_columns)
+	st_writer = pd.ExcelWriter('static/files/student.xlsx')
+	st_df.to_excel(st_writer, sheet_name='main')
+	st_writer.save()
+	
+	
+	volunteer = g.db.execute('select Id, FirstName, LastName, Dob, PhoneNumber, Address, City, State, Zip, Email, Skills, MaritalStatus, Mentoring, Tutoring, Teaching, Counselling, CompetitionActivities, FundRaising, ProjectsEvents, Sporting, PreferredDays, PreferredTiming from volunteer').fetchall()	
+	v_columns = ['Id', 'FirstName', 'LastName', 'Dob', 'PhoneNumber', 'Address', 'City', 'State', 'Zip', 'Email', 'Skills', 'MaritalStatus', 'Mentoring', 'Tutoring', 'Teaching', 'Counselling', 'CompetitionActivities', 'FundRaising', 'ProjectsEvents', 'Sporting', 'PreferredDays', 'PreferredTiming']
+	
+	v_df = pd.DataFrame(data=list(volunteer),columns=v_columns)
+	v_writer = pd.ExcelWriter('static/files/volunteer.xlsx')
+	v_df.to_excel(v_writer, sheet_name='main')
+	v_writer.save()
+	
+	
+	intern = g.db.execute('select Id, FirstName, LastName, Dob, Gender, PhoneNumber, Address, City, State, Zip, Email, Languages, University, AdditionalCourses, SpecificSkills, Months, FromDate, ToDate, Interest, Location, Motivation from internship').fetchall()	
+	i_columns = ['Id', 'FirstName', 'LastName', 'Dob', 'Gender', 'PhoneNumber', 'Address', 'City', 'State', 'Zip', 'Email', 'Languages', 'University', 'AdditionalCourses', 'SpecificSkills', 'Months', 'FromDate', 'ToDate', 'Interest', 'Location', 'Motivation']
+	
+	i_df = pd.DataFrame(data=list(intern),columns=i_columns)
+	i_writer = pd.ExcelWriter('static/files/intern.xlsx')
+	i_df.to_excel(i_writer, sheet_name='main')
+	i_writer.save()
+	
+	
+	business = g.db.execute('select Id, FirstName, LastName, Dob, Occupation, Gender, PhoneNumber, Address, City, State, Zip, Email, PAN, Location from business').fetchall()	
+	b_columns = ['Id', 'FirstName', 'LastName', 'Dob', 'Occupation', 'Gender', 'PhoneNumber', 'Address', 'City', 'State', 'Zip', 'Email', 'PAN', 'Location']
+	
+	b_df = pd.DataFrame(data=list(business),columns=b_columns)
+	b_writer = pd.ExcelWriter('static/files/business.xlsx')
+	b_df.to_excel(b_writer, sheet_name='main')
+	b_writer.save()
+	
 	return render_template("loggedin.html",school_posts=school_posts,student_posts=student_posts,volunteer_posts=volunteer_posts,internship_posts=internship_posts,business_posts=business_posts)
 	
 	
