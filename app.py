@@ -170,7 +170,6 @@ def loggedin():
 	sc_df = pd.DataFrame(data=list(school),columns=sc_columns)
 	sc_writer = pd.ExcelWriter('static/files/school.xlsx')
 	sc_df.to_excel(sc_writer, sheet_name='main')
-	sc_writer.save()
 	
 	
 	student = g.db.execute('select Id, FirstName, LastName, Dob, Gender, Class, Section, RollNo, SchoolName, PName, PhoneNumber, Address, City, State, Zip, Email, Password, Percentage from student').fetchall()	
