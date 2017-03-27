@@ -20,7 +20,14 @@
     <link rel="stylesheet" href="/static/css/flexslider.css">
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="/static/css/styles.css">
+    <script type="text/javascript" src="/static/js/jquery-1.12.3.min.js"></script>
 </head> 
+
+<script>
+$(document).ready(function(){
+$( "#{{tab}}_tab" ).trigger( "click" );
+});
+</script>
 
 <body class="home-page">   
     <!-- ******HEADER****** --> 
@@ -51,9 +58,9 @@
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="activity">Activities <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="activity">Events</a></li>
-                                <li><a href="activity">CSR</a></li>
-                                <li><a href="activity">Rewards</a></li>                   
+                                <li><a href="activity/events">Events</a></li>
+                                <li><a href="activity/csr">CSR</a></li>
+                                <li><a href="activity/reward">Rewards</a></li>              
                             </ul>                            
                         </li>
                         <li class="nav-item"><a href="team">Team</a></li>   
@@ -62,11 +69,11 @@
 						<li class="nav-item dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="register">Register <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="register">School Registration</a></li>
-                                <li><a href="register">Student Registration</a></li>  
-								<li><a href="register">Internship Registration</a></li>
-                                <li><a href="register">Volunteer Registration</a></li>  				
-                                <li><a href="register">Associate Bussiness Partner Registration</a></li> 				
+                                <li><a href="register/school">School Registration</a></li>
+                                <li><a href="register/student">Student Registration</a></li>  
+								<li><a href="register/internship">Internship Registration</a></li>
+                                <li><a href="register/volunteer">Volunteer Registration</a></li>  				
+                                <li><a href="register/business">Associate Bussiness Partner Registration</a></li>				
                             </ul>                            
                         </li>
 						<li class="nav-item"><a href="contact">Contact Us</a></li>
@@ -96,16 +103,16 @@
                 <div class=" text-center col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1 col-xs-offset-0">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs text-center" role="tablist">
-                        <li id="a" class="active"><a href="#feature-1" role="tab" data-toggle="tab"><i class="fa fa-cloud-upload"></i><br /><span>School</span></a></li>
-                        <li   ><a href="#feature-2" role="tab" data-toggle="tab"><i class="fa fa-tachometer"></i><br /><span>Student</span></a></li>
-                        <li><a href="#feature-3" role="tab" data-toggle="tab"><i class="fa fa-photo"></i><br /><span></span>Volunteer</a></li>
-                        <li><a href="#feature-4" role="tab" data-toggle="tab"><i class="fa fa-photo"></i><br /><span>Internship</span></a></li>
-                        <li class="last"><a href="#feature-5" role="tab" data-toggle="tab"><i class="fa fa-users"></i><br /><span>Business Partner</span></a></li>
+                        <li class="active"><a id="school_tab" href="#school" role="tab" data-toggle="tab"><i class="fa fa-cloud-upload"></i><br /><span>School</span></a></li>
+                        <li><a id="student_tab" href="#student" role="tab" data-toggle="tab"><i class="fa fa-tachometer"></i><br /><span>Student</span></a></li>
+                        <li><a id="volunteer_tab" href="#volunteer" role="tab" data-toggle="tab"><i class="fa fa-photo"></i><br /><span></span>Volunteer</a></li>
+                        <li><a id="internship_tab" href="#internship" role="tab" data-toggle="tab"><i class="fa fa-photo"></i><br /><span>Internship</span></a></li>
+                        <li class="last"><a id="business_tab" href="#business" role="tab" data-toggle="tab"><i class="fa fa-users"></i><br /><span>Business Partner</span></a></li>
                     </ul><!--//nav-tabs-->
                     
                     <!-- Tab panes -->
                     <div class="tab-content" style="background-color:white; opacity:1; border-bottom:1px">
-                        <div class="tab-pane fade in active" id="feature-1">
+                        <div class="tab-pane fade in active" id="school">
                             
 							<div class="form-container col-xs-12 col-md-12" style="background-color:#f4f4f4"><br><br><br>
 								<h2 class="title text-center">School Registration</h2>
@@ -412,7 +419,7 @@
 							
 							
                         </div><!--//tab-pane-->
-                        <div class="tab-pane" id="feature-2">
+                        <div class="tab-pane" id="student">
                            
 						   
 <div class="form-container col-xs-12 col-md-12" style="background-color:#f4f4f4"><br><br><br>
@@ -499,6 +506,15 @@
           </div>
         </div>
       </div>
+      
+      <div class="form-group">
+        <label class="col-md-4 control-label">Student Phone Number</label>
+        <div class="col-md-6  inputGroupContainer">
+          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+            <input name="phone" placeholder="9876543210" class="form-control" type="text">
+          </div>
+        </div>
+      </div>
     
 	  <div class="form-group">
         <label class="col-md-4 control-label" >Parent's/Gaurdian's Name</label>
@@ -511,15 +527,24 @@
       <!-- Text input-->
       
       <div class="form-group">
-        <label class="col-md-4 control-label">Phone #</label>
+        <label class="col-md-4 control-label">Parent's/Gaurdian's Mobile Number</label>
         <div class="col-md-6  inputGroupContainer">
           <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-            <input name="phone" placeholder="9876543210" class="form-control" type="text">
+            <input name="mobile" placeholder="9876543210" class="form-control" type="text">
           </div>
         </div>
       </div>
       
       <!-- Text input-->
+      
+      <div class="form-group">
+        <label class="col-md-4 control-label">Parent's/Gaurdian's Work Number</label>
+        <div class="col-md-6  inputGroupContainer">
+          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+            <input name="work" placeholder="9876543210" class="form-control" type="text">
+          </div>
+        </div>
+      </div>
       
       <div class="form-group">
         <label class="col-md-4 control-label">Address</label>
@@ -614,7 +639,7 @@
       </div>
 	  
 	   <div class="form-group">
-        <label class="col-md-4 control-label">Password</label>
+        <label class="col-md-4 control-label">Login Password</label>
         <div class="col-md-6  inputGroupContainer">
           <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
             <input name="pwd" placeholder="Password" class="form-control"  type="password">
@@ -691,7 +716,7 @@ I hereby declare that all details mentioned above are true to the best of my kno
 						   
 						   
 </div><!--//tab-pane-->
-<div class="tab-pane" id="feature-3">
+<div class="tab-pane" id="volunteer">
  <div class="form-container col-xs-12 col-md-12" style="background-color:#f4f4f4"><br><br><br>
    <h2 class="title text-center">Volunteer Registration</h2>
    <form class="form-horizontal" action="volunteer_reg" method="post"  id="reg_form">
@@ -959,10 +984,10 @@ I hereby declare that all details mentioned above are true to the best of my kno
 						
 						
 						<!-- INTERNSHIP FORM BEGINS -->
-                        <div class="tab-pane " id="feature-4">
+                        <div class="tab-pane " id="internship">
                            
  <div class="form-container col-xs-12 col-md-12" style="background-color:#f4f4f4">
-   <form class="form-horizontal" action="intern_reg" method="post"  id="reg_form"><br><br><br>
+   <form class="form-horizontal" action="intern_reg" method="post"  id="reg_form"  enctype="multipart/form-data"><br><br><br>
    <h2 class="title text-center">Internship Registration</h2>
     <fieldset>
       
@@ -993,15 +1018,6 @@ I hereby declare that all details mentioned above are true to the best of my kno
         <div class="col-md-6  inputGroupContainer">
           <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
             <input name="dob" placeholder="dd/mm/yyyy" class="form-control"  type="text">
-          </div>
-        </div>
-      </div>
-	  
-	    <div class="form-group">
-        <label class="col-md-4 control-label" >Picture</label>
-        <div class="col-md-6  inputGroupContainer">
-          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-            <input name="pic" placeholder="Last Name" class="form-control"  type="text">
           </div>
         </div>
       </div>
@@ -1216,6 +1232,13 @@ I hereby declare that all details mentioned above are true to the best of my kno
           </div>
         </div>
       </div>
+	  
+	  <div class="form-group">
+        <label class="col-md-4 control-label" >Upload Photograph</label>
+        <div class="col-md-6  inputGroupContainer">
+		<input name="pic" id="input-1" type="file" class="file">
+        </div>
+      </div>
 
        
      
@@ -1266,7 +1289,7 @@ I hereby declare that all details mentioned above are true to the best of my kno
 						
 						
 						
-						<div class="tab-pane" id="feature-5">
+						<div class="tab-pane" id="business">
                               <!-- ******FAQ Section****** --> 
     <section class="faq section has-bg-color">
         <div class="container">
@@ -1337,7 +1360,7 @@ I hereby declare that all details mentioned above are true to the best of my kno
 <div class="tab-pane" id="feature-4">
 
  <div class="form-container col-xs-12 col-md-12">
-   <form class="form-horizontal" action="business_reg" method="post"  id="reg_form">
+   <form class="form-horizontal" action="business_reg" method="post"  id="reg_form"  enctype="multipart/form-data">
     <fieldset>
       
      
@@ -1376,15 +1399,6 @@ I hereby declare that all details mentioned above are true to the best of my kno
         <div class="col-md-6  inputGroupContainer">
           <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
             <input name="occupation" placeholder="What do you do?" class="form-control"  type="text">
-          </div>
-        </div>
-      </div>
-	  
-	    <div class="form-group">
-        <label class="col-md-4 control-label" >Picture</label>
-        <div class="col-md-6  inputGroupContainer">
-          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
-            <input name="pic" placeholder="Upload Here." class="form-control"  type="text">
           </div>
         </div>
       </div>
@@ -1516,16 +1530,20 @@ I hereby declare that all details mentioned above are true to the best of my kno
           </div>
         </div>
       </div>
-      
-	
 	  
-	  	   <div class="form-group">
-        <label class="col-md-4 control-label" >Resume</label>
+	  <div class="form-group">
+        <label class="col-md-4 control-label" >Upload Photograph</label>
         <div class="col-md-6  inputGroupContainer">
-          <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
-            <input name="resume" placeholder="Upload Here" class="form-control"  type="text">
-          </div>
+		<input name="pic" id="input-1" type="file" class="file">
         </div>
+      </div>
+	  
+	  <div class="form-group">
+        <label class="col-md-4 control-label" >Upload Resume</label>
+        <div class="col-md-6  inputGroupContainer">
+		<input name="resume" id="input-1" type="file" class="file">
+        </div>
+      </div>
       </div><br><br>
 	  
 	  <p><b>I would like to act as an Associate Business Partner at (Name of the City/Town):</b></p>
@@ -1841,7 +1859,6 @@ shall be final & binding to me/us.
    
  
     <!-- Javascript -->          
-    <script type="text/javascript" src="/static/js/jquery-1.12.3.min.js"></script>
     <script type="text/javascript" src="/static/js/bootstrap.min.js"></script> 
     <script type="text/javascript" src="/static/js/bootstrap-hover-dropdown.min.js"></script>
     <script type="text/javascript" src="/static/js/back-to-top.js"></script>

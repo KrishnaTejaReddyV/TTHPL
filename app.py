@@ -35,7 +35,7 @@ def teardown_request(exception):
 
 @app.route("/")
 def index():
-	return render_template("index.html")
+	return render_template("index.html",error=request.args.get('error'))
 	
 	
 		
@@ -57,9 +57,9 @@ def insaf():
 	
 		
 
-@app.route("/activity")
-def activity():
-	return render_template("activity.html")
+@app.route("/activity/<e>")
+def activity(e):
+	return render_template("activity.html",tab=e)
 	
 		
 	
@@ -75,9 +75,11 @@ def faq():
 	
 		
 
-@app.route("/register")
-def register():
-	return render_template("register.html")
+
+@app.route('/register/<e>')
+def register(e):
+	return render_template("register.html",tab=e)
+
 	
 		
 
@@ -96,12 +98,19 @@ def school_reg():
 	
 @app.route("/school-login")
 def school_login():
-	return render_template("school-login.html")
+	#id=session.get('school_id')
+	#if bool(id):
+	#	return redirect(url_for('school_loggedin',school_id=id))
+	#else:
+		return render_template("school-login.html")
 		
 		
 
 @app.route("/student-login")
 def student_login():
+	#id=session.get('stud_id')
+	#if bool(session.get('stud_id')):
+	#	return redirect(url_for('stud_loggedin',stud_id=id))
 	return render_template("student-login.html")
 		
 
@@ -110,17 +119,16 @@ def student_login():
 def s_login():
 	error = None
 	if request.method == 'POST':
-		if request.form['email']== 'admin@tthpl.com' and request.form['pwd']== 'tthpladminpwd':
-			session.pop('id', None)
-			session['id']='admin'
-			return redirect(url_for('loggedin'))
+		email='admin@tthpl.com'
+		pwd='tthpladminpwd'
+		if request.form['email']== email and request.form['pwd']== pwd:
+			return redirect(url_for('loggedin',id=1))
 		else:
 			exists = g.db.execute('select * from school where Email = ? and Password = ? ',[request.form['email'],request.form['pwd']])
 			l=exists.fetchall()
 			if len(l):
-				session.pop('school_id', None)
-				session['school_id']=l[0][19]
-				return redirect(url_for('school_loggedin'))
+				id=l[0][19]
+				return redirect(url_for('school_loggedin',school_id=id))
 			else:
 				error = 'Invalid'
 	return error
@@ -130,17 +138,16 @@ def s_login():
 def stud_login():
 	error = None
 	if request.method == 'POST':
-		if request.form['email']== 'admin@tthpl.com' and request.form['pwd']== 'tthpladminpwd':
-			session.pop('id', None)
-			session['id']='admin'
-			return redirect(url_for('loggedin'))
+		email='admin@tthpl.com'
+		pwd='tthpladminpwd'
+		if request.form['email']== email and request.form['pwd']== pwd:
+			return redirect(url_for('loggedin',id=1))
 		else:
 			exists = g.db.execute('select * from student where Email = ? and Password = ? ',[request.form['email'],request.form['pwd']])
 			l=exists.fetchall()
 			if len(l):
-				session.pop('stud_id', None)
-				session['stud_id']=l[0][17]
-				return redirect(url_for('stud_loggedin'))
+				id=l[0][17]
+				return redirect(url_for('stud_loggedin',stud_id=id))
 			else:
 				error = 'Invalid'
 	return error
@@ -148,87 +155,105 @@ def stud_login():
 	
 @app.route("/loggedin")
 def loggedin():
-	school_posts = g.db.execute('select * from school ').fetchall()
-	student_posts = g.db.execute('select * from student ').fetchall()
-	volunteer_posts = g.db.execute('select * from volunteer ').fetchall()
-	internship_posts = g.db.execute('select * from internship ').fetchall()
-	business_posts = g.db.execute('select * from business ').fetchall()
-	
-	
-	try:
-		os.remove('static/files/school.xlsx')
-		os.remove('static/files/student.xlsx')
-		os.remove('static/files/volunteer.xlsx')
-		os.remove('static/files/intern.xlsx')
-		os.remove('static/files/business.xlsx')
-	except OSError:
-		pass
+	if(request.args.get('id')):
+		school_posts = g.db.execute('select * from school ').fetchall()
+		student_posts = g.db.execute('select * from student ').fetchall()
+		volunteer_posts = g.db.execute('select * from volunteer ').fetchall()
+		internship_posts = g.db.execute('select * from internship ').fetchall()
+		business_posts = g.db.execute('select * from business ').fetchall()
 		
-	school = g.db.execute('select Id, SId, SchoolName, Board, Type, PhoneNumber, Address, City, State, Zip, Email, Password, Website, c1Name, c1Designation, c1Phone, c1Email, c2Name, c2Designation, c2Phone, c2Email from school').fetchall()	
-	sc_columns = ['Id', 'SId', 'SchoolName', 'Board', 'Type', 'PhoneNumber', 'Address', 'City', 'State', 'Zip', 'Email', 'Password', 'Website', 'c1Name', 'c1Designation', 'c1Phone', 'c1Email', 'c2Name', 'c2Designation', 'c2Phone', 'c2Email']
-	
-	sc_df = pd.DataFrame(data=list(school),columns=sc_columns)
-	sc_writer = pd.ExcelWriter('static/files/school.xlsx')
-	sc_df.to_excel(sc_writer, sheet_name='main')
-	sc_writer.save()
-	
-	
-	student = g.db.execute('select Id, FirstName, LastName, Dob, Gender, Class, Section, RollNo, SchoolName, PName, PhoneNumber, Address, City, State, Zip, Email, Password, Percentage from student').fetchall()	
-	st_columns = ['Id', 'FirstName', 'LastName', 'Dob', 'Gender', 'Class', 'Section', 'RollNo', 'SchoolName', 'PName', 'PhoneNumber', 'Address', 'City', 'State', 'Zip', 'Email', 'Password', 'Percentage']
-	
-	st_df = pd.DataFrame(data=list(student),columns=st_columns)
-	st_writer = pd.ExcelWriter('static/files/student.xlsx')
-	st_df.to_excel(st_writer, sheet_name='main')
-	st_writer.save()
-	
-	
-	volunteer = g.db.execute('select Id, FirstName, LastName, Dob, PhoneNumber, Address, City, State, Zip, Email, Skills, MaritalStatus, Mentoring, Tutoring, Teaching, Counselling, CompetitionActivities, FundRaising, ProjectsEvents, Sporting, PreferredDays, PreferredTiming from volunteer').fetchall()	
-	v_columns = ['Id', 'FirstName', 'LastName', 'Dob', 'PhoneNumber', 'Address', 'City', 'State', 'Zip', 'Email', 'Skills', 'MaritalStatus', 'Mentoring', 'Tutoring', 'Teaching', 'Counselling', 'CompetitionActivities', 'FundRaising', 'ProjectsEvents', 'Sporting', 'PreferredDays', 'PreferredTiming']
-	
-	v_df = pd.DataFrame(data=list(volunteer),columns=v_columns)
-	v_writer = pd.ExcelWriter('static/files/volunteer.xlsx')
-	v_df.to_excel(v_writer, sheet_name='main')
-	v_writer.save()
-	
-	
-	intern = g.db.execute('select Id, FirstName, LastName, Dob, Gender, PhoneNumber, Address, City, State, Zip, Email, Languages, University, AdditionalCourses, SpecificSkills, Months, FromDate, ToDate, Interest, Location, Motivation from internship').fetchall()	
-	i_columns = ['Id', 'FirstName', 'LastName', 'Dob', 'Gender', 'PhoneNumber', 'Address', 'City', 'State', 'Zip', 'Email', 'Languages', 'University', 'AdditionalCourses', 'SpecificSkills', 'Months', 'FromDate', 'ToDate', 'Interest', 'Location', 'Motivation']
-	
-	i_df = pd.DataFrame(data=list(intern),columns=i_columns)
-	i_writer = pd.ExcelWriter('static/files/intern.xlsx')
-	i_df.to_excel(i_writer, sheet_name='main')
-	i_writer.save()
-	
-	
-	business = g.db.execute('select Id, FirstName, LastName, Dob, Occupation, Gender, PhoneNumber, Address, City, State, Zip, Email, PAN, Location from business').fetchall()	
-	b_columns = ['Id', 'FirstName', 'LastName', 'Dob', 'Occupation', 'Gender', 'PhoneNumber', 'Address', 'City', 'State', 'Zip', 'Email', 'PAN', 'Location']
-	
-	b_df = pd.DataFrame(data=list(business),columns=b_columns)
-	b_writer = pd.ExcelWriter('static/files/business.xlsx')
-	b_df.to_excel(b_writer, sheet_name='main')
-	b_writer.save()
-	
-	return render_template("loggedin.html",school_posts=school_posts,student_posts=student_posts,volunteer_posts=volunteer_posts,internship_posts=internship_posts,business_posts=business_posts)
-	
+		
+		try:
+			os.remove('static/files/school.xlsx')
+			os.remove('static/files/student.xlsx')
+			os.remove('static/files/volunteer.xlsx')
+			os.remove('static/files/intern.xlsx')
+			os.remove('static/files/business.xlsx')
+		except OSError:
+			pass
+			
+		school = g.db.execute('select Id, SId, SchoolName, Board, Type, PhoneNumber, Address, City, State, Zip, Email, Password, Website, c1Name, c1Designation, c1Phone, c1Email, c2Name, c2Designation, c2Phone, c2Email from school').fetchall()	
+		sc_columns = ['Id', 'SId', 'SchoolName', 'Board', 'Type', 'PhoneNumber', 'Address', 'City', 'State', 'Zip', 'Email', 'Password', 'Website', 'c1Name', 'c1Designation', 'c1Phone', 'c1Email', 'c2Name', 'c2Designation', 'c2Phone', 'c2Email']
+		
+		sc_df = pd.DataFrame(data=list(school),columns=sc_columns)
+		sc_writer = pd.ExcelWriter('static/files/school.xlsx')
+		sc_df.to_excel(sc_writer, sheet_name='main')
+		sc_writer.save()
+		
+		
+		student = g.db.execute('select Id, FirstName, LastName, Dob, Gender, Class, Section, RollNo, SchoolName, PhoneNumber, PName, ParentMobile, ParentWork, Address, City, State, Zip, Email, Password, Percentage from student').fetchall()	
+		st_columns = ['Id', 'FirstName', 'LastName', 'Dob', 'Gender', 'Class', 'Section', 'RollNo', 'SchoolName', 'StudentPhoneNumber', 'PName', 'ParentMobile', 'ParentWork', 'Address', 'City', 'State', 'Zip', 'Email', 'Password', 'Percentage']
+		
+		st_df = pd.DataFrame(data=list(student),columns=st_columns)
+		st_writer = pd.ExcelWriter('static/files/student.xlsx')
+		st_df.to_excel(st_writer, sheet_name='main')
+		st_writer.save()
+		
+		
+		volunteer = g.db.execute('select Id, FirstName, LastName, Dob, PhoneNumber, Address, City, State, Zip, Email, Skills, MaritalStatus, Mentoring, Tutoring, Teaching, Counselling, CompetitionActivities, FundRaising, ProjectsEvents, Sporting, PreferredDays, PreferredTiming from volunteer').fetchall()	
+		v_columns = ['Id', 'FirstName', 'LastName', 'Dob', 'PhoneNumber', 'Address', 'City', 'State', 'Zip', 'Email', 'Skills', 'MaritalStatus', 'Mentoring', 'Tutoring', 'Teaching', 'Counselling', 'CompetitionActivities', 'FundRaising', 'ProjectsEvents', 'Sporting', 'PreferredDays', 'PreferredTiming']
+		
+		v_df = pd.DataFrame(data=list(volunteer),columns=v_columns)
+		v_writer = pd.ExcelWriter('static/files/volunteer.xlsx')
+		v_df.to_excel(v_writer, sheet_name='main')
+		v_writer.save()
+		
+		
+		intern = g.db.execute('select Id, FirstName, LastName, Dob, Gender, PhoneNumber, Address, City, State, Zip, Email, Languages, University, AdditionalCourses, SpecificSkills, Months, FromDate, ToDate, Interest, Location, Motivation from internship').fetchall()	
+		i_columns = ['Id', 'FirstName', 'LastName', 'Dob', 'Gender', 'PhoneNumber', 'Address', 'City', 'State', 'Zip', 'Email', 'Languages', 'University', 'AdditionalCourses', 'SpecificSkills', 'Months', 'FromDate', 'ToDate', 'Interest', 'Location', 'Motivation']
+		
+		i_df = pd.DataFrame(data=list(intern),columns=i_columns)
+		i_writer = pd.ExcelWriter('static/files/intern.xlsx')
+		i_df.to_excel(i_writer, sheet_name='main')
+		i_writer.save()
+		
+		
+		business = g.db.execute('select Id, FirstName, LastName, Dob, Occupation, Gender, PhoneNumber, Address, City, State, Zip, Email, PAN, Location from business').fetchall()	
+		b_columns = ['Id', 'FirstName', 'LastName', 'Dob', 'Occupation', 'Gender', 'PhoneNumber', 'Address', 'City', 'State', 'Zip', 'Email', 'PAN', 'Location']
+		
+		b_df = pd.DataFrame(data=list(business),columns=b_columns)
+		b_writer = pd.ExcelWriter('static/files/business.xlsx')
+		b_df.to_excel(b_writer, sheet_name='main')
+		b_writer.save()
+		
+		return render_template("loggedin.html",school_posts=school_posts,student_posts=student_posts,volunteer_posts=volunteer_posts,internship_posts=internship_posts,business_posts=business_posts)
+	else:
+		return redirect(url_for('index'))
 	
 		
 
 @app.route("/stud_loggedin")
 def stud_loggedin():
-	stud = g.db.execute('select * from student where Id=?',[session.get('stud_id')]).fetchall()
+	id=request.args.get('stud_id')
+	stud = g.db.execute('select * from student where Id=?',[id]).fetchall()
 	return render_template("stud_loggedin.html",posts=stud[0])
 	
 		
 
 @app.route("/school_loggedin")
 def school_loggedin():
-	school = g.db.execute('select * from school where Id=?',[session.get('school_id')]).fetchall()
-	session.pop('school_code', None)
-	session['school_code']=school[0][20]
-	stud = g.db.execute('select * from student where SchoolName=? order by Class',[session.get('school_code')]).fetchall()
+	id=request.args.get('school_id')
+	school = g.db.execute('select * from school where Id=?',[id]).fetchall()
+	school_code=school[0][20]
+	stud = g.db.execute('select * from student where SchoolName=? order by Class',[school_code]).fetchall()
 	return render_template("school_loggedin.html",school=school[0],stud_posts=stud)
 	
 	
+	
+	
+@app.route("/stud_logout")
+def stud_logout():
+	return redirect(url_for('index'))	
+	
+	
+	
+@app.route("/school_logout")
+def school_logout():
+	session.pop('school_id', None)
+	return redirect(url_for('index'))	
+	
+	
+
 	
 	
 @app.route("/logout")
@@ -255,7 +280,7 @@ def student_reg():
 		if len(exists.fetchall()):
 			error = 'Student already exists'
 		else:
-			g.db.execute('insert into student values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['gender'],request.form['class'],request.form['section'],request.form['rollno'],request.form['sname'],request.form['pname'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['percent'],abs_filename,None,request.form['pwd']])
+			g.db.execute('insert into student values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['gender'],request.form['class'],request.form['section'],request.form['rollno'],request.form['sname'],request.form['pname'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['percent'],abs_filename,None,request.form['pwd'],request.form['mobile'],request.form['work']])
 			g.db.commit()
 			return redirect(url_for('index'))
 	return error
@@ -267,11 +292,21 @@ def student_reg():
 def business_reg():
 	error = None
 	if request.method == 'POST':
+		file=request.files['pic']
+		filename=str(random.randrange(0,1000))+str(random.randrange(0,1000))+secure_filename(file.filename)
+		abs_filename=os.path.join(app.config['upload_folder'],filename)
+		file.save(abs_filename)
+		
+		r_file=request.files['resume']
+		r_filename=str(random.randrange(0,1000))+str(random.randrange(0,1000))+secure_filename(r_file.filename)
+		r_abs_filename=os.path.join(app.config['upload_folder'],r_filename)
+		r_file.save(r_abs_filename)
+		
 		exists = g.db.execute('select * from business where FirstName = ?',[request.form['fname']])
 		if len(exists.fetchall()):
 			error = 'Business Partner already exists'
 		else:
-			g.db.execute('insert into business values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['occupation'],request.form['pic'],request.form['gender'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['pan'],request.form['resume'],request.form['location'],None])
+			g.db.execute('insert into business values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['occupation'],abs_filename,request.form['gender'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['pan'],r_abs_filename,request.form['location'],None])
 			g.db.commit()
 			return redirect(url_for('index'))
 	return error
@@ -307,11 +342,15 @@ def volunteer_reg():
 def intern_reg():
 	error = None
 	if request.method == 'POST':
+		file=request.files['pic']
+		filename=str(random.randrange(0,1000))+str(random.randrange(0,1000))+secure_filename(file.filename)
+		abs_filename=os.path.join(app.config['upload_folder'],filename)
+		file.save(abs_filename)
 		exists = g.db.execute('select * from internship where FirstName = ?',[request.form['fname']])
 		if len(exists.fetchall()):
 			error = 'Intern already exists'
 		else:
-			g.db.execute('insert into internship values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['pic'],request.form['gender'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['language'],request.form['university'],request.form['courses'],request.form['skills'],request.form['months'],request.form['from'],request.form['to'],request.form['interest'],request.form['location'],request.form['motivation'],None])
+			g.db.execute('insert into internship values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[request.form['fname'],request.form['lname'],request.form['dob'],abs_filename,request.form['gender'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['language'],request.form['university'],request.form['courses'],request.form['skills'],request.form['months'],request.form['from'],request.form['to'],request.form['interest'],request.form['location'],request.form['motivation'],None])
 			g.db.commit()
 			return redirect(url_for('index'))
 	return error
@@ -319,6 +358,14 @@ def intern_reg():
 
 @app.route("/school_update", methods = ['GET', 'POST'])
 def school_update():
+	if request.method == 'POST':
+		g.db.execute('update school set SchoolName=?, Board=?, Type=?, PhoneNumber=?, Address=?, City=?, State=?, Zip=?, Email=?, Website=?, c1Name=?, c1Designation=?, c1Phone=?, c1Email=?, c2Name=?, c2Designation=?, c2Phone=?, c2Email=?, SId=? where Id=?',[request.form['sname'],request.form['board'],request.form['type'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['website'],request.form['c1name'],request.form['c1designation'],request.form['c1phone'],request.form['c1email'],request.form['c2name'],request.form['c2designation'],request.form['c2phone'],request.form['c2email'],request.form['id'],request.form['sid']])
+		g.db.commit()
+		return redirect(url_for('loggedin'))
+	
+
+@app.route("/school_pers_update", methods = ['GET', 'POST'])
+def school_pers_update():
 	if request.method == 'POST':
 		g.db.execute('update school set SchoolName=?, Board=?, Type=?, PhoneNumber=?, Address=?, City=?, State=?, Zip=?, Email=?, Password=?, Website=?, c1Name=?, c1Designation=?, c1Phone=?, c1Email=?, c2Name=?, c2Designation=?, c2Phone=?, c2Email=?, SId=? where Id=?',[request.form['sname'],request.form['board'],request.form['type'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['pwd'],request.form['website'],request.form['c1name'],request.form['c1designation'],request.form['c1phone'],request.form['c1email'],request.form['c2name'],request.form['c2designation'],request.form['c2phone'],request.form['c2email'],request.form['id'],request.form['sid']])
 		g.db.commit()
@@ -334,7 +381,7 @@ def student_update():
 		filename=str(random.randrange(0,1000))+str(random.randrange(0,1000))+secure_filename(file.filename)
 		abs_filename=os.path.join(app.config['upload_folder'],filename)
 		file.save(abs_filename)
-		g.db.execute('update student set FirstName=?, LastName=?, Dob=?, Gender=?, Class=?, Section=?, RollNo=?, SchoolName=?, PName=?, PhoneNumber=?, Address=?, City=?, State=?, Zip=?, Email=?, Percentage=?, Photo=? where Id=?',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['gender'],request.form['class'],request.form['section'],request.form['rollno'],request.form['sname'],request.form['pname'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['percent'],abs_filename,request.form['id']])
+		g.db.execute('update student set FirstName=?, LastName=?, Dob=?, Gender=?, Class=?, Section=?, RollNo=?, SchoolName=?, PName=?, PhoneNumber=?, Address=?, City=?, State=?, Zip=?, Email=?, Percentage=?, Photo=?, ParentMobile=?, ParentWork=? where Id=?',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['gender'],request.form['class'],request.form['section'],request.form['rollno'],request.form['sname'],request.form['pname'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['percent'],abs_filename,request.form['mobile'],request.form['work'],request.form['id']])
 		g.db.commit()
 		return redirect(url_for('loggedin'))
 
@@ -348,7 +395,7 @@ def student_pers_update():
 		filename=str(random.randrange(0,1000))+str(random.randrange(0,1000))+secure_filename(file.filename)
 		abs_filename=os.path.join(app.config['upload_folder'],filename)
 		file.save(abs_filename)
-		g.db.execute('update student set FirstName=?, LastName=?, Dob=?, Gender=?, Class=?, Section=?, RollNo=?, SchoolName=?, PName=?, PhoneNumber=?, Address=?, City=?, State=?, Zip=?, Email=?, Password=?, Percentage=?, Photo=? where Id=?',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['gender'],request.form['class'],request.form['section'],request.form['rollno'],request.form['sname'],request.form['pname'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['pwd'],request.form['percent'],abs_filename,request.form['id']])
+		g.db.execute('update student set FirstName=?, LastName=?, Dob=?, Gender=?, Class=?, Section=?, RollNo=?, SchoolName=?, PName=?, PhoneNumber=?, Address=?, City=?, State=?, Zip=?, Email=?, Password=?, Percentage=?, Photo=?, ParentMobile=?, ParentWork=? where Id=?',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['gender'],request.form['class'],request.form['section'],request.form['rollno'],request.form['sname'],request.form['pname'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['pwd'],request.form['percent'],abs_filename,request.form['mobile'],request.form['work'],request.form['id']])
 		g.db.commit()
 		return redirect(url_for('stud_loggedin'))
 		
@@ -372,7 +419,13 @@ def volunteer_update():
 @app.route("/intern_update", methods = ['GET', 'POST'])
 def intern_update():
 	if request.method == 'POST':
-		g.db.execute('update internship set FirstName=?, LastName=?, Dob=?, Picture=?, Gender=?, PhoneNumber=?, Address=?, City=?, State=?, Zip=?, Email=?, Languages=?, University=?, AdditionalCourses=?, SpecificSkills=?, Months=?, FromDate=?, ToDate=?, Interest=?, Location=?, Motivation=? where Id=?',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['pic'],request.form['gender'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['language'],request.form['university'],request.form['courses'],request.form['skills'],request.form['months'],request.form['from'],request.form['to'],request.form['interest'],request.form['location'],request.form['motivation'],request.form['id']])
+		path = g.db.execute('select Picture from internship where Id=?',[request.form['id']]).fetchall()
+		os.remove(path[0][0])
+		file=request.files['pic']
+		filename=str(random.randrange(0,1000))+str(random.randrange(0,1000))+secure_filename(file.filename)
+		abs_filename=os.path.join(app.config['upload_folder'],filename)
+		file.save(abs_filename)
+		g.db.execute('update internship set FirstName=?, LastName=?, Dob=?, Picture=?, Gender=?, PhoneNumber=?, Address=?, City=?, State=?, Zip=?, Email=?, Languages=?, University=?, AdditionalCourses=?, SpecificSkills=?, Months=?, FromDate=?, ToDate=?, Interest=?, Location=?, Motivation=? where Id=?',[request.form['fname'],request.form['lname'],request.form['dob'],abs_filename,request.form['gender'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['language'],request.form['university'],request.form['courses'],request.form['skills'],request.form['months'],request.form['from'],request.form['to'],request.form['interest'],request.form['location'],request.form['motivation'],request.form['id']])
 		g.db.commit()
 		return redirect(url_for('loggedin'))
 	
@@ -380,7 +433,22 @@ def intern_update():
 @app.route("/business_update", methods = ['GET', 'POST'])
 def business_update():
 	if request.method == 'POST':
-		g.db.execute('update business set FirstName=?, LastName=?, Dob=?, Occupation=?, Picture=?, Gender=?, PhoneNumber=?, Address=?, City=?, State=?, Zip=?, Email=?, PAN=?, Resume=?, Location=? where Id=?',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['occupation'],request.form['pic'],request.form['gender'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['pan'],request.form['resume'],request.form['location'],request.form['id']])
+		path = g.db.execute('select Picture from business where Id=?',[request.form['id']]).fetchall()
+		os.remove(path[0][0])
+		file=request.files['pic']
+		filename=str(random.randrange(0,1000))+str(random.randrange(0,1000))+secure_filename(file.filename)
+		abs_filename=os.path.join(app.config['upload_folder'],filename)
+		file.save(abs_filename)
+		
+		
+		r_path = g.db.execute('select Resume from business where Id=?',[request.form['id']]).fetchall()
+		os.remove(r_path[0][0])
+		r_file=request.files['resume']
+		r_filename=str(random.randrange(0,1000))+str(random.randrange(0,1000))+secure_filename(r_file.filename)
+		r_abs_filename=os.path.join(app.config['upload_folder'],r_filename)
+		r_file.save(r_abs_filename)
+		
+		g.db.execute('update business set FirstName=?, LastName=?, Dob=?, Occupation=?, Picture=?, Gender=?, PhoneNumber=?, Address=?, City=?, State=?, Zip=?, Email=?, PAN=?, Resume=?, Location=? where Id=?',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['occupation'],abs_filename,request.form['gender'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['pan'],r_abs_filename,request.form['location'],request.form['id']])
 		g.db.commit()
 		return redirect(url_for('loggedin'))
 	

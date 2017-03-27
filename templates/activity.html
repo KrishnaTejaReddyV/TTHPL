@@ -20,7 +20,15 @@
     <link rel="stylesheet" href="/static/css/flexslider.css">
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="/static/css/styles.css">
+    <script type="text/javascript" src="/static/js/jquery-1.12.3.min.js"></script>
 </head>  
+
+<script>
+$(document).ready(function(){
+$( "#{{tab}}_tab" ).trigger( "click" );
+});
+</script>
+
 
 <body class="home-page">   
     <!-- ******HEADER****** --> 
@@ -51,9 +59,9 @@
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="activity">Activities <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="activity">Events</a></li>
-                                <li><a href="activity">CSR</a></li>
-                                <li><a href="activity">Rewards</a></li>                   
+                                <li><a href="activity/events">Events</a></li>
+                                <li><a href="activity/csr">CSR</a></li>
+                                <li><a href="activity/reward">Rewards</a></li>                   
                             </ul>                            
                         </li>
                         <li class="nav-item"><a href="team">Team</a></li>   
@@ -62,11 +70,11 @@
 						<li class="nav-item dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="register">Register <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="register">School Registration</a></li>
-                                <li><a href="register">Student Registration</a></li>  
-								<li><a href="register">Internship Registration</a></li>
-                                <li><a href="register">Volunteer Registration</a></li>  				
-                                <li><a href="register">Associate Bussiness Partner Registration</a></li> 				
+                                <li><a href="register/school">School Registration</a></li>
+                                <li><a href="register/student">Student Registration</a></li>  
+								<li><a href="register/internship">Internship Registration</a></li>
+                                <li><a href="register/volunteer">Volunteer Registration</a></li>  				
+                                <li><a href="register/business">Associate Bussiness Partner Registration</a></li>				
                             </ul>                            
                         </li>
 						<li class="nav-item"><a href="contact">Contact Us</a></li>
@@ -98,9 +106,9 @@
                     <ul class="nav nav-tabs text-center" role="tablist">
                         <!--li class="active"><a href="#feature-1" role="tab" data-toggle="tab"><i class="fa fa-cloud-upload"></i><br /><span>OAT</span></a></li>
                         <li><a href="#feature-2" role="tab" data-toggle="tab"><i class="fa fa-tachometer"></i><br /><span>INSAF</span></a></li-->
-                        <li class="active"><a href="#events" role="tab" data-toggle="tab"><i class="fa fa-photo"></i><br /><span>Events</span></a></li>
-                        <li><a href="#csr" role="tab" data-toggle="tab"><i class="fa fa-photo"></i><br /><span>CSR</span></a></li>
-                        <li class="last"><a href="#reward" role="tab" data-toggle="tab"><i class="fa fa-users"></i><br /><span>Rewards</span></a></li>
+                        <li class="active"><a id="events_tab" href="#events" role="tab" data-toggle="tab"><i class="fa fa-photo"></i><br /><span>Events</span></a></li>
+                        <li><a id="csr_tab" href="#csr" role="tab" data-toggle="tab"><i class="fa fa-photo"></i><br /><span>CSR</span></a></li>
+                        <li class="last"><a id="reward_tab" href="#reward" role="tab" data-toggle="tab"><i class="fa fa-users"></i><br /><span>Rewards</span></a></li>
                     </ul><!--//nav-tabs-->
                     
                     <!-- Tab panes -->
@@ -900,7 +908,6 @@
    
  
     <!-- Javascript -->          
-    <script type="text/javascript" src="/static/js/jquery-1.12.3.min.js"></script>
     <script type="text/javascript" src="/static/js/bootstrap.min.js"></script> 
     <script type="text/javascript" src="/static/js/bootstrap-hover-dropdown.min.js"></script>
     <script type="text/javascript" src="/static/js/back-to-top.js"></script>

@@ -51,9 +51,9 @@
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="activity">Activities <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="activity">Events</a></li>
-                                <li><a href="activity">CSR</a></li>
-                                <li><a href="activity">Rewards</a></li>                   
+                                <li><a href="activity/events">Events</a></li>
+                                <li><a href="activity/csr">CSR</a></li>
+                                <li><a href="activity/reward">Rewards</a></li>                   
                             </ul>                            
                         </li>
                         <li class="nav-item"><a href="team">Team</a></li>   
@@ -62,11 +62,11 @@
 						<li class="nav-item dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="register">Register <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="register">School Registration</a></li>
-                                <li><a href="register">Student Registration</a></li>  
-								<li><a href="register">Internship Registration</a></li>
-                                <li><a href="register">Volunteer Registration</a></li>  				
-                                <li><a href="register">Associate Bussiness Partner Registration</a></li> 				
+                                <li><a href="register/school">School Registration</a></li>
+                                <li><a href="register/student">Student Registration</a></li>  
+								<li><a href="register/internship">Internship Registration</a></li>
+                                <li><a href="register/volunteer">Volunteer Registration</a></li>  				
+                                <li><a href="register/business">Associate Bussiness Partner Registration</a></li>				
                             </ul>                            
                         </li>
 						<li class="nav-item"><a href="contact">Contact Us</a></li>
@@ -465,14 +465,6 @@
 																		</div>
 																	  </div>
 																	  
-																	  <div class="form-group">
-																		<label class="col-md-4 control-label">Login Password</label>
-																		<div class="col-md-6  inputGroupContainer">
-																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-qrcode"></i></span>
-																			<input name="pwd" placeholder="{{posts[9]}}" class="form-control"  type="password">
-																		  </div>
-																		</div>
-																	  </div>
 																	  
 																	  <div class="form-group">
 																		<label class="col-md-4 control-label">Website</label>
@@ -626,7 +618,7 @@
 											<thead>
 											  <tr>
 												<th><center>Information </center></th>
-												<th>Details</th>
+												<th><center>Details</center></th>
 												
 											  </tr>
 											</thead>
@@ -673,13 +665,23 @@
 												
 											  </tr>
 											   <tr>
+												<td>Student Phone Number</td>
+												<td>{{posts[9]}}</td>
+												
+											  </tr>
+											   <tr>
 												<td>Parent's/Gaurdian's Name</td>
 												<td>{{posts[8]}}</td>
 												
 											  </tr>
 											   <tr>
-												<td>Phone</td>
-												<td>{{posts[9]}}</td>
+												<td>Parent's/Gaurdian's Mobile Number</td>
+												<td>{{posts[19]}}</td>
+												
+											  </tr>
+											   <tr>
+												<td>Parent's/Gaurdian's Work Number</td>
+												<td>{{posts[20]}}</td>
 												
 											  </tr>
 											   <tr>
@@ -708,7 +710,7 @@
 												
 											  </tr>
 											  <tr>
-												<td>Password</td>
+												<td>Login Password</td>
 												<td>{{posts[18]}}</td>
 												
 											  </tr>
@@ -719,7 +721,7 @@
 											  </tr>
 											  <tr>
 												<td>Photo of Student</td>
-												<td>{{posts[16]}}</td>
+												<td><img class="col-xs-6 col-xs-offset-3" src="{{posts[16]}}"></td>
 												
 											  </tr>
 											  
@@ -849,6 +851,15 @@
 																				  </div>
 																				</div>
 																			  </div>
+      
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label">Student Phone Number</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+																					<input name="phone" placeholder="{{posts[9]}}" class="form-control" type="text">
+																				  </div>
+																				</div>
+																			  </div>
 																			
 																			  <div class="form-group">
 																				<label class="col-md-4 control-label" >Parent's/Gaurdian's Name</label>
@@ -861,15 +872,24 @@
 																			  <!-- Text input-->
 																			  
 																			  <div class="form-group">
-																				<label class="col-md-4 control-label">Phone #</label>
+																				<label class="col-md-4 control-label">Parent's/Gaurdian's Mobile Number</label>
 																				<div class="col-md-6  inputGroupContainer">
 																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-																					<input name="phone" placeholder="{{posts[9]}}" class="form-control" type="text">
+																					<input name="mobile" placeholder="{{posts[19]}}" class="form-control" type="text">
 																				  </div>
 																				</div>
 																			  </div>
 																			  
 																			  <!-- Text input-->
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label">Parent's/Gaurdian's Work Number</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+																					<input name="work" placeholder="{{posts[20]}}" class="form-control" type="text">
+																				  </div>
+																				</div>
+																			  </div>
 																			  
 																			  <div class="form-group">
 																				<label class="col-md-4 control-label">Address</label>
@@ -964,7 +984,7 @@
 																			  </div>
 	  
 																			   <div class="form-group">
-																				<label class="col-md-4 control-label">Password</label>
+																				<label class="col-md-4 control-label">Login Password</label>
 																				<div class="col-md-6  inputGroupContainer">
 																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
 																					<input name="pwd" placeholder="{{posts[18]}}" class="form-control"  type="password">
@@ -989,11 +1009,6 @@
 																			  </div>
 																			 
 																			  
-																			  <p>My Child would like to participate in Olympiad Aptitude Test- 2016-17
-																		Fee of INR 225 per student (includes Maths, Science, English and Logical reasoning)
-																		I hereby declare that all details mentioned above are true to the best of my knowledge. I have read and understood the terms of participation governing 2016-17 the Olympiad Aptitude Test and agree that I and my child abide by them.</p>
-																		 
-
 																			  <!-- Button -->
 																			  <div class="form-group">
 																				<label class="col-md-4 control-label"></label>
@@ -1490,7 +1505,7 @@
 											<thead>
 											  <tr>
 												<th><center>Information </center></th>
-												<th>Details</th>
+												<th><center>Details</center></th>
 												
 											  </tr>
 											</thead>
@@ -1512,11 +1527,6 @@
 												
 											  </tr>
 											  
-												<tr>
-												<td>Picture</td>
-												<td>{{posts[3]}}</td>
-												
-											  </tr>
 											  <tr>
 												<td>Gender</td>
 												<td>{{posts[4]}}</td>
@@ -1602,6 +1612,11 @@
 												<td>{{posts[20]}}</td>
 												
 											  </tr>
+											  <tr>
+												<td>Photo </td>
+												<td><img class="col-xs-6 col-xs-offset-3" src="{{posts[3]}}"></td>
+												
+											  </tr>
 											</tbody>
 										  </table>
 										  
@@ -1647,7 +1662,7 @@
 																  <h4 class="modal-title">Intern Details</h4>
 																</div>
 																<div class="modal-body">
-																		<form class="form-horizontal" action="intern_update" method="post"  id="reg_form"><br><br><br>
+																		<form class="form-horizontal" action="intern_update" method="post"  id="reg_form"  enctype="multipart/form-data"><br><br><br>
 																										
 																				<fieldset>
 																				  
@@ -1676,15 +1691,6 @@
 																					<div class="col-md-6  inputGroupContainer">
 																					  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 																						<input name="dob" placeholder="{{posts[2]}}" class="form-control"  type="text">
-																					  </div>
-																					</div>
-																				  </div>
-																				  
-																					<div class="form-group">
-																					<label class="col-md-4 control-label" >Picture</label>
-																					<div class="col-md-6  inputGroupContainer">
-																					  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-																						<input name="pic" placeholder="{{posts[3]}}" class="form-control"  type="text">
 																					  </div>
 																					</div>
 																				  </div>
@@ -1899,6 +1905,13 @@
 																					  </div>
 																					</div>
 																				  </div>
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label" >Upload Photograph</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				<input name="pic" id="input-1" type="file" class="file">
+																				</div>
+																			  </div>
 
        															   
 																				 
@@ -1959,7 +1972,7 @@
 											<thead>
 											  <tr>
 												<th><center>Information </center></th>
-												<th>Details</th>
+												<th><center>Details</center></th>
 												
 											  </tr>
 											</thead>
@@ -1984,12 +1997,6 @@
 											   <tr>
 												<td>Occupation</td>
 												<td>{{posts[3]}}</td>
-												
-											  </tr>
-											  
-												<tr>
-												<td>Picture</td>
-												<td>{{posts[4]}}</td>
 												
 											  </tr>
 											  <tr>
@@ -2032,9 +2039,14 @@
 												<td>{{posts[12]}}</td>
 												
 											  </tr>
-											   <tr>
-												<td>Resume</td>
-												<td>{{posts[13]}}</td>
+											  <tr>
+												<td>Photo</td>
+												<td><img class="col-xs-6 col-xs-offset-3" src="{{posts[4]}}"></td>
+												
+											  </tr>
+											  <tr>
+												<td>Download Resume</td>
+												<td><p><a class="col-xs-6 col-xs-offset-3 btn btn-cta btn-cta-primary" href="{{posts[13]}}" target="download"><i class="fa fa-download"></i>Download</a></td>
 												
 											  </tr>
 											
@@ -2090,7 +2102,7 @@
 													</div>
 													<div class="modal-body">
 													  
-														 <form class="form-horizontal" method="post" action="business_update"  id="reg_form">
+														 <form class="form-horizontal" method="post" action="business_update"  id="reg_form"  enctype="multipart/form-data">
 																<fieldset>
 																  
 																 <div class="form-group">
@@ -2127,15 +2139,6 @@
 																	<div class="col-md-6  inputGroupContainer">
 																	  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
 																		<input name="occupation" placeholder="{{posts[3]}}" class="form-control"  type="text">
-																	  </div>
-																	</div>
-																  </div>
-																  
-																	<div class="form-group">
-																	<label class="col-md-4 control-label" >Picture</label>
-																	<div class="col-md-6  inputGroupContainer">
-																	  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
-																		<input name="pic" placeholder="{{posts[4]}}" class="form-control"  type="text">
 																	  </div>
 																	</div>
 																  </div>
@@ -2267,17 +2270,23 @@
 																	  </div>
 																	</div>
 																  </div>
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label" >Upload Photograph</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				<input name="pic" id="input-1" type="file" class="file">
+																				</div>
+																			  </div>
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label" >Upload Resume</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				<input name="resume" id="input-1" type="file" class="file">
+																				</div>
+																			  </div>
 																  
 																
-																  
-																	   <div class="form-group">
-																	<label class="col-md-4 control-label" >Resume</label>
-																	<div class="col-md-6  inputGroupContainer">
-																	  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
-																		<input name="resume" placeholder="{{posts[13]}}" class="form-control"  type="text">
-																	  </div>
-																	</div>
-																  </div><br><br>
+																  <br><br>
 																  
 																  <p><b>I would like to act as an Associate Business Partner at (Name of the City/Town):</b></p>
 																	<div class="form-group">
@@ -2287,16 +2296,6 @@
 																	  </div>
 																	</div>
 																  </div><br><br>
-																  
-																  <p>I am accepting your terms and conditions given of this Acceptance Letter. I would like to act as a Associate Business Partner for the TTHPL.
-
-															Declaration:
-															I/We undersigned, hereby assure that the information given above is true & correct to the best of my knowledge. 
-															I have understood and agreed that any misrepresentation or concealment of facts will justify the denial/ cancellation 
-															of my association & at any stage of TTHPL and further. I have understood all the details and particulars & would abide 
-															by all terms & conditions of TTHPL. In any matter concerning TTHPL, the decision of Managing Director of Talent Treasure Hunt Pvt. Ltr. 
-															shall be final & binding to me/us.
-															</p>
 																
 															  
 																  <!-- Button -->

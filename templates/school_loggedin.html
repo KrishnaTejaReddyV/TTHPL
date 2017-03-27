@@ -23,65 +23,6 @@
 </head> 
 
 <body class="home-page">   
-    <!-- ******HEADER****** --> 
-    <header id="header" class="header navbar-fixed-top">  
-        <div class="container">       
-            <h1 class="logo">
-                <a href="index.html"><span class="text">TTHPL Logo</span></a>
-            </h1><!--//logo-->
-            <nav class="main-nav navbar-right" role="navigation">
-                <div class="navbar-header">
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button><!--//nav-toggle-->
-                </div><!--//navbar-header-->
-                <div id="navbar-collapse" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active nav-item"><a href="/">Home</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="foundation">Foundation <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="foundation">About the Foundation</a></li>
-                                <li><a href="oat">OAT</a></li>
-                                <li><a href="insaf">INSAF</a></li>                   
-                            </ul> </li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="activity">Activities <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="activity">Events</a></li>
-                                <li><a href="activity">CSR</a></li>
-                                <li><a href="activity">Rewards</a></li>                   
-                            </ul>                            
-                        </li>
-                        <li class="nav-item"><a href="team">Team</a></li>   
-						<li class="nav-item"><a href="news">News</a></li>	
-						<li class="nav-item"><a href="faq">FAQ</a></li>
-						<li class="nav-item dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="register">Register <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="register">School Registration</a></li>
-                                <li><a href="register">Student Registration</a></li>  
-								<li><a href="register">Internship Registration</a></li>
-                                <li><a href="register">Volunteer Registration</a></li>  				
-                                <li><a href="register">Associate Bussiness Partner Registration</a></li> 				
-                            </ul>                            
-                        </li>
-						<li class="nav-item"><a href="contact">Contact Us</a></li>
-						<li class="nav-item dropdown  nav-item-cta last">
-                            <a class="btn btn-cta btn-cta-secondary dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#">Login <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="school-login">School Login</a></li>
-                                <li><a href="student-login">Student Login</a></li>                   
-                            </ul>                            
-                        </li>
-                    </ul><!--//nav-->
-                </div><!--//navabr-collapse-->
-            </nav><!--//main-nav-->                     
-        </div><!--//container-->
-    </header><!--//header-->
     
     <div class="headline-bg ">
     </div><!--//headline-bg-->         
@@ -95,7 +36,9 @@
 				<section class="faq section" style="background-color:white;">
 					
 					<div class="row">
-						<h2 class="title text-center col-md-12 col-sm-10 col-xs-12">{{school[0]}} <a class="text-right" href=""><i class="fa fa-edit"></i></a></h2>   
+						<h2 class="title text-center col-md-12 col-sm-10 col-xs-12">{{school[0]}}</h2>   
+						<h5 class="col-xs-6 text-center"><a href="" data-toggle="modal" data-target="#modal{{school[17]}}"><i class="fa fa-edit"></i> Edit Profile</a></h5>
+						<h5 class="col-xs-6 text-center"><a href="" data-toggle="modal" data-target="#logoutmodal"><i class="fa fa-power-off"></i> Logout</a></h5> 
 						<hr>
 						<p class="text-left col-md-7 col-sm-10 col-xs-12"><b>Board:</b> {{school[1]}}</p> 
 						<p class="text-left col-md-5 col-sm-10 col-xs-12"><b>Type:</b> {{school[2]}}</p> 
@@ -180,6 +123,320 @@
             </div><!--//row-->
         </div><!--//container-->
     </section><!--//features-tabbed-->
+	
+		
+	<div class="modal fade" id="logoutmodal" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title text-center">Are you sure you want to logout?</h4>
+			</div>
+			
+			<div class="modal-body">
+			<form class="form-horizontal" action="school_logout" method=""  id="reg_form">
+				<div class="form-group">
+					<label class="col-md-4 control-label"></label>
+					<div class="col-md-4">
+					  <button type="submit" name="remove" value="{{posts[19]}}" class="btn btn-warning" >Yes</span></button>
+					  <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
+					</div>
+				 </div>
+			</form>
+			  
+			</div>
+		  </div>
+		  
+		</div>
+    </div>
+	
+	
+											<div class="modal fade" id="modal{{school[19]}}" role="dialog">
+												<div class="modal-dialog">
+												
+												  <!-- Modal content-->
+												  <div class="modal-content">
+													<div class="modal-header">
+													  <button type="button" class="close" data-dismiss="modal">&times;</button>
+													  <h4 class="modal-title">School Details</h4>
+													</div>
+													<div class="modal-body">
+													 
+													  
+																<form class="form-horizontal" action="school_pers_update" method="post"  id="reg_form">
+																	<fieldset>
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">School Name</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+																			<input  name="sname" placeholder="{{school[0]}}" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div>
+	  
+																	   <div class="form-group">
+																		<label class="col-md-4 control-label">School Code</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+																			<input  name="sid" placeholder="{{school[20]}}" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  <!-- Text input-->
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label" >Board</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
+																			<input name="board" placeholder="{{school[1]}}" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">Type</label>
+																		<div class="col-md-6 selectContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+																			<select name="type" class="form-control selectpicker" >
+																			  <option value=" " >Please select your school type</option>
+																			  <option value="Government">Government</option>
+																			  <option value="Private">Private</option>
+																			</select>
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  
+																	
+																	  <!-- Text input-->
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">Phone #</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+																			<input name="phone" placeholder="{{school[3]}}" class="form-control" type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  <!-- Text input-->
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">Address</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																			<input name="address" placeholder="{{school[4]}}" class="form-control" type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  <!-- Text input-->
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">City</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																			<input name="city" placeholder="{{school[5]}}" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  <!-- Select Basic -->
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">State</label>
+																		<div class="col-md-6 selectContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+																			<select name="state" class="form-control selectpicker" >
+																			  <option value=" " >Please select your state</option>
+																			  <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+																<option value="Andhra Pradesh">Andhra Pradesh</option>
+																<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+																<option value="Assam">Assam</option>
+																<option value="Bihar">Bihar</option>
+																<option value="Chandigarh">Chandigarh</option>
+																<option value="Chhattisgarh">Chhattisgarh</option>
+																<option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+																<option value="Daman and Diu">Daman and Diu</option>
+																<option value="Delhi">Delhi</option>
+																<option value="Goa">Goa</option>
+																<option value="Gujarat">Gujarat</option>
+																<option value="Haryana">Haryana</option>
+																<option value="Himachal Pradesh">Himachal Pradesh</option>
+																<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+																<option value="Jharkhand">Jharkhand</option>
+																<option value="Karnataka">Karnataka</option>
+																<option value="Kerala">Kerala</option>
+																<option value="Lakshadweep">Lakshadweep</option>
+																<option value="Madhya Pradesh">Madhya Pradesh</option>
+																<option value="Maharashtra">Maharashtra</option>
+																<option value="Manipur">Manipur</option>
+																<option value="Meghalaya">Meghalaya</option>
+																<option value="Mizoram">Mizoram</option>
+																<option value="Nagaland">Nagaland</option>
+																<option value="Orissa">Orissa</option>
+																<option value="Pondicherry">Pondicherry</option>
+																<option value="Punjab">Punjab</option>
+																<option value="Rajasthan">Rajasthan</option>
+																<option value="Sikkim">Sikkim</option>
+																<option value="Tamil Nadu">Tamil Nadu</option>
+																<option value="Tripura">Tripura</option>
+																<option value="Uttaranchal">Uttaranchal</option>
+																<option value="Uttar Pradesh">Uttar Pradesh</option>
+																<option value="West Bengal">West Bengal</option>
+																			</select>
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  <!-- Text input-->
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">Zip Code</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																			<input name="zip" placeholder="{{school[7]}}" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																   
+																	  
+																   
+																		<!-- Text input-->
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">E-Mail</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+																			<input name="email" placeholder="{{school[8]}}" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">Login Password</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-qrcode"></i></span>
+																			<input name="pwd" placeholder="{{school[9]}}" class="form-control"  type="password">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">Website</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
+																			<input name="website" placeholder="{{school[10]}}" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	
+																	   
+																	 
+																  
+																	  <!-- Button -->
+																	  
+																	  
+																	  
+																	  <br><br>
+																	  <h2 class="title text-center">School Coordinator's Details</h2>
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">Name</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+																			<input name="c1name" placeholder="{{school[11]}}" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">Designation</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+																			<input name="c1designation" placeholder="{{school[12]}}" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">Phone #</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+																			<input name="c1phone" placeholder="{{school[13]}}" class="form-control" type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	   <div class="form-group">
+																		<label class="col-md-4 control-label">E-Mail</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+																			<input name="c1email" placeholder="{{school[14]}}" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  <br><br>
+																	  <h2 class="title text-center">School Coordinator's Details</h2>
+																	  
+																		  <div class="form-group">
+																		<label class="col-md-4 control-label">Name</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+																			<input name="c2name" placeholder="{{school[15]}}" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">Designation</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-briefcase"></i></span>
+																			<input name="c2designation" placeholder="{{school[16]}}" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	  
+																	  <div class="form-group">
+																		<label class="col-md-4 control-label">Phone #</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+																			<input name="c2phone" placeholder="{{school[17]}}" class="form-control" type="text">
+																		  </div>
+																		</div>
+																	  </div>
+																	  
+																	   <div class="form-group">
+																		<label class="col-md-4 control-label">E-Mail</label>
+																		<div class="col-md-6  inputGroupContainer">
+																		  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+																			<input name="c2email" placeholder="{{school[18]}}" class="form-control"  type="text">
+																		  </div>
+																		</div>
+																	  </div><br>
+
+																	  
+																			<div class="form-group">
+																		<label class="col-md-4 control-label"></label>
+																		<div class="col-md-4">
+																		  <button type="submit" class="btn btn-warning" name="id" value="{{school[19]}}">Save Changes <span class="glyphicon glyphicon-send"></span></button>
+																		</div>
+																	  </div>
+
+																	</fieldset>
+																  </form>
+													</div>
+												  </div>
+												  
+												</div>
+											  </div>
     
  	 <div class="sections-wrapper"  style="background-color:#eceff1">
     <!-- ******FOOTER****** --> 

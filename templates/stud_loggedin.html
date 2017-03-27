@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>TTHPL | {{fname}} {{lname}}</title>
+    <title>TTHPL | {{posts[0]}} {{posts[1]}}</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,65 +23,6 @@
 </head> 
 
 <body class="home-page">   
-    <!-- ******HEADER****** --> 
-    <header id="header" class="header navbar-fixed-top">  
-        <div class="container">       
-            <h1 class="logo">
-                <a href="index.html"><span class="text">TTHPL Logo</span></a>
-            </h1><!--//logo-->
-            <nav class="main-nav navbar-right" role="navigation">
-                <div class="navbar-header">
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button><!--//nav-toggle-->
-                </div><!--//navbar-header-->
-                <div id="navbar-collapse" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active nav-item"><a href="/">Home</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="foundation">Foundation <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="foundation">About the Foundation</a></li>
-                                <li><a href="oat">OAT</a></li>
-                                <li><a href="insaf">INSAF</a></li>                   
-                            </ul> </li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="activity">Activities <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="activity">Events</a></li>
-                                <li><a href="activity">CSR</a></li>
-                                <li><a href="activity">Rewards</a></li>                   
-                            </ul>                            
-                        </li>
-                        <li class="nav-item"><a href="team">Team</a></li>   
-						<li class="nav-item"><a href="news">News</a></li>	
-						<li class="nav-item"><a href="faq">FAQ</a></li>
-						<li class="nav-item dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="register">Register <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="register">School Registration</a></li>
-                                <li><a href="register">Student Registration</a></li>  
-								<li><a href="register">Internship Registration</a></li>
-                                <li><a href="register">Volunteer Registration</a></li>  				
-                                <li><a href="register">Associate Bussiness Partner Registration</a></li> 				
-                            </ul>                            
-                        </li>
-						<li class="nav-item"><a href="contact">Contact Us</a></li>
-						<li class="nav-item dropdown  nav-item-cta last">
-                            <a class="btn btn-cta btn-cta-secondary dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#">Login <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="school-login">School Login</a></li>
-                                <li><a href="student-login">Student Login</a></li>                 
-                            </ul>                            
-                        </li>
-                    </ul><!--//nav-->
-                </div><!--//navabr-collapse-->
-            </nav><!--//main-nav-->                     
-        </div><!--//container-->
-    </header><!--//header-->
     
     <div class="headline-bg ">
     </div><!--//headline-bg-->         
@@ -95,16 +36,19 @@
 				<section class="faq section" style="background-color:white;">
 					
 					<div class="row">
-						<div class="member col-md-4 col-sm-6 col-xs-12">
+						<div class="member col-md-5 col-sm-6 col-xs-12">
 							<div class="member-inner">
 								<figure class="profile">
 									<img class="img-responsive" src="{{posts[16]}}" alt=""/>
 								</figure><!--//profile-->
+								<br>
+								<h5 class="col-xs-6 text-center"><a href="" data-toggle="modal" data-target="#modal{{posts[17]}}"><i class="fa fa-edit"></i> Edit Profile</a></h5>
+								<h5 class="col-xs-6 text-center"><a href="" data-toggle="modal" data-target="#logoutmodal"><i class="fa fa-power-off"></i> Logout</a></h5> 
 							</div><!--//member-inner-->
 						</div><!--//member-->
-						<div class="member col-md-8 col-sm-6 col-xs-12">
+						<div class="member col-md-7 col-sm-6 col-xs-12">
 							<div class="member-inner">
-								<h2 class="title text-left col-xs-12">{{posts[0]}} {{posts[1]}} <a class="text-right" href="" data-toggle="modal" data-target="#modal{{posts[17]}}"><i class="fa fa-edit"></i></a></h2>   
+								<h5 class="title col-xs-12">{{posts[0]}} {{posts[1]}}</h2>  
 								<hr>
 								<p class="text-left col-md-7 col-sm-10 col-xs-12"><b>Class:</b> {{posts[4]}}</p> 
 								<p class="text-left col-md-5 col-sm-10 col-xs-12"><b>Section:</b> {{posts[5]}}</p> 
@@ -139,6 +83,23 @@
 					
 					<div class="row">
 						<ul class="nav nav-tabs text-center" role="tablist">
+							<li class="active last"><a href="#pgi" role="tab" data-toggle="tab"><h3>Parent/Gaurdian Information</h3></a></li>
+						</ul>
+						<div class="tab-content" style="background-color:white; opacity:1; border-bottom:1px;padding-bottom:-100">
+							<div class="tab-pane fade-in active" id="pgi">
+								<p class="text-left col-md-7 col-sm-10 col-xs-12"></p>
+								<p class="text-left col-sm-10 col-xs-12"><b>Name:</b> {{posts[8]}}</p> 
+								<p class="text-left col-md-7 col-sm-10 col-xs-12"><b>Mobile Number:</b> {{posts[19]}}</p> 
+								<p class="text-left col-md-5 col-sm-10 col-xs-12"><b>Work Number:</b> {{posts[20]}}</p> 
+							</div>
+						</div>
+					</div>
+					
+					<hr>
+					<br><br><br><br>
+					
+					<div class="row">
+						<ul class="nav nav-tabs text-center" role="tablist">
 							<li class="active last"><a href="#rank" role="tab" data-toggle="tab"><h3>OAT Results</h3></a></li>
 						</ul>
 						<div class="tab-content" style="background-color:white; opacity:1; border-bottom:1px">
@@ -158,6 +119,33 @@
             </div><!--//row-->
         </div><!--//container-->
     </section><!--//features-tabbed-->
+	
+	<div class="modal fade" id="logoutmodal" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title text-center">Are you sure you want to logout?</h4>
+			</div>
+			
+			<div class="modal-body">
+			<form class="form-horizontal" action="stud_logout" method=""  id="reg_form">
+				<div class="form-group">
+					<label class="col-md-4 control-label"></label>
+					<div class="col-md-4">
+					  <button type="submit" name="remove" value="{{posts[17]}}" class="btn btn-warning" >Yes</span></button>
+					  <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
+					</div>
+				 </div>
+			</form>
+			  
+			</div>
+		  </div>
+		  
+		</div>
+    </div>
 	
 	
 													<div class="modal fade" id="modal{{posts[17]}}" role="dialog">
@@ -252,6 +240,15 @@
 																				  </div>
 																				</div>
 																			  </div>
+      
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label">Student Phone Number</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+																					<input name="phone" placeholder="{{posts[9]}}" class="form-control" type="text">
+																				  </div>
+																				</div>
+																			  </div>
 																			
 																			  <div class="form-group">
 																				<label class="col-md-4 control-label" >Parent's/Gaurdian's Name</label>
@@ -264,15 +261,24 @@
 																			  <!-- Text input-->
 																			  
 																			  <div class="form-group">
-																				<label class="col-md-4 control-label">Phone #</label>
+																				<label class="col-md-4 control-label">Parent's/Gaurdian's Mobile Number</label>
 																				<div class="col-md-6  inputGroupContainer">
 																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-																					<input name="phone" placeholder="{{posts[9]}}" class="form-control" type="text">
+																					<input name="mobile" placeholder="{{posts[19]}}" class="form-control" type="text">
 																				  </div>
 																				</div>
 																			  </div>
 																			  
 																			  <!-- Text input-->
+																			  
+																			  <div class="form-group">
+																				<label class="col-md-4 control-label">Parent's/Gaurdian's Work Number</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+																					<input name="work" placeholder="{{posts[20]}}" class="form-control" type="text">
+																				  </div>
+																				</div>
+																			  </div>
 																			  
 																			  <div class="form-group">
 																				<label class="col-md-4 control-label">Address</label>
@@ -392,10 +398,6 @@
 																			  </div>
 																			 
 																			  
-																			  <p>My Child would like to participate in Olympiad Aptitude Test- 2016-17
-																		Fee of INR 225 per student (includes Maths, Science, English and Logical reasoning)
-																		I hereby declare that all details mentioned above are true to the best of my knowledge. I have read and understood the terms of participation governing 2016-17 the Olympiad Aptitude Test and agree that I and my child abide by them.</p>
-																		 
 
 																			  <!-- Button -->
 																			  <div class="form-group">
