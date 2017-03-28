@@ -28,6 +28,12 @@ $(document).ready(function(){
 $( "#{{tab}}_tab" ).trigger( "click" );
 });
 </script>
+<script>
+var error="{{request.args.get('error')}}";
+if(error!='None'){
+alert(error);
+}
+</script>
 
 <body class="home-page">   
     <!-- ******HEADER****** --> 
@@ -47,41 +53,41 @@ $( "#{{tab}}_tab" ).trigger( "click" );
                 </div><!--//navbar-header-->
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active nav-item"><a href="/">Home</a></li>
+                        <li class="nav-item"><a href="/">Home</a></li>
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="foundation">Foundation <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="foundation">About the Foundation</a></li>
-                                <li><a href="oat">OAT</a></li>
-                                <li><a href="insaf">INSAF</a></li>                   
+                                <li><a href="../foundation">About the Foundation</a></li>
+                                <li><a href="../oat">OAT</a></li>
+                                <li><a href="../insaf">INSAF</a></li>                   
                             </ul> </li>
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="activity">Activities <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="activity/events">Events</a></li>
-                                <li><a href="activity/csr">CSR</a></li>
-                                <li><a href="activity/reward">Rewards</a></li>              
+                                <li><a href="../activity/events">Events</a></li>
+                                <li><a href="../activity/csr">CSR</a></li>
+                                <li><a href="../activity/reward">Rewards</a></li>              
                             </ul>                            
                         </li>
-                        <li class="nav-item"><a href="team">Team</a></li>   
-						<li class="nav-item"><a href="news">News</a></li>	
-						<li class="nav-item"><a href="faq">FAQ</a></li>
-						<li class="nav-item dropdown">
+                        <li class="nav-item"><a href="../team">Team</a></li>   
+						<li class="nav-item"><a href="../news">News</a></li>	
+						<li class="nav-item"><a href="../faq">FAQ</a></li>
+						<li class="active nav-item dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="register">Register <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="register/school">School Registration</a></li>
-                                <li><a href="register/student">Student Registration</a></li>  
-								<li><a href="register/internship">Internship Registration</a></li>
-                                <li><a href="register/volunteer">Volunteer Registration</a></li>  				
-                                <li><a href="register/business">Associate Bussiness Partner Registration</a></li>				
+                                <li><a href="../register/school">School Registration</a></li>
+                                <li><a href="../register/student">Student Registration</a></li>  
+								<li><a href="../register/internship">Internship Registration</a></li>
+                                <li><a href="../register/volunteer">Volunteer Registration</a></li>  				
+                                <li><a href="../register/business">Associate Bussiness Partner Registration</a></li>				
                             </ul>                            
                         </li>
-						<li class="nav-item"><a href="contact">Contact Us</a></li>
+						<li class="nav-item"><a href="../contact">Contact Us</a></li>
 						<li class="nav-item dropdown  nav-item-cta last">
                             <a class="btn btn-cta btn-cta-secondary dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#">Login <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="school-login">School Login</a></li>
-                                <li><a href="student-login">Student Login</a></li>                   
+                                <li><a href="../school-login">School Login</a></li>
+                                <li><a href="../student-login">Student Login</a></li>                   
                             </ul>                            
                         </li>
                     </ul><!--//nav-->
@@ -93,6 +99,7 @@ $( "#{{tab}}_tab" ).trigger( "click" );
     <div class="headline-bg">
     </div><!--//headline-bg-->         
     
+
 
     
     <!-- ******Features Section****** -->       
@@ -116,7 +123,7 @@ $( "#{{tab}}_tab" ).trigger( "click" );
                             
 							<div class="form-container col-xs-12 col-md-12" style="background-color:#f4f4f4"><br><br><br>
 								<h2 class="title text-center">School Registration</h2>
-								<form class="form-horizontal" action="school_reg" method="post"  id="reg_form">
+								<form class="form-horizontal" action="../school_reg" method="post"  id="reg_form">
     <fieldset>
       
    
@@ -424,7 +431,7 @@ $( "#{{tab}}_tab" ).trigger( "click" );
 						   
 <div class="form-container col-xs-12 col-md-12" style="background-color:#f4f4f4"><br><br><br>
 	   <h2 class="title text-center">Student Registration</h2>
-	   <form class="form-horizontal" action="student_reg" method="post"  id="reg_form"  enctype="multipart/form-data">
+	   <form class="form-horizontal" action="../student_reg" method="post"  id="reg_form"  enctype="multipart/form-data">
 		<fieldset>
 	
       <div class="form-group">
@@ -719,7 +726,7 @@ I hereby declare that all details mentioned above are true to the best of my kno
 <div class="tab-pane" id="volunteer">
  <div class="form-container col-xs-12 col-md-12" style="background-color:#f4f4f4"><br><br><br>
    <h2 class="title text-center">Volunteer Registration</h2>
-   <form class="form-horizontal" action="volunteer_reg" method="post"  id="reg_form">
+   <form class="form-horizontal" action="../volunteer_reg" method="post"  id="reg_form">
     <fieldset>
       
      
@@ -987,7 +994,7 @@ I hereby declare that all details mentioned above are true to the best of my kno
                         <div class="tab-pane " id="internship">
                            
  <div class="form-container col-xs-12 col-md-12" style="background-color:#f4f4f4">
-   <form class="form-horizontal" action="intern_reg" method="post"  id="reg_form"  enctype="multipart/form-data"><br><br><br>
+   <form class="form-horizontal" action="../intern_reg" method="post"  id="reg_form"  enctype="multipart/form-data"><br><br><br>
    <h2 class="title text-center">Internship Registration</h2>
     <fieldset>
       
@@ -1360,7 +1367,7 @@ I hereby declare that all details mentioned above are true to the best of my kno
 <div class="tab-pane" id="feature-4">
 
  <div class="form-container col-xs-12 col-md-12">
-   <form class="form-horizontal" action="business_reg" method="post"  id="reg_form"  enctype="multipart/form-data">
+   <form class="form-horizontal" action="../business_reg" method="post"  id="reg_form"  enctype="multipart/form-data">
     <fieldset>
       
      
@@ -1752,83 +1759,50 @@ shall be final & binding to me/us.
 	
 	
     
-          <!-- ******FOOTER****** --> 
+    <!-- ******FOOTER****** --> 
     <footer class="footer">
         <div class="footer-content">
             <div class="container">
                 <div class="row">  
-					 <div class="footer-col links col-md-2 col-sm-4 col-xs-12">
+					 <div class="footer-col links col-md-3 col-xs-12">
                         <div class="footer-col-inner">
                             <h3 class="title">Register</h3>
                             <ul class="list-unstyled">
-                                <li><a href="#"><i class="fa fa-caret-right"></i>School Registration</a></li>
-                                <li><a href="#"><i class="fa fa-caret-right"></i>Student Registration</a></li>
-                                <li><a href="#"><i class="fa fa-caret-right"></i>Volunteer Registration</a></li>
-                                <li><a href="#"><i class="fa fa-caret-right"></i>Internship Registration</a></li>
-								<li><a href="#"><i class="fa fa-caret-right"></i>Associate Business Partner Registration</a></li>
+                                <li><a href="../register/school"><i class="fa fa-caret-right"></i>School Registration</a></li>
+                                <li><a href="../register/student"><i class="fa fa-caret-right"></i>Student Registration</a></li>
+                                <li><a href="../register/volunteer"><i class="fa fa-caret-right"></i>Volunteer Registration</a></li>
+                                <li><a href="../register/internship"><i class="fa fa-caret-right"></i>Internship Registration</a></li>
+								<li><a href="../register/business"><i class="fa fa-caret-right"></i>Associate Business Partner Registration</a></li>
                             </ul>
                         </div><!--//footer-col-inner-->
                     </div><!--//foooter-col--> 
 					
                    
                                 
-                    <div class="footer-col links col-md-2 col-sm-4 col-xs-12 sm-break">
+                    <div class="footer-col links col-md-3 col-xs-12">
                         <div class="footer-col-inner">
                             <h3 class="title">Login</h3>
                             <ul class="list-unstyled">
-                                <li><a href="#"><i class="fa fa-caret-right"></i>School Login</a></li>
-                                <li><a href="#"><i class="fa fa-caret-right"></i>Associate Business Partner Login</a></li>
+                                <li><a href="../school-login"><i class="fa fa-caret-right"></i>School Login</a></li>
+                                <li><a href="../student-login"><i class="fa fa-caret-right"></i>Student Login</a></li>
                                 
                             </ul>
                         </div><!--//footer-col-inner-->            
                     </div><!--//foooter-col-->   
 					
-					 <div class="footer-col links col-md-2 col-sm-4 col-xs-12">
+					 <div class="footer-col links col-md-3 col-xs-12">
                         <div class="footer-col-inner">
                             <h3 class="title">Activites</h3>
                             <ul class="list-unstyled">
-                                <li><a href="#"><i class="fa fa-caret-right"></i>OAT</a></li>
-                                <li><a href="#"><i class="fa fa-caret-right"></i>INSAF</a></li>
-                                <li><a href="#"><i class="fa fa-caret-right"></i>Events</a></li>
-                                <li><a href="#"><i class="fa fa-caret-right"></i>CSR</a></li>
-                                <li><a href="#"><i class="fa fa-caret-right"></i>Rewards</a></li>
+                                <li><a href="../oat"><i class="fa fa-caret-right"></i>OAT</a></li>
+                                <li><a href="../insaf"><i class="fa fa-caret-right"></i>INSAF</a></li>
+                                <li><a href="../activity/events"><i class="fa fa-caret-right"></i>Events</a></li>
+                                <li><a href="../activity/csr"><i class="fa fa-caret-right"></i>CSR</a></li>
+                                <li><a href="../activity/reward"><i class="fa fa-caret-right"></i>Rewards</a></li>
                             </ul>
                         </div><!--//footer-col-inner-->
-                    </div><!--//foooter-col-->    
-                    <div class="footer-col connect col-xs-12 col-md-6">
-                        <div class="footer-col-inner">
-                            <ul class="social list-inline">
-                                <li><a href="https://twitter.com/3rdwave_themes" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>        
-                                <li class="row-end"><a href="#"><i class="fa fa-rss"></i></a></li>             
-                            </ul>
-                            <div class="form-container">
-                                <p class="intro">Stay up to date with the latest news and events from TTHPL</p>
-                                <form class="signup-form navbar-form">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Enter your email address">
-                                    </div>   
-                                    <button type="submit" class="btn btn-cta btn-cta-primary">Subscribe Now</button>                                 
-                                </form>                               
-                            </div><!--//subscription-form-->
-                        </div><!--//footer-col-inner-->
-                    </div><!--//foooter-col-->
-                    <div class="clearfix"></div> 
-                </div><!--//row-->
-                <div class="row has-divider">
-                    <div class="footer-col download col-xs-12 col-md-6">
-                        <div class="footer-col-inner">
-                            <h3 class="title">Mobile apps</h3>
-                            <ul class="list-unstyled download-list">
-                                <li><a class="btn btn-ghost" href="#"><i class="fa fa-apple"></i><span class="text">Download for iOS</span> </a></li>
-                                <li><a class="btn btn-ghost" href="#"><i class="fa fa-android"></i><span class="text">Download for Android</span></a></li>
-                                <li><a class="btn btn-ghost" href="#"><i class="fa fa-windows"></i><span class="text">Windows coming soon...</span></a></li>
-                            </ul>
-                        </div><!--//footer-col-inner-->
-                    </div><!--//download-->
-                    <div class="footer-col contact col-xs-12 col-md-6">
+                    </div><!--//foooter-col--> 
+                    <div class="footer-col contact col-xs-12 col-md-3">
                         <div class="footer-col-inner">
                             <h3 class="title">Contact us</h3>                          
                             <p class="adr clearfix">
@@ -1839,13 +1813,18 @@ shall be final & binding to me/us.
                                     <span class="postal-code">Mira Road (East),</span><br>
                                     <span class="country-name">Mumbai - 401107.</span>
                                 </span>                            </p>
-                            <p class="tel"><i class="fa fa-phone"></i>9876543210</p>
-                            <p class="email"><i class="fa fa-envelope-o"></i><a href="#">mohittly@gmail.com</a></p> 
-                            <a href="https://twitter.com/3rdwave_themes" class="twitter-follow-button" data-show-count="false">Follow @twitter_username</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>                        
-                        </div><!--//footer-col-inner-->
-                    </div><!--//contact-->
-                </div>
+                            <p class="tel"><i class="fa fa-phone"></i>+91 8652542430</p>
+                            <p class="email"><i class="fa fa-envelope-o"></i>sanjay.singh@tthpl.in</p>
+							<ul class="social list-inline">
+                                <li><a href="https://twitter.com/3rdwave_themes" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>        
+                                <li class="row-end"><a href="#"><i class="fa fa-rss"></i></a></li>             
+                            </ul>
+						</div><!--//footer-col-inner-->
+                    </div><!--//contact-->   
+                </div><!--//row-->
             </div><!--//container-->
         </div><!--//footer-content-->
         <div class="bottom-bar">

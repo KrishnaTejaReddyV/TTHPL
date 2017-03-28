@@ -4,11 +4,12 @@ from flask import Flask, render_template, g, request, url_for, redirect, session
 import sqlite3
 import random
 import pandas as pd
+import base64
 
 
 DATABASE = 'tthpl.db'
 DEBUG = True
-SECRET_KEY = 'jksdfsfghjkdfjiosdf'
+SECRET_KEY = 'jksdfsdfghjklsertyugfvbfghjkdfjiosdf'
 upload_folder='static/images/'
 allowed_ext= set(['txt','pdf','png','jpg','jpeg','gif'])
 
@@ -80,21 +81,7 @@ def faq():
 def register(e):
 	return render_template("register.html",tab=e)
 
-	
-		
 
-@app.route("/school_reg", methods = ['GET', 'POST'])
-def school_reg():
-	error = None
-	if request.method == 'POST':
-		exists = g.db.execute('select * from school where SchoolName = ?',[request.form['sname']])
-		if len(exists.fetchall()):
-			error = 'School already exists'
-		else:
-			g.db.execute('insert into school values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[request.form['sname'],request.form['board'],request.form['type'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['pwd'],request.form['website'],request.form['c1name'],request.form['c1designation'],request.form['c1phone'],request.form['c1email'],request.form['c2name'],request.form['c2designation'],request.form['c2phone'],request.form['c2email'],None,request.form['sid']])
-			g.db.commit()
-			return redirect(url_for('index'))
-	return error
 	
 @app.route("/school-login")
 def school_login():
@@ -122,16 +109,18 @@ def s_login():
 		email='admin@tthpl.com'
 		pwd='tthpladminpwd'
 		if request.form['email']== email and request.form['pwd']== pwd:
-			return redirect(url_for('loggedin',id=1))
+			id=base64.b64encode("1".encode())
+			return redirect(url_for('loggedin',id=id))
 		else:
 			exists = g.db.execute('select * from school where Email = ? and Password = ? ',[request.form['email'],request.form['pwd']])
 			l=exists.fetchall()
 			if len(l):
-				id=l[0][19]
-				return redirect(url_for('school_loggedin',school_id=id))
+				id=str(l[0][19])
+				uid=base64.b64encode(id.encode())
+				return redirect(url_for('school_loggedin',school_id=uid))
 			else:
-				error = 'Invalid'
-	return error
+				error = 'Invalid Login. Try Again.'
+				return redirect(url_for('school_login',error=error))
 	
 	
 @app.route("/stud_login", methods = ['GET','POST'])
@@ -141,16 +130,18 @@ def stud_login():
 		email='admin@tthpl.com'
 		pwd='tthpladminpwd'
 		if request.form['email']== email and request.form['pwd']== pwd:
-			return redirect(url_for('loggedin',id=1))
+			id=base64.b64encode("1".encode())
+			return redirect(url_for('loggedin',id=id))
 		else:
 			exists = g.db.execute('select * from student where Email = ? and Password = ? ',[request.form['email'],request.form['pwd']])
 			l=exists.fetchall()
 			if len(l):
-				id=l[0][17]
-				return redirect(url_for('stud_loggedin',stud_id=id))
+				id=str(l[0][17])
+				uid=base64.b64encode(id.encode())
+				return redirect(url_for('stud_loggedin',stud_id=uid))
 			else:
-				error = 'Invalid'
-	return error
+				error = 'Invalid Login. Try Again.'
+				return redirect(url_for('student_login',error=error))
 	
 	
 @app.route("/loggedin")
@@ -222,37 +213,36 @@ def loggedin():
 	
 		
 
-@app.route("/stud_loggedin")
-def stud_loggedin():
-	id=request.args.get('stud_id')
-	stud = g.db.execute('select * from student where Id=?',[id]).fetchall()
-	return render_template("stud_loggedin.html",posts=stud[0])
-	
-		
-
 @app.route("/school_loggedin")
 def school_loggedin():
-	id=request.args.get('school_id')
+	uid=request.args.get('school_id')
+	id=base64.b64decode(uid.decode())
 	school = g.db.execute('select * from school where Id=?',[id]).fetchall()
 	school_code=school[0][20]
 	stud = g.db.execute('select * from student where SchoolName=? order by Class',[school_code]).fetchall()
-	return render_template("school_loggedin.html",school=school[0],stud_posts=stud)
-	
-	
-	
-	
-@app.route("/stud_logout")
-def stud_logout():
-	return redirect(url_for('index'))	
+	return render_template("school_loggedin.html",school=school[0],stud_posts=stud)	
+		
+
+@app.route("/stud_loggedin")
+def stud_loggedin():
+	uid=request.args.get('stud_id')
+	id=base64.b64decode(uid.decode())
+	stud = g.db.execute('select * from student where Id=?',[id]).fetchall()
+	rank = g.db.execute('select * from rank where Stud_Id=?',[id]).fetchall()
+	return render_template("stud_loggedin.html",posts=stud[0],rank=rank[0])
+
 	
 	
 	
 @app.route("/school_logout")
 def school_logout():
 	session.pop('school_id', None)
+	return redirect(url_for('index'))		
+	
+	
+@app.route("/stud_logout")
+def stud_logout():
 	return redirect(url_for('index'))	
-	
-	
 
 	
 	
@@ -268,6 +258,21 @@ def logout():
 	
 		
 
+@app.route("/school_reg", methods = ['GET', 'POST'])
+def school_reg():
+	error = None
+	if request.method == 'POST':
+		exists = g.db.execute('select * from school where SchoolName = ?',[request.form['sname']])
+		if len(exists.fetchall()):
+			error = 'School already exists'
+			return redirect(url_for('register(school)',error=error))
+		else:
+			g.db.execute('insert into school values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[request.form['sname'],request.form['board'],request.form['type'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['pwd'],request.form['website'],request.form['c1name'],request.form['c1designation'],request.form['c1phone'],request.form['c1email'],request.form['c2name'],request.form['c2designation'],request.form['c2phone'],request.form['c2email'],None,request.form['sid']])
+			g.db.commit()
+			return redirect(url_for('index'))
+	return error
+		
+
 @app.route("/student_reg", methods = ['GET', 'POST'])
 def student_reg():
 	error = None
@@ -279,8 +284,9 @@ def student_reg():
 		exists = g.db.execute('select * from student where Email = ?',[request.form['email']])
 		if len(exists.fetchall()):
 			error = 'Student already exists'
+			return redirect(url_for('register(student)',error=error))
 		else:
-			g.db.execute('insert into student values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['gender'],request.form['class'],request.form['section'],request.form['rollno'],request.form['sname'],request.form['pname'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['percent'],abs_filename,None,request.form['pwd'],request.form['mobile'],request.form['work']])
+			g.db.execute('insert into student values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['gender'],request.form['class'],request.form['section'],request.form['rollno'],request.form['sname'],request.form['pname'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['percent'],abs_filename,None,request.form['pwd'],request.form['mobile'],request.form['work'],None])
 			g.db.commit()
 			return redirect(url_for('index'))
 	return error
@@ -305,6 +311,7 @@ def business_reg():
 		exists = g.db.execute('select * from business where FirstName = ?',[request.form['fname']])
 		if len(exists.fetchall()):
 			error = 'Business Partner already exists'
+			return redirect(url_for('register(business)',error=error))
 		else:
 			g.db.execute('insert into business values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['occupation'],abs_filename,request.form['gender'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['pan'],r_abs_filename,request.form['location'],None])
 			g.db.commit()
@@ -321,6 +328,7 @@ def volunteer_reg():
 		exists = g.db.execute('select * from volunteer where FirstName = ?',[request.form['fname']])
 		if len(exists.fetchall()):
 			error = 'Volunteer already exists'
+			return redirect(url_for('register',e='volunteer',error=error))
 		else:
 			mentor = 'mentor' in request.form
 			tutor = 'tutor' in request.form
@@ -349,6 +357,7 @@ def intern_reg():
 		exists = g.db.execute('select * from internship where FirstName = ?',[request.form['fname']])
 		if len(exists.fetchall()):
 			error = 'Intern already exists'
+			return redirect(url_for('register(internship)',error=error))
 		else:
 			g.db.execute('insert into internship values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[request.form['fname'],request.form['lname'],request.form['dob'],abs_filename,request.form['gender'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['language'],request.form['university'],request.form['courses'],request.form['skills'],request.form['months'],request.form['from'],request.form['to'],request.form['interest'],request.form['location'],request.form['motivation'],None])
 			g.db.commit()
@@ -361,7 +370,8 @@ def school_update():
 	if request.method == 'POST':
 		g.db.execute('update school set SchoolName=?, Board=?, Type=?, PhoneNumber=?, Address=?, City=?, State=?, Zip=?, Email=?, Website=?, c1Name=?, c1Designation=?, c1Phone=?, c1Email=?, c2Name=?, c2Designation=?, c2Phone=?, c2Email=?, SId=? where Id=?',[request.form['sname'],request.form['board'],request.form['type'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['website'],request.form['c1name'],request.form['c1designation'],request.form['c1phone'],request.form['c1email'],request.form['c2name'],request.form['c2designation'],request.form['c2phone'],request.form['c2email'],request.form['id'],request.form['sid']])
 		g.db.commit()
-		return redirect(url_for('loggedin'))
+		id=base64.b64encode("1".encode())
+		return redirect(url_for('loggedin',id=id))
 	
 
 @app.route("/school_pers_update", methods = ['GET', 'POST'])
@@ -369,7 +379,8 @@ def school_pers_update():
 	if request.method == 'POST':
 		g.db.execute('update school set SchoolName=?, Board=?, Type=?, PhoneNumber=?, Address=?, City=?, State=?, Zip=?, Email=?, Password=?, Website=?, c1Name=?, c1Designation=?, c1Phone=?, c1Email=?, c2Name=?, c2Designation=?, c2Phone=?, c2Email=?, SId=? where Id=?',[request.form['sname'],request.form['board'],request.form['type'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['pwd'],request.form['website'],request.form['c1name'],request.form['c1designation'],request.form['c1phone'],request.form['c1email'],request.form['c2name'],request.form['c2designation'],request.form['c2phone'],request.form['c2email'],request.form['id'],request.form['sid']])
 		g.db.commit()
-		return redirect(url_for('loggedin'))
+		id=base64.b64encode("1".encode())
+		return redirect(url_for('loggedin',id=id))
 	
 
 @app.route("/student_update", methods = ['GET', 'POST'])
@@ -383,7 +394,8 @@ def student_update():
 		file.save(abs_filename)
 		g.db.execute('update student set FirstName=?, LastName=?, Dob=?, Gender=?, Class=?, Section=?, RollNo=?, SchoolName=?, PName=?, PhoneNumber=?, Address=?, City=?, State=?, Zip=?, Email=?, Percentage=?, Photo=?, ParentMobile=?, ParentWork=? where Id=?',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['gender'],request.form['class'],request.form['section'],request.form['rollno'],request.form['sname'],request.form['pname'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['percent'],abs_filename,request.form['mobile'],request.form['work'],request.form['id']])
 		g.db.commit()
-		return redirect(url_for('loggedin'))
+		id=base64.b64encode("1".encode())
+		return redirect(url_for('loggedin',id=id))
 
 
 @app.route("/student_pers_update", methods = ['GET', 'POST'])
@@ -413,7 +425,8 @@ def volunteer_update():
 		sporting = 'sporting' in request.form
 		g.db.execute('update volunteer set FirstName=?, LastName=?, Dob=?, PhoneNumber=?, Address=?, City=?, State=?, Zip=?, Email=?, Skills=?, MaritalStatus=?, Mentoring=?, Tutoring=?, Teaching=?, Counselling=?, CompetitionActivities=?, FundRaising=?, ProjectsEvents=?, Sporting=?, PreferredDays=?, PreferredTiming=? where Id=?',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['skill'],request.form['marital'],mentor,tutor,teaching,counselling,organising,fund,projects,sporting,request.form['days'],request.form['time'],request.form['id']])
 		g.db.commit()
-		return redirect(url_for('loggedin'))
+		id=base64.b64encode("1".encode())
+		return redirect(url_for('loggedin',id=id))
 	
 
 @app.route("/intern_update", methods = ['GET', 'POST'])
@@ -427,7 +440,8 @@ def intern_update():
 		file.save(abs_filename)
 		g.db.execute('update internship set FirstName=?, LastName=?, Dob=?, Picture=?, Gender=?, PhoneNumber=?, Address=?, City=?, State=?, Zip=?, Email=?, Languages=?, University=?, AdditionalCourses=?, SpecificSkills=?, Months=?, FromDate=?, ToDate=?, Interest=?, Location=?, Motivation=? where Id=?',[request.form['fname'],request.form['lname'],request.form['dob'],abs_filename,request.form['gender'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['language'],request.form['university'],request.form['courses'],request.form['skills'],request.form['months'],request.form['from'],request.form['to'],request.form['interest'],request.form['location'],request.form['motivation'],request.form['id']])
 		g.db.commit()
-		return redirect(url_for('loggedin'))
+		id=base64.b64encode("1".encode())
+		return redirect(url_for('loggedin',id=id))
 	
 
 @app.route("/business_update", methods = ['GET', 'POST'])
@@ -450,7 +464,8 @@ def business_update():
 		
 		g.db.execute('update business set FirstName=?, LastName=?, Dob=?, Occupation=?, Picture=?, Gender=?, PhoneNumber=?, Address=?, City=?, State=?, Zip=?, Email=?, PAN=?, Resume=?, Location=? where Id=?',[request.form['fname'],request.form['lname'],request.form['dob'],request.form['occupation'],abs_filename,request.form['gender'],request.form['phone'],request.form['address'],request.form['city'],request.form['state'],request.form['zip'],request.form['email'],request.form['pan'],r_abs_filename,request.form['location'],request.form['id']])
 		g.db.commit()
-		return redirect(url_for('loggedin'))
+		id=base64.b64encode("1".encode())
+		return redirect(url_for('loggedin',id=id))
 	
 	
 	
@@ -458,35 +473,87 @@ def business_update():
 def remove_school():
 	g.db.execute('delete from school where Id = ?',[request.form['remove']])
 	g.db.commit()
-	return redirect(url_for('loggedin'))
+	id=base64.b64encode("1".encode())
+	return redirect(url_for('loggedin',id=id))
 	
 	
 @app.route("/remove_student", methods = ['GET', 'POST'])
 def remove_student():
 	g.db.execute('delete from student where Id = ?',[request.form['remove']])
 	g.db.commit()
-	return redirect(url_for('loggedin'))
+	id=base64.b64encode("1".encode())
+	return redirect(url_for('loggedin',id=id))
 	
 	
 @app.route("/remove_volunteer", methods = ['GET', 'POST'])
 def remove_volunteer():
 	g.db.execute('delete from volunteer where Id = ?',[request.form['remove']])
 	g.db.commit()
-	return redirect(url_for('loggedin'))
+	id=base64.b64encode("1".encode())
+	return redirect(url_for('loggedin',id=id))
 	
 	
 @app.route("/remove_intern", methods = ['GET', 'POST'])
 def remove_intern():
 	g.db.execute('delete from internship where Id = ?',[request.form['remove']])
 	g.db.commit()
-	return redirect(url_for('loggedin'))
+	id=base64.b64encode("1".encode())
+	return redirect(url_for('loggedin',id=id))
 	
 	
 @app.route("/remove_business", methods = ['GET', 'POST'])
 def remove_business():
 	g.db.execute('delete from business where Id = ?',[request.form['remove']])
 	g.db.commit()
-	return redirect(url_for('loggedin'))
+	id=base64.b64encode("1".encode())
+	return redirect(url_for('loggedin',id=id))
+	
+	
+		
+
+@app.route("/oat_ranks")
+def oat_ranks():
+	students = g.db.execute('select Id, Score from student').fetchall()
+	len= length(students)
+	for count in [0,len-1]:
+		g.db.execute('insert into rank values (?,?,?,?,?,?)',[students[count][0],students[count][1],None,None,None,None])
+		count=count+1
+	for i in [1,10]:
+		nation = g.db.execute('select Id from student where Class=? orderby Score desc',[i]).fetchall()
+		l= length(nation)
+		for j in [0,l-1]:
+			g.db.execute('update rank set NationalRank=? where Stud_Id=?',[j+1,nation[j][0]])
+			j=j+1
+		states=g.db.execute('select dist State from student where Class=?',[i]).fetchall()
+		m=length(states)
+		for k in [0,m-1]:
+			state=g.db.execute('select Id from student where State=? and Class=? orderby Score desc',[states[k][0],i]).fetchall()
+			x=length(state)
+			for a in [0,x-1]:
+				g.db.execute('update rank set StateRank=? where Stud_Id=?',[a+1,state[a][0]])
+				a=a+1
+			k=k+1
+		schools=g.db.execute('select dist SchoolName from student where Class=?',[i]).fetchall()
+		n=length(schools)
+		for o in [0,n-1]:
+			school=g.db.execute('select Id from student where SchoolName=? and Class=? orderby Score desc',[schools[o][0],i]).fetchall()
+			y=length(school)
+			for b in [0,y-1]:
+				g.db.execute('update rank set SchoolRank=? where Stud_Id=?',[b+1,school[b][0]])
+				b=b+1
+			sections=g.db.execute('select dist Section from student where SchoolName=? and Class=?',[schools[o][0],i]).fetchall()
+			p=length(sections)
+			for c in [0,p-1]:
+				section=g.db.execute('select Id from student where Section=? and SchoolName=? and Class=? orderby Score desc',[sections[c][0],schools[o][0],i]).fetchall()
+				z=length(section)
+				for d in [0,z-1]:
+					g.db.execute('update rank set ClassRank=? where Stud_Id=?',[d+1,section[d][0]])
+					d=d+1
+				c=c+1
+			o=o+1
+		i=i+1
+	g.db.commit()
+	return 
 
 	
 
@@ -505,7 +572,10 @@ def contact():
 @app.route('/clean')
 def clean():
 	g.db.execute('delete from school')
-	g.db.execute('delete from posts')
+	g.db.execute('delete from student')
+	g.db.execute('delete from business')
+	g.db.execute('delete from volunteer')
+	g.db.execute('delete from internship')
 	g.db.commit()
 	return "Database cleaned!!"
 
