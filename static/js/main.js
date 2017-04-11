@@ -7,13 +7,23 @@ $(document).ready(function() {
     $('[data-hover="dropdown"]').dropdownHover();
     
     /* ======= Fixed header when scrolled ======= */    
-    $(window).on('scroll load', function() {
+    $(window).on('scroll', function() {
          
          if ($(window).scrollTop() > 0) {
              $('#header').addClass('scrolled');
+			 $('#logo').addClass('logo-title');
+			 $('#logo').removeClass('logo');
+			 $('#logo-img').addClass('col-xs-7');
+			 $('#logo-img').removeClass('col-xs-12');
+			 $('#logo-img').attr('src','/static/logo.png');
          }
          else {
              $('#header').removeClass('scrolled');
+			 $('#logo').addClass('logo');
+			 $('#logo').removeClass('logo-title');
+			 $('#logo-img').addClass('col-xs-12');
+			 $('#logo-img').removeClass('col-xs-7');
+			 $('#logo-img').attr('src','/static/logo1.png');
              
          }
     });

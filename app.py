@@ -513,47 +513,41 @@ def remove_business():
 
 @app.route("/oat_ranks")
 def oat_ranks():
+	g.db.execute('delete from rank')
+	g.db.commit()
 	students = g.db.execute('select Id, Score from student').fetchall()
-	len= length(students)
-	for count in [0,len-1]:
+	length= len(students)
+	for count in range(length):
 		g.db.execute('insert into rank values (?,?,?,?,?,?)',[students[count][0],students[count][1],None,None,None,None])
 		count=count+1
-	for i in [1,10]:
-		nation = g.db.execute('select Id from student where Class=? orderby Score desc',[i]).fetchall()
-		l= length(nation)
-		for j in [0,l-1]:
+	for i in range(11):
+		nation = g.db.execute('select Id from student where Class=? order by Score desc',[i]).fetchall()
+		l= len(nation)
+		for j in range(l):
 			g.db.execute('update rank set NationalRank=? where Stud_Id=?',[j+1,nation[j][0]])
-			j=j+1
-		states=g.db.execute('select dist State from student where Class=?',[i]).fetchall()
-		m=length(states)
-		for k in [0,m-1]:
-			state=g.db.execute('select Id from student where State=? and Class=? orderby Score desc',[states[k][0],i]).fetchall()
-			x=length(state)
-			for a in [0,x-1]:
+		states=g.db.execute('select distinct State from student where Class=?',[i]).fetchall()
+		m=len(states)
+		for k in range(m):
+			state=g.db.execute('select Id from student where State=? and Class=? order by Score desc',[states[k][0],i]).fetchall()
+			x=len(state)
+			for a in range(x):
 				g.db.execute('update rank set StateRank=? where Stud_Id=?',[a+1,state[a][0]])
-				a=a+1
-			k=k+1
-		schools=g.db.execute('select dist SchoolName from student where Class=?',[i]).fetchall()
-		n=length(schools)
-		for o in [0,n-1]:
-			school=g.db.execute('select Id from student where SchoolName=? and Class=? orderby Score desc',[schools[o][0],i]).fetchall()
-			y=length(school)
-			for b in [0,y-1]:
+		schools=g.db.execute('select distinct SchoolName from student where Class=?',[i]).fetchall()
+		n=len(schools)
+		for o in range(n):
+			school=g.db.execute('select Id from student where SchoolName=? and Class=? order by Score desc',[schools[o][0],i]).fetchall()
+			y=len(school)
+			for b in range(y):
 				g.db.execute('update rank set SchoolRank=? where Stud_Id=?',[b+1,school[b][0]])
-				b=b+1
-			sections=g.db.execute('select dist Section from student where SchoolName=? and Class=?',[schools[o][0],i]).fetchall()
-			p=length(sections)
-			for c in [0,p-1]:
-				section=g.db.execute('select Id from student where Section=? and SchoolName=? and Class=? orderby Score desc',[sections[c][0],schools[o][0],i]).fetchall()
-				z=length(section)
-				for d in [0,z-1]:
+			sections=g.db.execute('select distinct Section from student where SchoolName=? and Class=?',[schools[o][0],i]).fetchall()
+			p=len(sections)
+			for c in range(p):
+				section=g.db.execute('select Id from student where Section=? and SchoolName=? and Class=? order by Score desc',[sections[c][0],schools[o][0],i]).fetchall()
+				z=len(section)
+				for d in range(z):
 					g.db.execute('update rank set ClassRank=? where Stud_Id=?',[d+1,section[d][0]])
-					d=d+1
-				c=c+1
-			o=o+1
-		i=i+1
 	g.db.commit()
-	return 
+	return redirect(url_for('index'))
 
 	
 

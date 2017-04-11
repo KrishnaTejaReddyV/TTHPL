@@ -214,7 +214,7 @@ select {
   display: inline-block;
   text-align: center;
   line-height: 1.4;
-  max-width: 155px;
+  max-width: 305px;
   background: #ec6952;
   -webkit-border-top-right-radius: 0;
   -webkit-border-bottom-right-radius: 4px;
@@ -244,6 +244,12 @@ select {
 .header h1.logo .logo-title {
   vertical-align: middle;
   line-height: 1.6;
+}
+.header h1.logo-title {
+  vertical-align: middle;
+  line-height: 1.6;
+  position: absolute;
+  padding-bottom:100;
 }
 .header .main-nav {
   margin-top: 15px;
