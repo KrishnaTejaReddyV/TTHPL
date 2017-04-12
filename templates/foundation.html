@@ -26,9 +26,9 @@
 <body class="home-page">   
     <!-- ******HEADER****** --> 
     <header id="header" class="header navbar-fixed-top">  
-        <div class="container">       
-            <h1 class="logo">
-                <a href="index.html"><span class="text">TTHPL Logo</span></a>
+        <div class="container">      
+            <h1 id="logo" class="logo row">
+                <a href="/"><img id="logo-img" class="col-xs-12" src="/static/logo1.png"></a>
             </h1><!--//logo-->
             <nav class="main-nav navbar-right" role="navigation">
                 <div class="navbar-header">
@@ -146,7 +146,7 @@
 									<div class="item-inner">
 										<div class="heading">
 											<h3 class="title" align="center">Olympiad Aptitude Tests (OAT)</h3>
-											<a href="oat.html"><img class="img-responsive" src="/static/oat.jpeg" alt="" /></a>
+											<a href="oat"><img class="img-responsive" src="/static/oat.jpeg" alt="" /></a>
 										</div>
 									</div><!--//item-inner-->
 								</div><!--//item-->
@@ -155,7 +155,7 @@
 									<div class="item-inner">
 										<div class="heading">
 											<h3 class="title" align="center">INSAF</h3>
-											<a href="insaf.html"><img class="img-responsive" src="/static/insaf.jpeg" alt="" /></a>
+											<a href="insaf"><img class="img-responsive" src="/static/insaf.jpeg" alt="" /></a>
 										</div>
 									</div><!--//item-inner-->
 								</div><!--//item-->
@@ -288,7 +288,7 @@
                         <div class="tab-pane" id="feature-2">
 						<h3 class="title sr-only">Donate To Us</h3> 
                             <div class="form-container col-xs-12 col-md-12">
-                                   <form class="form-horizontal" action=" " method="post"  id="reg_form">
+                                   <form class="form-horizontal" action="donate" method="post"  id="reg_form">
     <fieldset>
       
       <!-- Form Name -->
@@ -300,7 +300,7 @@
         <label class="col-md-4 control-label">First Name</label>
         <div class="col-md-6  inputGroupContainer">
           <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-            <input  name="first_name" placeholder="First Name" class="form-control"  type="text">
+            <input  name="fname" placeholder="First Name" class="form-control"  type="text">
           </div>
         </div>
       </div>
@@ -311,7 +311,7 @@
         <label class="col-md-4 control-label" >Last Name</label>
         <div class="col-md-6  inputGroupContainer">
           <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-            <input name="last_name" placeholder="Last Name" class="form-control"  type="text">
+            <input name="lname" placeholder="Last Name" class="form-control"  type="text">
           </div>
         </div>
       </div>
@@ -430,13 +430,36 @@
       <div class="form-group">
         <label class="col-md-4 control-label"></label>
         <div class="col-md-4">
-          <button type="submit" class="btn btn-warning" >DONATE <span class="glyphicon glyphicon-send"></span></button>
+          <button type="submit" class="btn btn-warning"  data-toggle="modal" data-target="#donated">DONATE <span class="glyphicon glyphicon-send"></span></button>
         </div>
       </div>
     </fieldset>
   </form>
 </div>
 
+<div class="modal fade" id="donateremove{{posts[0]}}" role="dialog">
+	<div class="modal-dialog">
+	
+	  <!-- Modal content-->
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <button type="button" class="close" data-dismiss="modal">&times;</button>
+		  <h4 class="modal-title">Thank You for Registering.</h4>
+		</div>
+		
+		<div class="modal-body">
+			<div class="form-group">
+				<label class="col-md-4 control-label">You can send your donation at the following address:</label>
+				<div class="col-md-4">
+				  <button type="button" class="btn btn-warning" data-dismiss="modal">Ok</button>
+				</div>
+			 </div>
+		  
+		</div>
+	  </div>
+	  
+	</div>
+</div>
 
 <div class="col-lg-3">
  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

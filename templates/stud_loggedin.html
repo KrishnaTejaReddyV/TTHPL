@@ -22,6 +22,13 @@
     <link id="theme-style" rel="stylesheet" href="/static/css/styles.css">
 </head> 
 
+<script>
+var error="{{request.args.get('error')}}";
+if(error!='None'){
+alert(error);
+}
+</script>
+
 <body class="home-page">   
     
     <div class="headline-bg ">
@@ -39,7 +46,7 @@
 						<div class="member col-md-5 col-sm-6 col-xs-12">
 							<div class="member-inner">
 								<figure class="profile">
-									<img class="img-responsive" src="{{posts[16]}}" alt=""/>
+									<a href="" data-toggle="modal" data-target="#pic_upload"><img class="img-responsive" src="{{posts[16]}}" alt=""/></a>
 								</figure><!--//profile-->
 								<br>
 								<h5 class="col-xs-6 text-center"><a href="" data-toggle="modal" data-target="#modal{{posts[17]}}"><i class="fa fa-edit"></i> Edit Profile</a></h5>
@@ -119,6 +126,38 @@
             </div><!--//row-->
         </div><!--//container-->
     </section><!--//features-tabbed-->
+
+
+	<div class="modal fade" id="pic_upload" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title text-center">Edit Profile Picture</h4>
+			</div>
+			
+			<div class="modal-body">
+			<form class="form-horizontal" action="pic_upload" method="post"  id="reg_form" enctype="multipart/form-data">
+				<div class="form-group row">
+						<label class="col-xs-6 control-label" >Upload Profile Picture:</label>
+						<div class="col-xs-6   inputGroupContainer">
+							<input name="pic" id="input-1" type="file" class="file">
+						</div>
+				 </div>
+						<hr>
+				  <div class="form-group">
+					  <button type="submit" name="id" class="btn btn-warning col-xs-4 col-xs-offset-4" value="{{posts[17]}}">Submit <span class="glyphicon glyphicon-send"></span></button>
+				  </div>
+			</form>
+			  
+			</div>
+		  </div>
+		  
+		</div>
+    </div>
+	
 	
 	<div class="modal fade" id="logoutmodal" role="dialog">
 		<div class="modal-dialog">
@@ -165,7 +204,7 @@
 																				<label class="col-md-4 control-label">First Name</label>
 																				<div class="col-md-6  inputGroupContainer">
 																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-																					<input  name="fname" placeholder="{{posts[0]}}" class="form-control"  type="text">
+																					<input  name="fname" placeholder="{{posts[0]}}"  value="{{posts[0]}}" class="form-control"  type="text">
 																				  </div>
 																				</div>
 																			  </div>
@@ -176,7 +215,7 @@
 																				<label class="col-md-4 control-label" >Last Name</label>
 																				<div class="col-md-6  inputGroupContainer">
 																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-																					<input name="lname" placeholder="{{posts[1]}}" class="form-control"  type="text">
+																					<input name="lname" placeholder="{{posts[1]}}" value="{{posts[1]}}" class="form-control"  type="text">
 																				  </div>
 																				</div>
 																			  </div>
@@ -185,22 +224,17 @@
 																				<label class="col-md-4 control-label" >Date of Birth</label>
 																				<div class="col-md-6  inputGroupContainer">
 																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-																					<input name="dob" placeholder="{{posts[2]}}" class="form-control"  type="text">
+																					<input name="dob" placeholder="{{posts[2]}}" value="{{posts[2]}}" class="form-control"  type="text">
 																				  </div>
 																				</div>
 																			  </div>
 																			  
-																			 
 																			  
-																			   <div class="form-group">
-																				<label class="col-md-4 control-label">Gender</label>
-																				<div class="col-md-6 selectContainer">
-																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-																					<select name="gender" class="form-control selectpicker" >
-																					  <option value=" " >Please select your gender</option>
-																					  <option value="male">Male</option>
-																					  <option value="female">Female</option>
-																					</select>
+																			 <div class="form-group">
+																				<label class="col-md-4 control-label" >Gender</label>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+																					<input name="gender" placeholder="{{posts[3]}}" value="{{posts[3]}}" class="form-control"  type="text">
 																				  </div>
 																				</div>
 																			  </div>
@@ -209,7 +243,7 @@
 																				<label class="col-md-4 control-label" >Class</label>
 																				<div class="col-md-6  inputGroupContainer">
 																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-																					<input name="class" placeholder="{{posts[4]}}" class="form-control"  type="text">
+																					<input name="class" placeholder="{{posts[4]}}" value="{{posts[4]}}" class="form-control"  type="text">
 																				  </div>
 																				</div>
 																			  </div>
@@ -218,7 +252,7 @@
 																				<label class="col-md-4 control-label" >Section</label>
 																				<div class="col-md-6  inputGroupContainer">
 																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-																					<input name="section" placeholder="{{posts[5]}}" class="form-control"  type="text">
+																					<input name="section" placeholder="{{posts[5]}}" value="{{posts[5]}}" class="form-control"  type="text">
 																				  </div>
 																				</div>
 																			  </div>
@@ -227,7 +261,7 @@
 																				<label class="col-md-4 control-label" >Roll No.</label>
 																				<div class="col-md-6  inputGroupContainer">
 																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-																					<input name="rollno" placeholder="{{posts[6]}}" class="form-control"  type="text">
+																					<input name="rollno" placeholder="{{posts[6]}}" value="{{posts[6]}}" class="form-control"  type="text">
 																				  </div>
 																				</div>
 																			  </div>
@@ -236,7 +270,7 @@
 																				<label class="col-md-4 control-label" >School ID</label>
 																				<div class="col-md-6  inputGroupContainer">
 																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-																					<input name="sname" placeholder="{{posts[7]}}" class="form-control"  type="text">
+																					<input name="sname" placeholder="{{posts[7]}}" value="{{posts[7]}}" class="form-control"  type="text">
 																				  </div>
 																				</div>
 																			  </div>
@@ -245,7 +279,7 @@
 																				<label class="col-md-4 control-label">Student Phone Number</label>
 																				<div class="col-md-6  inputGroupContainer">
 																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-																					<input name="phone" placeholder="{{posts[9]}}" class="form-control" type="text">
+																					<input name="phone" placeholder="{{posts[9]}}" value="{{posts[9]}}" class="form-control" type="text">
 																				  </div>
 																				</div>
 																			  </div>
@@ -254,7 +288,7 @@
 																				<label class="col-md-4 control-label" >Parent's/Gaurdian's Name</label>
 																				<div class="col-md-6  inputGroupContainer">
 																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-																					<input name="pname" placeholder="{{posts[8]}}" class="form-control"  type="text">
+																					<input name="pname" placeholder="{{posts[8]}}" value="{{posts[8]}}" class="form-control"  type="text">
 																				  </div>
 																				</div>
 																			  </div>
@@ -264,7 +298,7 @@
 																				<label class="col-md-4 control-label">Parent's/Gaurdian's Mobile Number</label>
 																				<div class="col-md-6  inputGroupContainer">
 																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-																					<input name="mobile" placeholder="{{posts[19]}}" class="form-control" type="text">
+																					<input name="mobile" placeholder="{{posts[19]}}" value="{{posts[19]}}" class="form-control" type="text">
 																				  </div>
 																				</div>
 																			  </div>
@@ -275,7 +309,7 @@
 																				<label class="col-md-4 control-label">Parent's/Gaurdian's Work Number</label>
 																				<div class="col-md-6  inputGroupContainer">
 																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-																					<input name="work" placeholder="{{posts[20]}}" class="form-control" type="text">
+																					<input name="work" placeholder="{{posts[20]}}" value="{{posts[20]}}" class="form-control" type="text">
 																				  </div>
 																				</div>
 																			  </div>
@@ -284,7 +318,7 @@
 																				<label class="col-md-4 control-label">Address</label>
 																				<div class="col-md-6  inputGroupContainer">
 																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-																					<input name="address" placeholder="{{posts[10]}}" class="form-control" type="text">
+																					<input name="address" placeholder="{{posts[10]}}" value="{{posts[10]}}" class="form-control" type="text">
 																				  </div>
 																				</div>
 																			  </div>
@@ -295,55 +329,16 @@
 																				<label class="col-md-4 control-label">City</label>
 																				<div class="col-md-6  inputGroupContainer">
 																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-																					<input name="city" placeholder="{{posts[11]}}" class="form-control"  type="text">
+																					<input name="city" placeholder="{{posts[11]}}" value="{{posts[11]}}" class="form-control"  type="text">
 																				  </div>
 																				</div>
 																			  </div>
 																			  
-																			  <!-- Select Basic -->
-																			  
 																			  <div class="form-group">
 																				<label class="col-md-4 control-label">State</label>
-																				<div class="col-md-6 selectContainer">
-																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-																					<select name="state" class="form-control selectpicker" >
-																					  <option value=" " >Please select your state</option>
-																					  <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-																		<option value="Andhra Pradesh">Andhra Pradesh</option>
-																		<option value="Arunachal Pradesh">Arunachal Pradesh</option>
-																		<option value="Assam">Assam</option>
-																		<option value="Bihar">Bihar</option>
-																		<option value="Chandigarh">Chandigarh</option>
-																		<option value="Chhattisgarh">Chhattisgarh</option>
-																		<option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
-																		<option value="Daman and Diu">Daman and Diu</option>
-																		<option value="Delhi">Delhi</option>
-																		<option value="Goa">Goa</option>
-																		<option value="Gujarat">Gujarat</option>
-																		<option value="Haryana">Haryana</option>
-																		<option value="Himachal Pradesh">Himachal Pradesh</option>
-																		<option value="Jammu and Kashmir">Jammu and Kashmir</option>
-																		<option value="Jharkhand">Jharkhand</option>
-																		<option value="Karnataka">Karnataka</option>
-																		<option value="Kerala">Kerala</option>
-																		<option value="Lakshadweep">Lakshadweep</option>
-																		<option value="Madhya Pradesh">Madhya Pradesh</option>
-																		<option value="Maharashtra">Maharashtra</option>
-																		<option value="Manipur">Manipur</option>
-																		<option value="Meghalaya">Meghalaya</option>
-																		<option value="Mizoram">Mizoram</option>
-																		<option value="Nagaland">Nagaland</option>
-																		<option value="Orissa">Orissa</option>
-																		<option value="Pondicherry">Pondicherry</option>
-																		<option value="Punjab">Punjab</option>
-																		<option value="Rajasthan">Rajasthan</option>
-																		<option value="Sikkim">Sikkim</option>
-																		<option value="Tamil Nadu">Tamil Nadu</option>
-																		<option value="Tripura">Tripura</option>
-																		<option value="Uttaranchal">Uttaranchal</option>
-																		<option value="Uttar Pradesh">Uttar Pradesh</option>
-																		<option value="West Bengal">West Bengal</option>
-																					</select>
+																				<div class="col-md-6  inputGroupContainer">
+																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+																					<input name="state" placeholder="{{posts[12]}}" value="{{posts[12]}}" class="form-control"  type="text">
 																				  </div>
 																				</div>
 																			  </div>
@@ -354,7 +349,7 @@
 																				<label class="col-md-4 control-label">Zip Code</label>
 																				<div class="col-md-6  inputGroupContainer">
 																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-																					<input name="zip" placeholder="{{posts[13]}}" class="form-control"  type="text">
+																					<input name="zip" placeholder="{{posts[13]}}" value="{{posts[13]}}" class="form-control"  type="text">
 																				  </div>
 																				</div>
 																			  </div>
@@ -367,16 +362,16 @@
 																				<label class="col-md-4 control-label">E-Mail</label>
 																				<div class="col-md-6  inputGroupContainer">
 																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-																					<input name="email" placeholder="{{posts[14]}}" class="form-control"  type="text">
+																					<input name="email" placeholder="{{posts[14]}}" value="{{posts[14]}}" class="form-control"  type="text">
 																				  </div>
 																				</div>
 																			  </div>
 	  
 																			   <div class="form-group">
-																				<label class="col-md-4 control-label">Password</label>
+																				<label class="col-md-4 control-label">Login Password</label>
 																				<div class="col-md-6  inputGroupContainer">
 																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-																					<input name="pwd" placeholder="" class="form-control"  type="password">
+																					<input name="pwd" placeholder="{{posts[18]}}" value="{{posts[18]}}" class="form-control"  type="password">
 																				  </div>
 																				</div>
 																			  </div>
@@ -385,20 +380,12 @@
 																				<label class="col-md-4 control-label" >Percentage in Last Class</label>
 																				<div class="col-md-6  inputGroupContainer">
 																				  <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-																					<input name="percent" placeholder="{{posts[15]}}" class="form-control"  type="text">
+																					<input name="percent" placeholder="{{posts[15]}}" value="{{posts[15]}}" class="form-control"  type="text">
 																				  </div>
-																				</div>
-																			  </div>
-																			  
-																			  <div class="form-group">
-																				<label class="col-md-4 control-label" >Photo of Student</label>
-																				<div class="col-md-6  inputGroupContainer">
-																				<input name="pic" id="input-1" type="file" class="file">
 																				</div>
 																			  </div>
 																			 
 																			  
-
 																			  <!-- Button -->
 																			  <div class="form-group">
 																				<label class="col-md-4 control-label"></label>
